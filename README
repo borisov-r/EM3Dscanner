@@ -17,6 +17,11 @@ The basic idea behind this project is:
 Useful links:
 1. VTK format explained:
 http://www.vtk.org/VTK/img/file-formats.pdf
+
 2. Python class for generation of .vtu files and explanation
 http://www.shocksolution.com/microfluidics-and-biotechnology/visualization/python-vtk-paraview/
 https://github.com/cfinch/Shocksolution_Examples/blob/master/Visualization/vtktools.py
+
+3. Tutorials for ParaView
+http://paraview.org/Wiki/SNL_ParaView_3_Tutorials
+http://paraview.org/Wiki/Beginning_Plotting
