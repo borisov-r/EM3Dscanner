@@ -1,0 +1,17 @@
+Open project for visualization of electromagnetic fields using RepRap, ParaView, Blender, PNAL (Agilent's HF equipment).
+
+Everything here will be licensed under the GNU GPL v3 or (at the user's discretion) any later version.
+
+This project will be part of my PhD Thesis :)
+
+==============================================
+
+The basic idea behind this project is:
+1. use RepRap to control the movement of coax probe, connected to VNA or PNA (we may use simple spectrum analyzer later)
+2. collect data in VTK compatible format (as .vtk or .vtu) from VNA or PNA (or spectrum analyzer) (data is stored either in structured data format or as XML compatible)
+3. visualize the data in ParaView - this will enable the export and analysis of the data to be much easier
+4. eventually import it in Blender using .x3d or .vrml formats
+
+==============================================
+
+
