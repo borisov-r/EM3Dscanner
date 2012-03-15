@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:bpmn="http://stp.eclipse.org/bpmn" xmi:id="_QfxX0W6TEeG7Md0F6eh2tQ" iD="_QfxX0G6TEeG7Md0F6eh2tQ">
+  <pools xmi:type="bpmn:Pool" xmi:id="_Qf7I0W6TEeG7Md0F6eh2tQ" iD="_Qf7I0G6TEeG7Md0F6eh2tQ" name="Agilent PNA 5230C">
+    <artifacts xmi:type="bpmn:TextAnnotation" xmi:id="_gdfYwW6TEeG7Md0F6eh2tQ" iD="_gdfYwG6TEeG7Md0F6eh2tQ" name="Telnet on port 5024"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Qf7I026TEeG7Md0F6eh2tQ" iD="_Qf7I0m6TEeG7Md0F6eh2tQ" name="SCPI" activityType="Task"/>
+  </pools>
+</bpmn:BpmnDiagram>

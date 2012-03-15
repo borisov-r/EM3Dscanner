@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:bpmn="http://stp.eclipse.org/bpmn" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_Qfyl8G6TEeG7Md0F6eh2tQ" type="Bpmn" name="softwareModel.bpmn_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_Qf7v4G6TEeG7Md0F6eh2tQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_Qf8W8G6TEeG7Md0F6eh2tQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_Qf8W8W6TEeG7Md0F6eh2tQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_Qf8-AG6TEeG7Md0F6eh2tQ" type="2001">
+        <children xmi:type="notation:Node" xmi:id="_Qf9lEG6TEeG7Md0F6eh2tQ" type="4001"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_Qf8-AW6TEeG7Md0F6eh2tQ" fontName="Arial"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_Qf8-Am6TEeG7Md0F6eh2tQ"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_Qf8-A26TEeG7Md0F6eh2tQ"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_Qf8-BG6TEeG7Md0F6eh2tQ" lineColor="0"/>
+        <element xmi:type="bpmn:Activity" href="softwareModel.bpmn#_Qf7I026TEeG7Md0F6eh2tQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qf9lEW6TEeG7Md0F6eh2tQ" x="42" y="55" width="122" height="61"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_gdf_0G6TEeG7Md0F6eh2tQ" type="1002">
+        <children xmi:type="notation:Node" xmi:id="_gdhN8G6TEeG7Md0F6eh2tQ" type="4009"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_gdgm4G6TEeG7Md0F6eh2tQ" fontName="Arial"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_gdgm4W6TEeG7Md0F6eh2tQ"/>
+        <styles xmi:type="notation:FillStyle" xmi:id="_gdgm4m6TEeG7Md0F6eh2tQ"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_gdgm426TEeG7Md0F6eh2tQ" lineColor="0"/>
+        <element xmi:type="bpmn:TextAnnotation" href="softwareModel.bpmn#_gdfYwW6TEeG7Md0F6eh2tQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gdgm5G6TEeG7Md0F6eh2tQ" x="42" y="16"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_Qf8W8m6TEeG7Md0F6eh2tQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Qf8W826TEeG7Md0F6eh2tQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Qf8W9G6TEeG7Md0F6eh2tQ"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Qf7v4W6TEeG7Md0F6eh2tQ" fontName="Arial"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Qf7v4m6TEeG7Md0F6eh2tQ"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_Qf7v426TEeG7Md0F6eh2tQ" fillColor="16771304"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_Qf7v5G6TEeG7Md0F6eh2tQ" lineColor="11119017"/>
+    <element xmi:type="bpmn:Pool" href="softwareModel.bpmn#_Qf7I0W6TEeG7Md0F6eh2tQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qf8W9W6TEeG7Md0F6eh2tQ" x="16" y="16" width="1500" height="200"/>
+  </children>
+  <styles xmi:type="notation:PageStyle" xmi:id="_Qfyl8W6TEeG7Md0F6eh2tQ"/>
+  <styles xmi:type="notation:GuideStyle" xmi:id="_Qfyl8m6TEeG7Md0F6eh2tQ"/>
+  <styles xmi:type="notation:DescriptionStyle" xmi:id="_Qfyl826TEeG7Md0F6eh2tQ"/>
+  <element xmi:type="bpmn:BpmnDiagram" href="softwareModel.bpmn#_QfxX0W6TEeG7Md0F6eh2tQ"/>
+</notation:Diagram>
