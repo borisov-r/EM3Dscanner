@@ -13,8 +13,10 @@ SCPI> SENS:SWE:POIN?
 +51
 SCPI> system:error?
 SCPI> calc:par:mnum 1
-SCPI> calc:data? fdata
+Gets Freq, Real, Img (get only freqs)
 SCPI> calc:data:snp:ports? "1"
+Get data for S22 
+SCPI> calc:data? fdata
 
 
 Frequencies 51:
