@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<VTKFile type="PImageData" version="0.1" byte_order="LittleEndian">
+ <PImageData WholeExtent="0 640 0 640 0 1" Origin="0 0 0 " Spacing = "1 1 1" GhostLevel="0">
+  <PCellData Scalars="cell_scalars">
+   <PDataArray type="Float64" Name="cell_scalars"/>
+  </PCellData>
+  <Piece Extent="0 320 0 320 0 1" Source="slab_0.vti"/>
+  <Piece Extent="0 320 320 640 0 1" Source="slab_1.vti"/>
+  <Piece Extent="320 640 0 320 0 1" Source="slab_2.vti"/>
+  <Piece Extent="320 640 320 640 0 1" Source="slab_3.vti"/>
+ </PImagData>
+</VTKFile>
+
+slab_0.vti:
+<?xml_version="1.0"?>
+<VTKFile type="ImageData" version="0.1" byte_order="LittleEndian">
+ <ImageData WholeExtent="0 640 0 640 0 1" Origin="0 0 0" Spacing="1 1 1">
+  <Piece Extent="0 320 0 320 0 1">
+   <CellData Scalars="cell_scalars">
+    <DataArray type="Float64" Name="cell_scalars" format="ascii">
+	1.2 3.2
+    </DataArray>
+   </CellData>
+  </Piece>
+ </ImageData>
+</VTKFile>
+
+slab_1.vti:
+<?xml_version="1.0"?>
+<VTKFile type="ImageData" version="0.1" byte_order="LittleEndian">
+ <ImageData WholeExtent="0 640 0 640 0 1" Origin="0 0 0" Spacing="1 1 1">
+  <Piece Extent="0 320 320 640 0 1">
+   <CellData Scalars="cell_scalars">
+    <DataArray type="Float64" Name="cell_scalars" format="ascii">
+1.2 3.2
+    </DataArray>
+   </CellData>
+  </Piece>
+ </ImageData>
+</VTKFile>
+
+slab_2.vti:
+<?xml_version="1.0"?>
+<VTKFile type="ImageData" version="0.1" byte_order="LittleEndian">
+ <ImageData WholeExtent="0 640 0 640 0 1" Origin="0 0 0" Spacing="1 1 1">
+  <Piece Extent="320 640 0 320 0 1">
+   <CellData Scalars="cell_scalars">
+    <DataArray type="Float64" Name="cell_scalars" format="ascii">
+1.2 3.2
+    </DataArray>
+   </CellData>
+  </Piece>
+ </ImageData>
+</VTKFile>
+
+slab_3.vti:
+<?xml_version="1.0"?>
+<VTKFile type="ImageData" version="0.1" byte_order="LittleEndian">
+ <ImageData WholeExtent="0 640 0 640 0 1" Origin="0 0 0" Spacing="1 1 1">
+  <Piece Extent="320 640 320 640 0 1">
+   <CellData Scalars="cell_scalars">
+    <DataArray type="Float64" Name="cell_scalars" format="ascii">
+1.2 3.2
+    </DataArray>
+   </CellData>
+  </Piece>
+ </ImageData>
+</VTKFile>

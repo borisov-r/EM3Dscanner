@@ -1,0 +1,14 @@
+<VTKFile type="ImageData" version="0.1" byte_order="LittleEndian">
+  <ImageData WholeExtent="0 1 0 1 0 1" Origin="0 0 0" Spacing="1 1 1">
+  <Piece Extent="0 1 0 1 0 1">
+    <PointData Scalars="RTData">
+      <DataArray type="Float32" Name="RTData" format="ascii" RangeMin="-1.142639637" RangeMax="256">
+        256 0.1585290134 0.1585290134 -0.68294197321 0.54030227661 -0.30116868019
+        -0.30116868019 -1.142639637
+      </DataArray>
+    </PointData>
+    <CellData>
+    </CellData>
+  </Piece>
+  </ImageData>
+</VTKFile>
