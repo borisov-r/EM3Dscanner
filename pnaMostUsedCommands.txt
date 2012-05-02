@@ -1,0 +1,40 @@
+PNA Commands
+
+termChar = "\n"            # termination character should be \n
+host = "10.1.15.106"    # IP address of PNA
+port = "5024"           # connection port
+debugCommunication = False  # add all prints
+
+Common commands
+-------------------------------------
+	*CLS 	- Clear Status
+	*ESE 	- Event Status Enable
+	*ESE? 	- Event Status Enable Query
+	*ESR? 	- Event Status Enable Register
+	*IDN? 	- Identify
+	*OPC 	- Operation complete command
+	*OPC? 	- Operation complete query
+	*OPT? 	- Identify Options Query
+	*RST 	- Reset
+	*SRE 	- Service Request Enable
+	*SRE? 	- Service Request Enable Query
+	*STB? 	- Status Byte Query
+	*TST? 	- Result of Self-test Query
+	*WAI 	- Wait
+-------------------------------------
+
+PNA commands for getting data
+-------------------------------------
+	syst:fpr 	- Reset PNA display
+	mmem:cdir? 	- Current working folder
+	mmem:load 'calibrationRado.csa'	- Load default displays and calibration
+	calc:par:cat?	- Names and parameters of existing measurements for the specified channel
+	system:error?	- System error message return
+	format:data?	- Returns data format for data transfers
+	format:data ascii	- Sets the data format for data transfers
+	CALCulate:PARameter:MNUMber[:SELect]? - Returns the selected measurement for the channel
+	calc:par:mnum 1	- Sets the selected measurement for the channel
+	mmem:stor:trace:format:snp?	- Specifies the format of subsequent .s1p, .s2p, .s3p; s4p save statements
+	mmem:stor:trace:format:snp db	- Log Magnitude / degrees
+	calc:data? fdata	- Reads measurement data. 
+				  Formatted measurement data to or from Data Access Map location Display (access point 2).
