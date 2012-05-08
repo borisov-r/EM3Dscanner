@@ -39,6 +39,8 @@ PNA commands for getting data
 	calc:data? fdata	- Reads measurement data. 
 				  Formatted measurement data to or from Data Access Map location Display (access point 2)
 	calc:data:snp:ports? "1,2"	- Reads SNP data from the selected measurement for the specified ports
+	sens:swe:points?		- (Read) Sets the number of data points for the measurement. 
+	sens:swe:points 10		- (Write) Sets the number of data points for the measurement to 10.
 -------------------------------------
 
 PNA commands examples
