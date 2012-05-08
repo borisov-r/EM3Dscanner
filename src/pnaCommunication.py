@@ -1,11 +1,13 @@
 from telnetlib import Telnet
 from struct import *
+import numpy as np
 
 class PNA(object):
     """ PNA connection and communication """
-    tn = Telnet()   # out main object
+    tn = Telnet()               # out main object
     terminationCharacter = "\n" # termination character (executes the command)
-    answerFromPNA = ""
+    FrequencyPoints = ""
+    answerFromPNA = ""          # data returned from PNA
 
     def send(self, command):
         try:
@@ -87,10 +89,15 @@ class PNA(object):
     def catalogMeasurements(self):
         self.ask("CALC:PAR:CAT:EXT?")
     
+    def getReal32SNP(self, command):
+        """ Sets data:format to real32 and gets selected SNP """
+        self.setDataFormat("real32")
+        self.askBinData("calc:data:snp:ports? " + "\"" + command + "\"")
+        
     def getReal64SNP(self, command):
         """ Sets data:format to real64 and gets selected SNP """
         self.setDataFormat("real64")
-        self.askBinData("calc:data:snp:ports? " + "\"" + command + "\"")
+        self.askBinData("calc:data:snp:ports? " + "\"" + command + "\"")    
         
     def getAsciiSNP(self, command):
         """ Sets data:format to real64 and gets selected SNP """
@@ -116,6 +123,42 @@ class PNA(object):
             self.send("mmem:stor:trac:form:snp RI") 
         elif( command == "auto" ):
             self.send("mmem:stor:trac:form:snp AUTO")
+            
+    def getPNASweepPoints(self):
+        self.ask("sens:swe:poin?")
+        self.FrequencyPoints = self.answerFromPNA
+        
+    def setPNASweepPoints(self, points):
+        self.send("sens:swe:poin " + points)
+
+class PlaneXYGrid:
+            
+    def __init__(self, xAxisPoints, yAxisPoints, zAxisPoints, frequency):
+        print("Data array defined")
+        self.Xpoints = xAxisPoints
+        self.Ypoints = yAxisPoints
+        self.FrequencyNumber = frequency    # this is the PNA sweep frequency number "FrequencyPoints"
+        self.amplitudeData = np.zeros((self.Xpoints,self.Ypoints), dtype=np.float64)
+        self.phaseData = np.zeros((self.Xpoints,self.Ypoints), dtype=np.float64)
+        
+    def printAmp(self):
+        print(self.amplitudeData)
+    
+    def printPhase(self):
+        print(self.phaseData)
+    
+    def setCurrentPointAmplitude(self, xPoint, yPoint, amplitude):
+        self.amplitudeData[xPoint,yPoint] = amplitude
+        
+    def setCurrentPointPhase(self, xPoint, yPoint, phase):
+        self.phaseData[xPoint,yPoint] = phase
+        
+    def getCurrentPointAmplitude(self, xPoint, yPoint):
+        print(self.amplitudeData[xPoint, yPoint])
+    
+    def getCurrentPointPhase(self, xPoint, yPoint):
+        print(self.phaseData[xPoint, yPoint])   
+        
     
 a = PNA("10.1.15.106", "5024")
 #.write("*IDN?".encode(encoding='ascii', errors='strict'))
@@ -136,38 +179,31 @@ a.catalogMeasurements()
 a.selectTraceNum("1")
 a.getAsciiSNP("2")
 snp = a.answerFromPNA
-print(snp)
-pp = float(snp[0:19])
-ppp = float(snp[21:39])
-pppp = float(snp[40:59])
-print(pp)
-print(ppp)
-print(pppp)
-print(pack('d', pp))
-f=open('my-file.bin', 'wb')
-f.write(pack('d', pp))
-f.close()
-f=open('my-file.bin', 'r+b')
-print(f.tell())
-print(f.seek(8))
-f.write(pack('d', ppp))
-f.close()
-f=open('my-file.bin', 'r+b')
-print(f.seek(16))
-f.write(pack('d', pppp))
-f.close()
 
-f=open('my-file.bin', 'r+b')
-one = [0] * 3
-one[0] = unpack('d', f.read(8))
-one[1] = unpack('d', f.read(8))
-one[2] = unpack('d', f.read(8))
-f.close()
+data = list()
+list(snp)
+print(len(snp))
+data = snp.split(",")
+print(float(data[0]))
+print(float(data[1]))
+print(float(data[2]))
+print(float(data[3]))
+print(float(data[4]))
+print(float(data[5]))
 
-print(len(one))
-print(one[0])
-print(one[1])
-print(one[2])
+grid1 = PlaneXYGrid(2,2,2,1)
+grid1.setCurrentPointAmplitude(1, 1, -2.5)
+grid1.setCurrentPointAmplitude(0, 0, 2.5)
+grid1.printAmp()
+grid1.printPhase()
+#print("Number of sweep points: ")
+a.getPNASweepPoints()
+a.setPNASweepPoints(" 101")
+print("test")
+print(a.FrequencyPoints)
+a.getPNASweepPoints()
+print(a.FrequencyPoints)
+print(a.getAsciiSNP("2"))
 
 a.checkSystemError()
 a.closeConnectionToPNA()
