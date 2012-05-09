@@ -49,3 +49,47 @@ a.getPNASweepPoints()
 print(a.frequencyPoints)
 print(a.getAsciiSNP("2"))
 #---------------------------------------------------------------------------------------------------------------------
+
+#No3
+#---------------------------------------------------------------------------------------------------------------------
+a.selectTraceNum("1")
+a.getAsciiSNP("2")
+snp = a.answerFromPNA
+
+data = list()
+list(snp)
+print(len(snp))
+data = snp.split(",")
+
+for index in range(len(data)):
+    data[index] = float(data[index])
+    
+print(data)
+
+grid1 = PlaneXYGrid(2,2,2,a.FrequencyPoints)
+grid1.setCurrentPointAmplitude(0, 0, data[2])
+grid1.setCurrentPointAmplitude(1, 1, data[3])
+grid1.setCurrentPointPhase(0, 0, data[4])
+grid1.setCurrentPointPhase(1, 1, data[5])
+grid1.printAmp()
+grid1.printPhase()
+
+grid1.writePlaneToFiles("meas090512")
+
+grid1 = PlaneXYGrid(2,2,2,a.FrequencyPoints)
+grid1.setCurrentPointAmplitude(0, 0, 0.0)
+grid1.setCurrentPointAmplitude(1, 1, 0.0)
+grid1.setCurrentPointPhase(0, 0, 0.0)
+grid1.setCurrentPointPhase(1, 1, 0.0)
+
+grid1.printAmp()
+grid1.printPhase()
+
+grid1.readPlaneFromFile("meas090512amp.npy")
+grid1.readPlaneFromFile("meas090512ph.npy")
+grid1.printAmp()
+grid1.printPhase()
+#---------------------------------------------------------------------------------------------------------------------
+
+#No4
+#---------------------------------------------------------------------------------------------------------------------

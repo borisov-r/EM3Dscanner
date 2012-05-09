@@ -4,7 +4,7 @@ import numpy as np
 
 class PNA(object):
     """ PNA connection and communication """
-    tn = Telnet()               # out main object
+    tn = Telnet()               # our main object, should be removed and stay only the object in __init__
     terminationCharacter = "\n" # termination character (executes the command)
     FrequencyPoints = ""
     answerFromPNA = ""          # data returned from PNA
@@ -47,7 +47,7 @@ class PNA(object):
     def __init__(self, host, port):
         """ Connection to PNA """    
         try:
-            self.tn = Telnet(host, port, timeout=10)
+            self.tn = Telnet(host, port, timeout=10)    #
             ans = self.tn.read_until("SCPI> ".encode(encoding='ascii', errors='strict'), timeout = 10).decode('ascii').strip()
             print(ans)
             self.ask("*IDN?")
@@ -158,8 +158,30 @@ class PlaneXYGrid:
     
     def getCurrentPointPhase(self, xPoint, yPoint):
         print(self.phaseData[xPoint, yPoint])   
-        
     
+    def writePlaneToFiles(self, fileName):
+        # two files are generated from one plane in 2 directories "amplitude" and "phase"
+        np.save(fileName + "amp.npy", self.amplitudeData)
+        np.save(fileName + "ph.npy", self.phaseData)
+        
+    def readPlaneFromFile(self, fileName):
+        if "amp.npy" in fileName: 
+            self.amplitudeData = np.load(fileName)
+        elif "ph.npy" in fileName:
+            self.phaseData = np.load(fileName)
+        else:
+            print("Please provide correct file name.")
+ 
+class CubeXYGrid(object):
+    #test
+    def __init__(self):
+        self.cubeArray = []
+
+def toFloat(data):
+    for index in range(len(data)):
+        data[index] = float(data[index])
+    return data
+
 a = PNA("10.1.15.106", "5024")
 #.write("*IDN?".encode(encoding='ascii', errors='strict'))
 a.resetPNAdisplay()
@@ -182,28 +204,64 @@ snp = a.answerFromPNA
 
 data = list()
 list(snp)
+
+a.getPNASweepPoints()
+
 print(len(snp))
 data = snp.split(",")
-print(float(data[0]))
-print(float(data[1]))
-print(float(data[2]))
-print(float(data[3]))
-print(float(data[4]))
-print(float(data[5]))
+print("Data float elements are: ")
+print(len(data))
 
-grid1 = PlaneXYGrid(2,2,2,1)
-grid1.setCurrentPointAmplitude(1, 1, -2.5)
-grid1.setCurrentPointAmplitude(0, 0, 2.5)
+temp = int( len(data) / 3 )
+print("temp is")
+print(temp)
+
+# taka only amplitude and phase without frequencies
+data = data[temp:]
+
+print(data)
+
+#for index in range(len(data)):
+#    data[index] = float(data[index])
+data = toFloat(data)
+
+print("Float data is: ")    
+print(data)
+
+a.getPNASweepPoints()
+
+grid1 = PlaneXYGrid(len(data)/3,len(data)/3,2,int(a.FrequencyPoints))
+grid1.setCurrentPointAmplitude(0, 0, data[2])
+grid1.setCurrentPointAmplitude(1, 1, data[3])
+grid1.setCurrentPointPhase(0, 0, data[4])
+grid1.setCurrentPointPhase(1, 1, data[5])
 grid1.printAmp()
 grid1.printPhase()
-#print("Number of sweep points: ")
-a.getPNASweepPoints()
-a.setPNASweepPoints(" 101")
-print("test")
-print(a.FrequencyPoints)
-a.getPNASweepPoints()
-print(a.FrequencyPoints)
-print(a.getAsciiSNP("2"))
+
+grid1.writePlaneToFiles("meas090512")
+
+grid1 = PlaneXYGrid(2,2,2,a.FrequencyPoints)
+grid1.setCurrentPointAmplitude(0, 0, 0.0)
+grid1.setCurrentPointAmplitude(1, 1, 0.0)
+grid1.setCurrentPointPhase(0, 0, 0.0)
+grid1.setCurrentPointPhase(1, 1, 0.0)
+
+grid1.printAmp()
+grid1.printPhase()
+
+grid1.readPlaneFromFile("meas090512amp.npy")
+grid1.readPlaneFromFile("meas090512ph.npy")
+grid1.printAmp()
+grid1.printPhase()
+
+b = CubeXYGrid()
+b.cubeArray.append(grid1.amplitudeData)
+b.cubeArray.append(grid1.phaseData)
+
+print("Print cube data: ")
+
+print(b.cubeArray[0])
+print(b.cubeArray[1])
 
 a.checkSystemError()
 a.closeConnectionToPNA()
