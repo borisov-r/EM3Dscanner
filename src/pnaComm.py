@@ -1,12 +1,28 @@
+# This file is part of the 3DEMscanner measurement suite.
+# 
+# 3DEMscanner is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# 3DEMscanner is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with 3DEMscanner.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Purpose of the file: get data from PNA, make it as a structured
+
+
 from telnetlib import Telnet
-from struct import *
-import numpy as np
 
 class PNA(object):
     """ PNA connection and communication """
     tn = Telnet()               # our main object, should be removed and stay only the object in __init__
     terminationCharacter = "\n" # termination character (executes the command)
-    FrequencyPoints = ""
+    FrequencyPoints = ""        # this is the number of measured frequency points
     answerFromPNA = ""          # data returned from PNA
 
     def send(self, command):
@@ -25,7 +41,7 @@ class PNA(object):
             self.tn.write(self.terminationCharacter.encode(encoding='ascii', errors='strict'))
             ans = self.tn.read_until("\n".encode(encoding='ascii', errors='strict'), timeout = 5).decode('ascii').strip()
             self.answerFromPNA = ans
-            print(ans)
+            #print(ans)
             self.tn.read_until("SCPI> ".encode(encoding='ascii', errors='strict'), timeout = 5).decode('ascii').strip()
             # last line needed to remove "SCPI> " from the buffer
         except:
@@ -123,6 +139,9 @@ class PNA(object):
             self.send("mmem:stor:trac:form:snp RI") 
         elif( command == "auto" ):
             self.send("mmem:stor:trac:form:snp AUTO")
+        else:
+            print("Please provide correct data")
+            
             
     def getPNASweepPoints(self):
         self.ask("sens:swe:poin?")
@@ -130,98 +149,3 @@ class PNA(object):
         
     def setPNASweepPoints(self, points):
         self.send("sens:swe:poin " + points)
-
-class PlaneXYGrid:
-            
-    def __init__(self, xAxisPoints, yAxisPoints, zAxisPoints, frequency):
-        print("Data array defined")
-        self.Xpoints = xAxisPoints
-        self.Ypoints = yAxisPoints
-        self.FrequencyNumber = frequency    # this is the PNA sweep frequency number "FrequencyPoints"
-        self.amplitudeData = np.zeros((self.Xpoints,self.Ypoints), dtype=np.float64)
-        self.phaseData = np.zeros((self.Xpoints,self.Ypoints), dtype=np.float64)
-        
-    def printAmp(self):
-        print(self.amplitudeData)
-    
-    def printPhase(self):
-        print(self.phaseData)
-    
-    def setCurrentPointAmplitude(self, xPoint, yPoint, amplitude):
-        self.amplitudeData[xPoint,yPoint] = amplitude
-        
-    def setCurrentPointPhase(self, xPoint, yPoint, phase):
-        self.phaseData[xPoint,yPoint] = phase
-        
-    def getCurrentPointAmplitude(self, xPoint, yPoint):
-        print(self.amplitudeData[xPoint, yPoint])
-    
-    def getCurrentPointPhase(self, xPoint, yPoint):
-        print(self.phaseData[xPoint, yPoint])   
-    
-    def writePlaneToFiles(self, fileName):
-        # two files are generated from one plane in 2 directories "amplitude" and "phase"
-        np.save(fileName + "amp.npy", self.amplitudeData)
-        np.save(fileName + "ph.npy", self.phaseData)
-        
-    def readPlaneFromFile(self, fileName):
-        if "amp.npy" in fileName: 
-            self.amplitudeData = np.load(fileName)
-        elif "ph.npy" in fileName:
-            self.phaseData = np.load(fileName)
-        else:
-            print("Please provide correct file name.")
- 
-class CubeXYGrid(object):
-    #test
-    def __init__(self):
-        self.cubeArray = []
-
-class SinglePointDataProcessing(object):
-    # description
-    def __init__(self, stringArrayFromPNA, freqPoints):
-        self.data = stringArrayFromPNA
-        self.FrequencyRange = self.data.strip(",")[0:freqPoints]
-        self.AmplitudeData = self.data[freqPoints:2*freqPoints]
-        #self.PhaseData = self.data[2*freqPoints:]
-
-    def toFloat(self, stringList):
-        for index in range(len(stringList)):
-            stringList[index] = float(stringList[index])
-        return stringList
-    
-    def getAmplitudeData(self):
-        self.floatAmplitude = self.toFloat(self.AmplitudeData)    # list of amplitudes as float list
-        print(self.floatAmplitude)
-        
-    #def getPhaseData(self):
-        #self.floatPhase = self.toFloat(self.PhaseData)
-        
-
-a = PNA("10.1.15.106", "5024")
-#.write("*IDN?".encode(encoding='ascii', errors='strict'))
-a.resetPNAdisplay()
-a.loadCalibration("calibrationRado.csa")
-a.checkDataFormat()
-a.checkSystemError()
-#a.setDataFormat("real32")
-#a.checkDataFormat()
-#a.checkSystemError()
-#a.setDataFormat("real64")
-#a.checkDataFormat()
-#a.checkSystemError()
-#a.setDataFormat("ascii")
-#a.checkDataFormat()
-#a.checkSystemError()
-a.catalogMeasurements()
-a.selectTraceNum("1")
-a.getAsciiSNP("2")
-snp = a.answerFromPNA
-a.getPNASweepPoints()
-
-b = SinglePointDataProcessing(snp,int(a.FrequencyPoints))
-b.getAmplitudeData()
-
-a.checkSystemError()
-a.closeConnectionToPNA()
-    

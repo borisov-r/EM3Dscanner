@@ -93,3 +93,66 @@ grid1.printPhase()
 
 #No4
 #---------------------------------------------------------------------------------------------------------------------
+data = list()
+list(snp)
+
+a.getPNASweepPoints()
+
+print(len(snp))
+data = snp.split(",")
+print("Data float elements are: ")
+print(len(data))
+
+temp = int( len(data) / 3 )
+print("temp is")
+print(temp)
+
+# taka only amplitude and phase without frequencies
+data = data[temp:]
+
+print(data)
+
+#for index in range(len(data)):
+#    data[index] = float(data[index])
+data = toFloat(data)
+
+print("Float data is: ")    
+print(data)
+
+a.getPNASweepPoints()
+
+grid1 = PlaneXYGrid(len(data)/3,len(data)/3,2,int(a.FrequencyPoints))
+grid1.setCurrentPointAmplitude(0, 0, data[2])
+grid1.setCurrentPointAmplitude(1, 1, data[3])
+grid1.setCurrentPointPhase(0, 0, data[4])
+grid1.setCurrentPointPhase(1, 1, data[5])
+grid1.printAmp()
+grid1.printPhase()
+
+grid1.writePlaneToFiles("meas090512")
+
+grid1 = PlaneXYGrid(2,2,2,a.FrequencyPoints)
+grid1.setCurrentPointAmplitude(0, 0, 0.0)
+grid1.setCurrentPointAmplitude(1, 1, 0.0)
+grid1.setCurrentPointPhase(0, 0, 0.0)
+grid1.setCurrentPointPhase(1, 1, 0.0)
+
+grid1.printAmp()
+grid1.printPhase()
+
+grid1.readPlaneFromFile("meas090512amp.npy")
+grid1.readPlaneFromFile("meas090512ph.npy")
+grid1.printAmp()
+grid1.printPhase()
+
+b = CubeXYGrid()
+b.cubeArray.append(grid1.amplitudeData)
+b.cubeArray.append(grid1.phaseData)
+
+print("Print cube data: ")
+
+print(b.cubeArray[0])
+print(b.cubeArray[1])
+
+#No5
+#---------------------------------------------------------------------------------------------------------------------
