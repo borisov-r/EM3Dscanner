@@ -71,6 +71,7 @@ class SinglePointDataProcessing(object):
         self.FrequencyRange = self.data[0:int(freqPoints)]
         self.AmplitudeData = self.data[int(freqPoints):2*int(freqPoints)]
         self.PhaseData = self.data[2*int(freqPoints):]
+        
 
     def toFloat(self, stringList):
         for index in range(len(stringList)):
@@ -81,7 +82,7 @@ class SinglePointDataProcessing(object):
         self.floatFrequencyRange = self.toFloat(self.FrequencyRange)    # list of amplitudes as float list
         #print(self.floatFrequencyRange) # debug function
         return self.floatFrequencyRange
-    
+        
     def getAmplitudeData(self):
         self.floatAmplitude = self.toFloat(self.AmplitudeData)    # list of amplitudes as float list
         #print(self.floatAmplitude) # debug function
@@ -102,8 +103,10 @@ class PlaneXYGrid(object):
         self.Data = np.zeros((self.Xpoints,self.Ypoints), dtype=np.float64)
         
     def addPointData(self, xCoord, yCoord, pointData):
-        self.Data[xCoord,yCoord] = pointData
-        
+        try:
+            self.Data[xCoord,yCoord] = pointData
+        except:
+            print("Please provide correct pointData.")
         
         
         

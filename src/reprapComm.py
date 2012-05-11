@@ -103,8 +103,11 @@ class RepRap(object):
             print("Port not found.")
         
     def disconnect(self):
-        self.printer.close()
-        print("RepRap printer is now disconnected.")
+        try:
+            self.printer.close()
+            print("RepRap printer is now disconnected.")
+        except:
+            print("RepRap is not connected")
         
     def checkForValidAxis(self, axis):
         """ Checks input parameters for the movement

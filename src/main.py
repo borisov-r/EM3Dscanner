@@ -21,6 +21,8 @@ from measuredDataProcessing import SinglePointDataProcessing, PlaneXYGrid
 from reprapComm import RepRap
 
 r = RepRap(115200)
+word = r.move("X", "+", "10", "300")
+r.write(word.encode("ascii"))
 r.disconnect()
 
 a = PNA("10.1.15.106", "5024")
@@ -31,8 +33,9 @@ a.checkSystemError()
 
 a.getPNASweepPoints() # ! don't forget to take frequency number !
 print(a.FrequencyPoints)
-print(int(a.FrequencyPoints))
+print(a.getNumberOfFrequencyPoints())
 
+a.selectTraceNum("2") # very important ! don't forget to select trace
 a.getAsciiSNP("2")
 snp = a.answerFromPNA
 

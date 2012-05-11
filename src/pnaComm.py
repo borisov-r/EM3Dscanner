@@ -40,6 +40,7 @@ class PNA(object):
             self.tn.write(command.encode(encoding='ascii', errors='strict'))
             self.tn.write(self.terminationCharacter.encode(encoding='ascii', errors='strict'))
             ans = self.tn.read_until("\n".encode(encoding='ascii', errors='strict'), timeout = 5).decode('ascii').strip()
+            print(ans)
             self.answerFromPNA = ans
             #print(ans)
             self.tn.read_until("SCPI> ".encode(encoding='ascii', errors='strict'), timeout = 5).decode('ascii').strip()
@@ -80,7 +81,7 @@ class PNA(object):
     def resetPNAdisplay(self):
         self.send("syst:fpr")
         print("Display reset.")
-    
+            
     def loadCalibration(self, fileName):
         message = "mmem:load " + "\'" + fileName + "\'"
         self.send(message)
@@ -140,8 +141,7 @@ class PNA(object):
         elif( command == "auto" ):
             self.send("mmem:stor:trac:form:snp AUTO")
         else:
-            print("Please provide correct data")
-            
+            print("Please provide correct data")    
             
     def getPNASweepPoints(self):
         self.ask("sens:swe:poin?")
@@ -149,3 +149,12 @@ class PNA(object):
         
     def setPNASweepPoints(self, points):
         self.send("sens:swe:poin " + points)
+    
+    def getNumberOfFrequencyPoints(self):
+        try:
+            return int(self.FrequencyPoints)    
+        except:
+            "PNA not connected or function \'getPNASweepPoints\' is not executed."
+        
+        
+        
