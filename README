@@ -18,11 +18,14 @@ Useful links:
 1. VTK format explained:
 http://www.vtk.org/VTK/img/file-formats.pdf
 
-2. Python class for generation of .vtu files and explanation
+2. VTK examples with python:
+http://www.vtk.org/Wiki/VTK/Examples/Python
+
+3. Python class for generation of .vtu files and explanation:
 http://www.shocksolution.com/microfluidics-and-biotechnology/visualization/python-vtk-paraview/
 https://github.com/cfinch/Shocksolution_Examples/blob/master/Visualization/vtktools.py
 
-3. Tutorials for ParaView
+4. Tutorials for ParaView:
 http://paraview.org/Wiki/SNL_ParaView_3_Tutorials
 http://paraview.org/Wiki/Beginning_Plotting
 http://vtk.1045678.n5.nabble.com/Example-vti-file-td3381382.html
