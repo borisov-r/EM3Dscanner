@@ -33,6 +33,7 @@ class parascan:
         self.wave.XMag = self.zero
         self.wave.YMag = self.zero
         self.wave.ZMag = self.zero
+
         self.wave.Maximum = self.zero
         self.wave.StandardDeviation = self.one
 

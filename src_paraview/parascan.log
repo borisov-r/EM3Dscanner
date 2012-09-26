@@ -1,0 +1,13 @@
+2012-09-26 14:49:41,547 - logparascan - INFO - Info starts here.
+2012-09-26 14:49:41,547 - logparascan - DEBUG - Debug this !
+2012-09-26 14:58:26,339 - logparascan - INFO - Initial testing of parascan.py.
+2012-09-26 14:58:26,340 - logparascan - DEBUG - Debug this !
+2012-09-26 17:03:47,924 - logparascan - INFO - Initial testing of parascan.py.
+2012-09-26 17:08:12,090 - logparascan - INFO - Initial testing of parascan.py.
+2012-09-26 17:08:44,209 - logparascan - INFO - Initial testing of parascan.py.
+2012-09-26 17:08:44,209 - logparascan - DEBUG - my first debug message
+2012-09-26 17:09:46,059 - logparascan - INFO - Initial testing of parascan.py.
+2012-09-26 17:52:56,798 - logparascan - INFO - Initial testing of parascan.py.
+2012-09-26 17:52:56,798 - logparascan - DEBUG - my first DEBUG message
+2012-09-26 17:52:56,799 - logparascan - INFO - my first INFO message
+2012-09-26 17:52:56,799 - logparascan - WARNING - my first WARNING message
