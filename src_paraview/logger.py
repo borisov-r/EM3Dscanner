@@ -42,33 +42,33 @@ class Log:
         #self.log.debug('Debug this !')
         print('Log file generated.')
 
-    def debug(self, msg):
+    def debug(self, msg, *args, **kwargs):
         """
         This message will be loged in in to file, when called.
         Message should not contain variables for now !
         -- This should be fixed later on. --
         """
-        self.log.debug(msg)
+        self.log.debug(msg, *args, **kwargs)
 
-    def info(self, msg):
+    def info(self, msg, *args, **kwargs):
         """
         This message will be loged in in to file, when called.
         Message should not contain variables for now !
         -- This should be fixed later on. --
         """
-        self.log.info(msg)
+        self.log.info(msg, *args, **kwargs)
 
-    def warning(self, msg):
+    def warning(self, msg, *args, **kwargs):
         """
         This message will be loged in in to file, when called.
         Message should not contain variables for now !
         -- This should be fixed later on. --
         """
-        self.log.warning(msg)
+        self.log.warning(msg, *args, **kwargs)
 
 
 if __name__ == '__main__':
     log = Log('test.log')
-    log.debug('my first DEBUG message')
-    log.info('my first INFO message')
-    log.warning('my first WARNING message')
+    log.debug('my first DEBUG message %f', 3.14)
+    log.info('my first INFO message %f', 3.14576)
+    log.warning('my first WARNING message: %s', "Some strings added here.")

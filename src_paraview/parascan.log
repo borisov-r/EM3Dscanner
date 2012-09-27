@@ -11,3 +11,23 @@
 2012-09-26 17:52:56,798 - logparascan - DEBUG - my first DEBUG message
 2012-09-26 17:52:56,799 - logparascan - INFO - my first INFO message
 2012-09-26 17:52:56,799 - logparascan - WARNING - my first WARNING message
+2012-09-27 00:49:14,685 - parascan - INFO - Initial testing of parascan.py.
+2012-09-27 00:49:14,686 - parascan - DEBUG - my first DEBUG message
+2012-09-27 00:49:14,686 - parascan - INFO - my first INFO message
+2012-09-27 00:49:14,687 - parascan - WARNING - my first WARNING message
+2012-09-27 00:50:51,211 - parascan - INFO - Initial testing of parascan.py.
+2012-09-27 00:50:51,212 - parascan - DEBUG - my first DEBUG message test string - Q
+2012-09-27 00:50:51,212 - parascan - INFO - my first INFO message
+2012-09-27 00:50:51,212 - parascan - WARNING - my first WARNING message
+2012-09-27 00:52:28,672 - parascan - INFO - Initial testing of parascan.py.
+2012-09-27 00:52:28,673 - parascan - DEBUG - my first DEBUG message 3
+2012-09-27 00:52:28,674 - parascan - INFO - my first INFO message
+2012-09-27 00:52:28,674 - parascan - WARNING - my first WARNING message
+2012-09-27 00:54:06,426 - parascan - INFO - Initial testing of parascan.py.
+2012-09-27 00:54:06,426 - parascan - DEBUG - my first DEBUG message 3.140000
+2012-09-27 00:54:06,862 - parascan - INFO - my first INFO message
+2012-09-27 00:54:06,862 - parascan - WARNING - my first WARNING message
+2012-09-27 00:57:55,453 - parascan - INFO - Initial testing of parascan.py.
+2012-09-27 00:57:55,453 - parascan - DEBUG - my first DEBUG message 3.140000
+2012-09-27 00:57:55,454 - parascan - INFO - my first INFO message 3.145760
+2012-09-27 00:57:55,454 - parascan - WARNING - my first WARNING message: Some strings added here.
