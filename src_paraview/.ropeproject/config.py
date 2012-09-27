@@ -34,6 +34,7 @@ def set_prefs(prefs):
 
     # You can extend python path for looking up modules
     #prefs.add('python_path', '~/python/')
+    prefs.add('python_path', '/home/borisov-r/Downloads/cad/graphics/ParaView-3.14.0-Linux-64bit/lib/paraview-3.14/site-packages/paraview')
 
     # Should rope save object information or not.
     prefs['save_objectdb'] = True

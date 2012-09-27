@@ -31,3 +31,7 @@
 2012-09-27 00:57:55,453 - parascan - DEBUG - my first DEBUG message 3.140000
 2012-09-27 00:57:55,454 - parascan - INFO - my first INFO message 3.145760
 2012-09-27 00:57:55,454 - parascan - WARNING - my first WARNING message: Some strings added here.
+2012-09-27 11:52:55,862 - parascan - INFO - Initial testing of parascan.py.
+2012-09-27 11:52:55,863 - parascan - DEBUG - my first DEBUG message 3.140000
+2012-09-27 11:52:55,863 - parascan - INFO - my first INFO message 3.145760
+2012-09-27 11:52:55,863 - parascan - WARNING - my first WARNING message: Some strings added here.
