@@ -29,32 +29,32 @@ class Parascan(object):
         formatter = Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         fh.setFormatter(formatter)
         self.log.addHandler(fh)
-
+        #
         # main program starts here
         self.one = 1               # sets initial cube dimensions
         self.zero = 0              # sets 0 when called
-
+        #
         self.xPoints = self.one    # points to measyre on X axis
         self.yPoints = self.one    # points to measure on Y axis
         self.zPoints = self.one    # points to measure on Z axis
-
+        #
         self.wave = Wavelet()
         self.wave.WholeExtent.SetData([self.zero, self.xPoints,
                                        self.zero, self.yPoints,
                                        self.zero, self.zPoints])
-
+        #
         self.wave.XFreq = self.zero
         self.wave.YFreq = self.zero
         self.wave.ZFreq = self.zero
         self.wave.XMag = self.zero
         self.wave.YMag = self.zero
         self.wave.ZMag = self.zero
-
+        #
         self.wave.Maximum = self.zero
         self.wave.StandardDeviation = self.one
         self.log.info('Wavelet with dimensions %s generated.',
                       self.wave.WholeExtent.GetData())
-
+        #
         self.Object = GetActiveSource()
         self.log.info('Active Object set %s', self.Object)
         self.Data = servermanager.Fetch(self.Object)
@@ -66,7 +66,7 @@ class Parascan(object):
         """
         This function gets current object Fetch() the date from it and sets
         the name of the current data for PointData().
-
+        #
         example: GetSourceAndSetName('Amplitude')
         """
         self.Data.GetPointData().GetScalars().SetName(name)
@@ -76,7 +76,7 @@ class Parascan(object):
         """
         This function adds to the current source array with integer components
         and set the name property of the array.
-
+        #
         example: AddVtkFloatArrayToSource(100, 'Phase')
         """
         scalars = self.Data.GetNumberOfScalarComponents()
@@ -89,10 +89,10 @@ class Parascan(object):
         self.log.info('Array parameter NumberOfComponents set to %d',
                       numberOfComponents)
         array.SetName(name)
-
+        #
         for i in range(numberOfComponents):
             array.SetComponent(numberOfComponents, self.zero, 0.0)
-
+        #
         # self.log.info('First component set to: %s', array.GetComponent(0, 0))
         self.log.info('Array name set to %s', name)
         self.Data.GetPointData().AddArray(array)
