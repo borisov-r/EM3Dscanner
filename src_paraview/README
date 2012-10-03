@@ -1,0 +1,28 @@
+#
+# This is the source directory of my project called ParaScan.py
+#
+# Here I'll try to implement the first version of it.
+# The written code should be self explanatory and simple.
+#
+# It should be written in TDD (test-driven development style) using
+# unittest module and logging to keep executions in log file.
+#
+# Requirements:
+#   * ParaView 3.14.x
+#   * Python 2.7 or >
+#   * unittest module
+#   * logging module
+#
+# All the requirements are implemented in ParaView so it should't be hard
+# to find the way for proper implementation.
+#
+# The output of this software should be generated file with all measured data.
+#
+#
+# From ParaView it should be loaded as a Module and run when called.
+#
+# I'll try to make it with only two files: ParaScan.py and ParaScanTests.py
+#
+# Directory called './old' contains my first approaches to understand ParaView
+# and VTK and to adopt the principles for my purposes.
+#
