@@ -1,0 +1,98 @@
+2012-10-05 17:31:24,876 - object - INFO - Wavelet generated: vtkImageData (0x2d51680)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x2d53280
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x2d3b9a0
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x2d47b40)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x2d3c030
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+

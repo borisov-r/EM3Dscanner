@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #==============================================================================
-# ParaScanTests is part of ParaScan suit software.
+# ParaScan is part of ParaScan suit software.
 #
 # ParaScan is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -45,37 +45,59 @@ from paraview import servermanager
 from paraview import vtk
 
 
-class ConnectToBIServer:
+class LogToFile:
     """
-    Connect is used to create a new session.
-    On success it returns a vtkSMSession object that abstracts the
-    connection. Otherwise it, returns None.
+    LogToFile creates file with given name
+    and make log of the program execution.
 
-    We use the simplest connection to built-in server.
+        example: LogToFile('parascan', 'parascan_conn.log')
+
     """
-    def __init__(self):
-        """
-        Creates connection to built-in server.
-        """
-        # start file to log
-        self.log = getLogger('parascan')
+    def __init__(self, loggerName, fileName):
+        self.loggerName = loggerName
+        self.fileName = fileName
+        self.name = getLogger(loggerName)
         # creat log file
-        self.loggingToFile('paraTest.log')
-        self.log.info('start.')
-
-        # creates connection to the server
-        #servermanager.Connect()
-
-        self.log.info('Active connection: ')
+        self.loggingToFile(fileName)
 
     def loggingToFile(self, fileName):
         """
-        Creates file with name 'fileName' and logs
+        Creates file with name 'fileName' and logs in format:
+            time - name - level - message
+            2012-10-05 14:27:17,563 - parascan - INFO - start.
         """
         self.fileName = fileName
-        self.log.setLevel(DEBUG)
+        self.name.setLevel(DEBUG)
         fileHandler = FileHandler(self.fileName)
         fileHandler.setLevel(DEBUG)
         formatter = Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         fileHandler.setFormatter(formatter)
-        self.log.addHandler(fileHandler)
+        self.name.addHandler(fileHandler)
+
+
+def main():
+    # creates connection to the server
+    logConnection = LogToFile('parascan', 'log/parascanConnection.log')
+    logObjects = LogToFile('object', 'log/parascanObject.log')
+    print logConnection.name
+    logConnection.name.info('Start')
+    try:
+        connection = servermanager.ActiveConnection
+        logConnection.name.info('Successfully connected: %s', connection)
+    except:
+        logConnection.name.info('Server not found.')
+    # create wavelet object
+    try:
+        w = servermanager.sources.Wavelet()
+        logConnection.name.info('Wavelet created successfully.')
+    except:
+        logConnection.name.info('Error in wavelet creation')
+    # end of the program
+    logConnection.name.info('End')
+    # fetch data from servermanager
+    wave = servermanager.Fetch(w)
+    logObjects.name.info('Wavelet generated: %s', wave)
+
+
+if __name__ == "__main__":
+    main()

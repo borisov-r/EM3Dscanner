@@ -49,43 +49,18 @@ sys.path.append("/home/borisov-r/git/3DEMscanner/src")
 from ParaScan import *
 
 
-class ParaScanTests(unittest.TestCase):
-    """A class whose methods are test cases.
-
-    By default this class initialize a Wavelet() object in ParaView
-
-    All tests should be run from ParaView python interpreter for now.
+class LogToFileTests(unittest.TestCase):
+    """
+    Test for LogToFile class methods
     """
     def setUp(self):
-        # connect to built-in server
-        servermanager.Connect('localhost')
-        self.conn = ConnectToBIServer()
-
-    def testConnectToBIServer(self):
-        """
-        Test if there is a problem with the connection.
-        """
-        self.assertTrue(self.conn is not None)
-
-    def testConnectToBIServerFail(self):
-        """
-        Test if the connection fails in certain cases.
-        """
-        self.assertFalse(self.conn is None)
+        self.log = LogToFile('parascan', 'log/parascanTests.log')
 
     def testLoggingToFile(self):
-        """
-        Write some log to file calling loggingToFile method
-        How to check if the log file is created ?
-        """
-        self.assertTrue(True)
+        self.assertTrue(self.log.name is not None)
 
     def testLoggingToFileFail(self):
-        """
-        Write some log to file calling loggingToFile method
-        How to check if the log file is created ?
-        """
-        self.assertFalse(False)
+        self.assertFalse(self.log.name is None)
 
 
 def main():
