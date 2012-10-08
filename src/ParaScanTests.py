@@ -51,7 +51,7 @@ from ParaScan import *
 
 class LogToFileTests(unittest.TestCase):
     """
-    Test for LogToFile class methods
+    Tests of LogToFile class methods
     """
     def setUp(self):
         self.log = LogToFile('parascan', 'log/parascanTests.log')
@@ -63,8 +63,50 @@ class LogToFileTests(unittest.TestCase):
         self.assertFalse(self.log.name is None)
 
 
+class ScanObjectTests(unittest.TestCase):
+    """
+    Tests of ScanObject class methods
+    """
+    def setUp(self):
+        self.w = servermanager.sources.Wavelet()
+        self.test = ScanObject(self.w)
+
+    def testSetDimensions(self):
+        self.assertTrue(self.test.setDimensions(10, 10, 10))
+
+    def testSetDimensionsFail(self):
+        self.test.setDimensions(10, 10, 10)
+        self.assertFalse(self.test.getDimensions() == [0, 10, 0, 10, 0, 9])
+
+    def testGetDimensions(self):
+        self.test.setDimensions(10, 10, 10)
+        self.assertTrue(self.test.getDimensions() == [0, 10, 0, 10, 0, 10])
+
+    def testGetDimensionsFail(self):
+        self.test.setDimensions(10, 10, 10)
+        self.assertFalse(self.test.getDimensions() == [0, 10, 0, 10, 0, 9])
+
+    def testSetScalarName(self):
+        self.test.fetchData()
+        self.assertTrue(self.test.setScalarName('Amplitude'))
+
+    def testSetScalarNameFail(self):
+        self.test.fetchData()
+        self.assertFalse(self.test.setScalarName())
+
+    def testGetScalarName(self):
+        self.test.fetchData()
+        self.assertTrue(self.test.getScalarName(0) == 'RTData')
+
+    def testGetScalarNameFail(self):
+        self.test.fetchData()
+        self.test.setScalarName('Amplitude')
+        self.assertFalse(self.test.getScalarName(0) == 'RTData')
+
+
 def main():
     unittest.main()
+
 
 if __name__ == '__main__':
     main()

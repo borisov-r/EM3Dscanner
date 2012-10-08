@@ -96,3 +96,885 @@
   Extent: (-10, 10, -10, 10, -10, 10)
 
 
+2012-10-08 16:00:16,286 - object - INFO - Wavelet generated: vtkImageData (0x3169250)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x3169f50
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x315d9d0
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x3142c30)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x31530a0
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:02:36,059 - object - INFO - Wavelet generated: vtkImageData (0x22763b0)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x2269ce0
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x2268c40
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x224e3b0)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x225e310
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:04:00,344 - object - INFO - Wavelet generated: vtkImageData (0x37d14c0)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x37d2ba0
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x37c6820
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x37c68c0)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x37bb0b0
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:07:40,351 - object - INFO - Wavelet generated: vtkImageData (0x3b61b70)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x3b61630
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x3b566b0
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x3b55310)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x3b4b0f0
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:19:42,454 - object - INFO - Wavelet generated: vtkImageData (0x21811e0)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x2174b10
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x2173a70
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x21591e0)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x2169140
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:21:10,563 - object - INFO - Wavelet generated: vtkImageData (0x3c861e0)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x3c79b10
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x3c78a70
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x3c5e1e0)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x3c6e140
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:21:39,298 - object - INFO - Wavelet generated: vtkImageData (0x35e51e0)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x35d8b10
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x35d7a70
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x35bd1e0)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x35cd140
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:28:57,490 - object - INFO - Wavelet generated: vtkImageData (0x36030c0)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x3604780
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x35f7ac0
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x35f8900)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x35ed0a0
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
+2012-10-08 16:29:51,832 - object - INFO - Wavelet generated: vtkImageData (0x2491700)
+  Debug: Off
+  Modified Time: 121387
+  Reference Count: 3
+  Registered Events: (none)
+  Source: (none)
+  Information: 0x2493bb0
+  Data Released: False
+  Global Release Data: Off
+  UpdateTime: 0
+  Release Data: Off
+  UpdateExtent: Not Initialized
+  RequestExactExtent: Off
+   Field Data:
+    Debug: Off
+    Modified Time: 121316
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+  Number Of Points: 9261
+  Number Of Cells: 8000
+  Cell Data:
+    Debug: Off
+    Modified Time: 121383
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 0
+    Number Of Components: 0
+    Number Of Tuples: 0
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: (none)
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Point Data:
+    Debug: Off
+    Modified Time: 121387
+    Reference Count: 1
+    Registered Events: (none)
+    Number Of Arrays: 1
+    Array 0 name = RTData
+    Number Of Components: 1
+    Number Of Tuples: 9261
+    Copy Tuple Flags: ( 1 1 1 1 1 0 1 1 )
+    Interpolate Flags: ( 1 1 1 1 1 0 0 1 )
+    Pass Through Flags: ( 1 1 1 1 1 1 1 1 )
+    Scalars: 
+      Debug: Off
+      Modified Time: 120623
+      Reference Count: 3
+      Registered Events: (none)
+      Name: RTData
+      Data type: float
+      Size: 9261
+      MaxId: 9260
+      NumberOfComponents: 1
+      Information: 0x24688a0
+        Debug: Off
+        Modified Time: 120878
+        Reference Count: 1
+        Registered Events: (none)
+        PER_COMPONENT: vtkInformationVector(0x2486380)
+      Name: RTData
+      Number Of Components: 1
+      Number Of Tuples: 9261
+      Size: 9261
+      MaxId: 9260
+      LookupTable: (none)
+      Array: 0x247c0a0
+    Vectors: (none)
+    Normals: (none)
+    TCoords: (none)
+    Tensors: (none)
+    GlobalIds: (none)
+    PedigreeIds: (none)
+    EdgeFlag: (none)
+  Bounds: 
+    Xmin,Xmax: (-10, 10)
+    Ymin,Ymax: (-10, 10)
+    Zmin,Zmax: (-10, 10)
+  Compute Time: 0
+  ScalarType: 10
+  NumberOfScalarComponents: 1
+  Spacing: (1, 1, 1)
+  Origin: (0, 0, 0)
+  Dimensions: (21, 21, 21)
+  Increments: (0, 0, 0)
+  Extent: (-10, 10, -10, 10, -10, 10)
+
+
