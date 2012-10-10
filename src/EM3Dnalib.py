@@ -17,7 +17,7 @@
 # along with Printrun. If not, see <http://www.gnu.org/licenses/>
 #==============================================================================
 
-""" Filename: nalib.py
+""" Filename: EM3Dnalib.py
 
 3DEMscanner is a macro for ParaView for automation of measurement process of EM
 waves with RepRap, Probe, PNA and ParaView
@@ -54,9 +54,10 @@ class NetworkAnalyzer:
     """
     def __init__(self, IPaddress, Port):
         self.IDN = None             # pna identification
-        self.IPaddress = IPaddress
-        self.Port = Port
-        self.Timeout = 5
+        self.IPaddress = IPaddress  # used IP address of pna
+        self.Port = Port            # used telnet port of pna
+        self.Timeout = 5            # time to connect to pna
+        self.TimeoutShort = 0.5     # shorter time to wait data from pna
         self.TermChar = "\n"        # termination character
         self.ScpiChar = "SCPI> "    # read_until("SCPI> ")
         # ask pna for system error messages
@@ -114,11 +115,11 @@ class NetworkAnalyzer:
             3. if error return False, else return message
         """
         try:
-            message = self.tn.read_until(self.TermChar, self.Timeout)
-            self.tn.read_until(self.ScpiChar, self.Timeout)
-            return message
+            message = self.tn.read_until(self.TermChar, self.TimeoutShort)
+            self.tn.read_until(self.ScpiChar, self.TimeoutShort)
+            return message.strip()
         except:
-            print("Error while reading message from PNA.")
+            print("Error while 'receive' message from PNA.")
 
     def receiveError(self):
         """ Check if errors in PNA buffers exist.
@@ -126,22 +127,35 @@ class NetworkAnalyzer:
         try:
             self.tn.write(self.AskForSystemErrorMsg)
             self.tn.write(self.TermChar)
-            message = self.tn.read_until(self.TermChar)
+            message = self.tn.read_until(self.TermChar, self.TimeoutShort)
             # flush pna buffer to be clear
-            self.tn.read_until(self.ScpiChar)
-            return message
+            self.tn.read_until(self.ScpiChar, self.TimeoutShort)
+            return message.strip()
         except:
-            print("Error while receiveError() function called.")
+            print("Error while 'receiveError' function called.")
+
+    def askPna(self, message):
+        """ Send command to PNA and returns received message.
+        """
+        try:
+            self.send(message)
+            return self.receive()
+        except:
+            print("Error when 'ask' PNA.")
 
 
 def main():
     pna = NetworkAnalyzer("10.1.15.106", "5024")
     if pna.connect() is True:
         print("Connected to PNA.")
-        print(pna.IDN)
-        pna.send("*IDN?")
-        print pna.receive()
+        # print(pna.IDN)
+        pna.askPna("*IDN?")
         print pna.receiveError()
+        # print("Load default displays and calibration.")
+        pna.askPna("mmem:load 'calibrationRado.csa'")
+        # print("Names and parameters of existing measurements for the specified channel:")
+        print pna.askPna("calc:par:cat?")
+
     if pna.disconnect() is True:
         print("Disconnected from PNA.")
         print "PNA IDN set to:", pna.IDN

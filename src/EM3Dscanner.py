@@ -82,48 +82,47 @@ cellWave.UpdatePipeline()
 
 RenameSource("Measurement")
 
-# <paraview.servermanager.UniformGridRepresentation object at
-# 0x3f32f50>
-fetchCellWave.GetCellData().GetScalars().SetComponent(0, 0, 255.0)
-fetchCellWave.GetCellData().GetScalars().SetComponent(999, 0, 255.0)
-fetchCellWave.GetCellData().GetScalars().SetComponent(998, 0, 125.0)
-cellWave.UpdatePipeline()
-
-Show()
-Render()
+# <paraview.servermanager.UniformGridRepresentation object at 0x3f32f50>
 ###############################################################################
 
 
 pna = NetworkAnalyzer("10.1.15.106", "5024")
 
 if pna.connect() is True:
-    print("Connected to PNA.")
     pna.send("*IDN?")
     print pna.receive()
     #
-    pna.send("mmem:cdir?")
     print("Current working folder: ")
-    print pna.receive()
+    print pna.askPna("mmem:cdir?")
     #
-    pna.send("mmem:load 'calibrationRado.csa'")
     print("Load default displays and calibration.")
-    print pna.receive()
+    pna.askPna("mmem:load 'calibrationRado.csa'")
     #
-    pna.send("calc:par:cat?")
     print("Names and parameters of existing measurements for the specified channel:")
-    print pna.receive()
+    print pna.askPna("calc:par:cat?")
     #
-    pna.send("format:data ascii")
-    pna.send("calc:par:mnum 1")
-    # print("format of the stored snp: ")
-    pna.send("mmem:stor:trace:format:snp?")
+    # set data from pna to be ascii
+    pna.askPna("format:data ascii")
+    # set receive data to S11
+    pna.askPna("calc:par:mnum 1")
+    #
     print("Data format type: ")
-    print pna.receive()
-    pna.send("mmem:stor:trace:format:snp db")
-    pna.send("calc:data? fdata")
-    data = pna.receive()
+    print pna.askPna("mmem:stor:trace:format:snp?")
+    #
+    print("Set format data to dB")
+    pna.askPna("mmem:stor:trace:format:snp db")
+    # receive data
     print("Data received from PNA.")
-    print data
+    data = pna.askPna("calc:data? fdata")
+    splitData = data.split(",")
+    fetchCellWave.GetCellData().GetScalars().SetComponent(0, 0, float(splitData[0]))
+    fetchCellWave.GetCellData().GetScalars().SetComponent(1, 0, float(splitData[1]))
+    fetchCellWave.GetCellData().GetScalars().SetComponent(998, 0, 125.0)
+    fetchCellWave.GetCellData().GetScalars().SetComponent(999, 0, 255.0)
+    cellWave.UpdatePipeline()
+    Show()
+    Render()
+
 
 if pna.disconnect() is True:
     print("Disconnected from PNA.")
