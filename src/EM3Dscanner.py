@@ -48,44 +48,104 @@ from paraview import vtk
 from EM3Dnalib import NetworkAnalyzer
 
 
-###############################################################################
-# create Wavelet() object
-wave = Wavelet()
+class MyWavelet:
+    """ Initialize Wavelet() object with given dimensions
+        and zeros as component values in the array.
+        - Array name is set to 'Amplitude'
+        - Rename Source to 'Measurement'
+    """
+    def __init__(self):
+        self.zero = 0                    # my zero in this class
+        self.wave = Wavelet()
+        # set dimensions manually
+        # change dimensions of the cube (points to measure)
+        #
+        minusX = input("Enter value for -X: ")
+        print(minusX)
+        plusX = input("Enter value for X: ")
+        print(plusX)
+        #
+        minusY = input("Enter value for -Y: ")
+        print(minusY)
+        plusY = input("Enter value for Y: ")
+        print(plusY)
+        #
+        minusZ = input("Enter value for -Z: ")
+        print(minusZ)
+        plusZ = input("Enter value for Z: ")
+        print(plusZ)
+        #
+        self.wave.WholeExtent.SetData([minusX, plusX,
+                                       minusY, plusY,
+                                       minusZ, plusZ])
+        # store dimensions in a tuple for later use
+        self.dimensions = (minusX, plusX,
+                           minusY, plusY,
+                           minusZ, plusZ)
+        #
+        self.wave.Maximum = self.zero
+        self.wave.XFreq = self.zero
+        self.wave.YFreq = self.zero
+        self.wave.ZFreq = self.zero
+        self.wave.XMag = self.zero
+        self.wave.YMag = self.zero
+        self.wave.ZMag = self.zero
+        self.wave.StandardDeviation = 0.5
+        # this should stay like this StandardDeviation = 0.5 !
+        # if StandardDeviation = 0 first element is NaN
+        # and script is not working correctly
 
-# change dimensions of the cube (points to measure)
-minusX = input("Enter value for -X: ")
-print(minusX)
-plusX = input("Enter value for X: ")
-print(plusX)
+    def SetPointDataToCellData(self):
+        """ Make PointDataToCellData from generated Wavelet()
+        Measurements are taken for CellData.
+        Returns fetched data from the server.
+        """
+        # make PointData to CellData
+        self.cellWave = PointDatatoCellData(self.wave)
+        # fetch Data from the server
+        self.fetchedCellWave = servermanager.Fetch(self.cellWave)
+        self.fetchedCellWave.GetCellData().GetScalars().SetName("Amplitude")
+        RenameSource("Measurement")
+        return self.fetchedCellWave
 
-minusY = input("Enter value for -Y: ")
-print(minusY)
-plusY = input("Enter value for Y: ")
-print(plusY)
+    def GetCellId(self, coordX, coordY, coordZ):
+        """ Get CellID from coordinates in the volume.
+        """
+        # type(fetchCellWave) -> vtkImageData ->
+        # -> fetcellCecellWave.ComputeCellId([9, 9, 9])
+        id = self.fetchedCellWave.ComputeCellId([coordX, coordY, coordZ])
+        return id
 
-minusZ = input("Enter value for -Z: ")
-print(minusZ)
-plusZ = input("Enter value for Z: ")
-print(plusZ)
+    def SetCellData(self, value, coordX, coordY, coordZ):
+        """ Set CellData with 'value' to given cell, which is determined
+            by its unique coordinates: coordX, coordY, coordZ
+        """
+        pointID = self.GetCellId(coordX, coordY, coordZ)
+        setPoint = self.fetchedCellWave.GetCellData().GetScalars()
+        setPoint.SetComponent(pointID, self.zero, float(value))
+        self.cellWave.UpdatePipeline()
 
-wave.WholeExtent.SetData([minusX, plusX, minusY, plusY, minusZ, plusZ])
+    def WriteToPVDFile(self, dataMode, name):
+        """
+        Write data to .pvd file.
+        # The mode uses for writing the file's data i.e.
+        # ascii = 0, binary = 1, appended binary = 2.
+        example: WriteToPVDFile(0, 'test.pvd')
+        """
+        writer = servermanager.writers.XMLPVDWriter(FileName=name, DataMode=dataMode)
+        writer.Input = GetActiveSource()
+        writer.UpdatePipeline()
+        return True
 
-cellWave = PointDatatoCellData(wave)
-
-fetchCellWave = servermanager.Fetch(cellWave)
-
-fetchCellWave.GetCellData().GetScalars().SetName("Amplitude")
-for i in range(int(fetchCellWave.GetCellData().GetScalars().GetNumberOfTuples())):
-            fetchCellWave.GetCellData().GetScalars().SetComponent(i, 0, 0.0)
-
-cellWave.UpdatePipeline()
-
-RenameSource("Measurement")
-
-# <paraview.servermanager.UniformGridRepresentation object at 0x3f32f50>
-###############################################################################
+    def ShowAndRender(self):
+        """ Calls Show() and Render() methods in ParaView
+        """
+        Show()
+        Render()
 
 
+wave = MyWavelet()
+wave.SetPointDataToCellData()
 pna = NetworkAnalyzer("10.1.15.106", "5024")
 
 if pna.connect() is True:
@@ -115,13 +175,14 @@ if pna.connect() is True:
     print("Data received from PNA.")
     data = pna.askPna("calc:data? fdata")
     splitData = data.split(",")
-    fetchCellWave.GetCellData().GetScalars().SetComponent(0, 0, float(splitData[0]))
-    fetchCellWave.GetCellData().GetScalars().SetComponent(1, 0, float(splitData[1]))
-    fetchCellWave.GetCellData().GetScalars().SetComponent(998, 0, 125.0)
-    fetchCellWave.GetCellData().GetScalars().SetComponent(999, 0, 255.0)
-    cellWave.UpdatePipeline()
-    Show()
-    Render()
+    print splitData
+    # set first frequency point from pna to X-0, Y-0, Z-0
+    wave.SetCellData(splitData[0], 0, 0, 0)
+    # set second frequency point from pna to X-0, Y-0, Z-0
+    wave.SetCellData(splitData[1], 9, 0, 0)
+    wave.ShowAndRender()
+    print wave.dimensions
+    wave.WriteToPVDFile(0, "testPVD/myFirstPVD")
 
 
 if pna.disconnect() is True:
