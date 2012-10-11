@@ -180,10 +180,10 @@ if pna.connect() is True:
     wave.SetCellData(splitData[0], 0, 0, 0)
     # set second frequency point from pna to X-0, Y-0, Z-0
     wave.SetCellData(splitData[1], 9, 0, 0)
-    wave.ShowAndRender()
-    print wave.dimensions
-    wave.WriteToPVDFile(0, "testPVD/myFirstPVD")
-
 
 if pna.disconnect() is True:
     print("Disconnected from PNA.")
+
+wave.ShowAndRender()
+print wave.dimensions
+wave.WriteToPVDFile(0, "testPVD/myFirstPVD")

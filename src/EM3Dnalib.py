@@ -89,7 +89,7 @@ class NetworkAnalyzer:
                 self.IDN = None     # if pna is closed follows no IDN
                 return True
             else:
-                print("Connection already closed.")
+                print("No PNA connection.")
         except:
             print("Error while disconnecting.")
 
