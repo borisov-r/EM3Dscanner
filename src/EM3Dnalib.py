@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #==============================================================================
-# 3DEMscanner.py is part of 3DEMscanner suit software.
+# 3DEMnalib.py is part of 3DEMscanner suit software.
 #
 # 3DEMscanner is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,13 +24,13 @@ waves with RepRap, Probe, PNA and ParaView
 The scanner consists of:
 
     * Probe     - different probes are used for E and H vector of EM field
-    * RepRap    - control the movement of the 'probe'
+    * RepRap    - control the movement of the 'Probe'
     * PNA       - measurements using Agilent N5230C Network Analyzer
     * ParaView  - data visualization software
 
 Official web site: https://github.com/borisov-r/3DEMscanner/wiki
 
-nalib is the basic library used to communicate with Agilent N5230C PNA.
+    nalib  is the basic library used to communicate with Agilent N5230C PNA.
 
 Main class is called 'NetworkAnalyzer' and consists of following methods:
     - __init__("10.1.15.106", "5024")
@@ -39,7 +39,6 @@ Main class is called 'NetworkAnalyzer' and consists of following methods:
     - send('message')
     - receive()
     - receiveError()    # check if Error in PNA buffer
-
 """
 # telnetlib for communication
 from telnetlib import Telnet
@@ -50,7 +49,7 @@ class NetworkAnalyzer:
 
     Example: pna = NetworkAnalyzer("10.1.15.106", "5024")
 
-    Important ! Use " to send IP and Port addresses.
+    Important ! Use " instead of ' to send IP and Port addresses.
     """
     def __init__(self, IPaddress, Port):
         self.IDN = None             # pna identification

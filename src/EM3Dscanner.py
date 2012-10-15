@@ -36,11 +36,10 @@ Basic functions that should be implemented:
     - save measured data to file
     - add / remove DataArray() to / from measured data
 
+    scanner  main macro file, that controls the logic behind the measurements.
+
 A simple example:
     # create Wavelet object
-
-
-
 """
 import sys
 sys.path.append('/home/borisov-r/git/EM3Dscanner/src')
@@ -79,9 +78,9 @@ class GetDimensionsList:
     def GetDimensions(self):
         """ return dimensions to be measured
         """
-        return [self.minusX, self.plusX,
+        return (self.minusX, self.plusX,
                 self.minusY, self.plusY,
-                self.minusZ, self.plusZ]
+                self.minusZ, self.plusZ)
 
 
 class MyWavelet:

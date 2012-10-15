@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #==============================================================================
-# 3DEMscanner.py is part of 3DEMscanner suit software.
+# 3DEMreprap.py is part of 3DEMscanner suit software.
 #
 # 3DEMscanner is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,22 +24,37 @@ waves with RepRap, Probe, PNA and ParaView
 The scanner consists of:
 
     * Probe     - different probes are used for E and H vector of EM field
-    * RepRap    - control the movement of the 'probe'
+    * RepRap    - control the movement of the 'Probe'
     * PNA       - measurements using Agilent N5230C Network Analyzer
     * ParaView  - data visualization software
 
 Official web site: https://github.com/borisov-r/3DEMscanner/wiki
 
-Basic functions that should be implemented:
-    - create Wavelet() with arbitrary dimensions X, Y, Z
-    - change PointData to CellData and work with CellData
-    - save measured data to file
-    - add / remove DataArray() to / from measured data
+    reprap  is basic library used to communicate and control the movement
+            of probe during the measurement.
+            Firmware used for communication with RepRap is Sprinter:
+                https://github.com/kliment/Sprinter
+            Hardware is Arduino Mega with ATmega2560 and RAMPS v1.4
+            RepRap kit from Makergear:
+                http://www.makergear.com - Prusa 3D Printer
+
+Basic functions:
+    - __init__(baudrate)
+    - scanForSerialPorts()
+    - testPortsForRepRap()
+    - disconnect()
+    - checkForValidAxis(axis)
+    - checkForValidDirection(direction)
+    - move(axis, direction, value, speed)
 
 Simple example:
-
+    reprap = RepRap(115200)
+    reprap.move("X", "+", 15, 50)
+    reprap.disconnect()
 """
 # define path to pyserial here
+import os
+import glob
 import sys
 sys.path.append('/usr/lib/python2.7/dist-packages')
 from serial import Serial
@@ -49,13 +64,14 @@ class RepRap(object):
     """ Main class for communication and control of RepRap.
     """
     def __init__(self, baudRate):
-        timeout = 5
+        self.timeout = 5
         self.baud = baudRate
         self.port = self.testPortsForRepRap()
         print("Found RepRap on port: ")
         print(self.port)
-        if ("ACM" in self.port):
-            self.printer = Serial(self.port, self.baud, timeout)
+        # RepRap is connected to /dev/ttyACM0
+        if self.port is not None and "ACM" in self.port:
+            self.printer = Serial(self.port, self.baud, self.timeout)
             #without these readout nothing moves ??? strange but true
             print(self.printer.readline().strip())
             print(self.printer.readline().strip())
@@ -71,8 +87,8 @@ class RepRap(object):
             print(self.printer.readline().strip())
 
     def scanForSerialPorts(self):
-        """scan for available ports.
-        return a list of device names.
+        """ Scan for available ports.
+        Returns list of device names.
         """
         baselist = []
         if os.name == "nt":
@@ -88,7 +104,7 @@ class RepRap(object):
                 pass
         if os.name == "posix":
             pass
-
+        # return list of found ports
         return baselist + glob.glob("/dev/ttyUSB*")
         + glob.glob("/dev/ttyACM*")
         + glob.glob("/dev/tty.*")
@@ -96,35 +112,27 @@ class RepRap(object):
         + glob.glob("/dev/rfcomm*")
 
     def testPortsForRepRap(self):
-        """ Test found available port from scanserial() function
-        returns 'port name' or 'none'
+        """ Test found available port from scanForSerialPorts()
+        function and returns 'port name' or 'None'
         """
         # port that will be used for communication with RepRap
-        self.portOk = "none"
+        portOk = None
         portName = self.scanForSerialPorts()
         num = len(portName)
         try:
             for portName[num - 1] in portName:
-                printer = Serial(portName[num - 1], 115200, timeout=30)
+                printer = Serial(portName[num - 1], self.baud, timeout=30)
                 answer = printer.readline().strip()
                 printer.close()
                 #print(answer.decode('ascii'))
-                if ("Sprinter" in answer.decode('ascii')):
-                    self.portOk = portName[num - 1]
-                    if self.debug:
-                        print("OK port is: ", self.portOk)
-                    else:
-                        pass
+                if ("Sprinter" in answer):
+                    portOk = portName[num - 1]
                 else:
                     pass
         except:
             print("Something happend, don't know yet.")
-
-        if self.portOk is not "none":
-            return self.portOk
-        else:
-            return self.portOk
-            print("Port not found.")
+        # if port not found returns None, else return dev name "/dev/ttyACM0"
+        return portOk
 
     def disconnect(self):
         """ Disconnect from RepRap.
@@ -139,7 +147,7 @@ class RepRap(object):
         """ Checks input parameters for the movement
         Returns True or False.
         """
-        allowed = ["X", "Y", "Z", "E"]
+        allowed = ["X", "Y", "Z"]
         if axis in allowed:
             return True
         else:
@@ -180,3 +188,13 @@ class RepRap(object):
             + str(value) + " F" + str(speed) + "\r\n"
         #
         return word
+
+
+def main():
+    # simple test of RepRap class
+    reprap = RepRap(115200)
+    reprap.disconnect
+
+
+if __name__ == "__main__":
+    main()
