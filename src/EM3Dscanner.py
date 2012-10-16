@@ -42,10 +42,12 @@ A simple example:
     # create Wavelet object
 """
 import sys
-sys.path.append('/home/borisov-r/git/EM3Dscanner/src')
+sys.path.append('/home/radoslav/git/EM3Dscanner/src')
+sys.path.append('/usr/lib/python2.7/dist-packages')
+from serial import Serial
 from paraview import vtk
 from EM3Dnalib import NetworkAnalyzer
-from EM3Dreprap import RepRap
+from printcore import printcore
 
 
 # both classes should stay in this file
@@ -179,7 +181,9 @@ wave1.SetPointDataToCellData("Amplitude")
 wave2 = MyWavelet(dim.GetDimensions())
 wave2.SetPointDataToCellData("Phase")
 pna = NetworkAnalyzer("10.1.15.106", "5024")
-reprap = RepRap(115200)
+reprap = printcore()
+reprap.connect("/dev/ttyACM0", 115200)
+reprap.send_now("G91")
 
 if pna.connect() is True:
     pna.send("*IDN?")
@@ -211,13 +215,18 @@ if pna.connect() is True:
     print splitData
     # set first frequency point from pna to X-0, Y-0, Z-0
     wave1.SetCellData(splitData[0], 0, 0, 0)
+    reprap.send_now("G1 X10")
     wave2.SetCellData(splitData[0], 1, 0, 0)
+    reprap.send_now("G1 X10")
     # set second frequency point from pna to X-0, Y-0, Z-0
     wave1.SetCellData(splitData[1], 9, 0, 0)
+    reprap.send_now("G1 X10")
     wave2.SetCellData(splitData[1], 8, 0, 0)
+    reprap.send_now("G1 X10")
 
 if pna.disconnect() is True:
     print("Disconnected from PNA.")
+    reprap.disconnect()
 
 # wave1.ShowAndRender()
 # print wave1.dimensions

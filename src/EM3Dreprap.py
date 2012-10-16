@@ -72,19 +72,19 @@ class RepRap(object):
         # RepRap is connected to /dev/ttyACM0
         if self.port is not None and "ACM" in self.port:
             self.printer = Serial(self.port, self.baud, self.timeout)
-            #without these readout nothing moves ??? strange but true
-            print(self.printer.readline().strip())
-            print(self.printer.readline().strip())
-            print(self.printer.readline().strip())
-            print(self.printer.readline().strip())
-            print(self.printer.readline().strip())
-            print(self.printer.readline().strip())
-            print(self.printer.readline().strip())
-            print(self.printer.readline().strip())
-            print("send: G91")
+            # without these readout nothing moves ??? strange but true
+            #print(self.printer.readline())
+            #print(self.printer.readline())
+            #print(self.printer.readline())
+            #print(self.printer.readline())
+            #print(self.printer.readline())
+            #print(self.printer.readline())
+            #print(self.printer.readline())
+            #print(self.printer.readline())
+            #print("send: G91")
             word = 'G91\r\n'
             self.printer.write(word)
-            print(self.printer.readline().strip())
+            #print(self.printer.readline())
 
     def scanForSerialPorts(self):
         """ Scan for available ports.
@@ -105,11 +105,7 @@ class RepRap(object):
         if os.name == "posix":
             pass
         # return list of found ports
-        return baselist + glob.glob("/dev/ttyUSB*")
-        + glob.glob("/dev/ttyACM*")
-        + glob.glob("/dev/tty.*")
-        + glob.glob("/dev/cu.*")
-        + glob.glob("/dev/rfcomm*")
+        return baselist + glob.glob("/dev/ttyUSB*") + glob.glob("/dev/ttyACM*") + glob.glob("/dev/tty.*") + glob.glob("/dev/cu.*") + glob.glob("/dev/rfcomm*")
 
     def testPortsForRepRap(self):
         """ Test found available port from scanForSerialPorts()
@@ -122,7 +118,7 @@ class RepRap(object):
         try:
             for portName[num - 1] in portName:
                 printer = Serial(portName[num - 1], self.baud, timeout=30)
-                answer = printer.readline().strip()
+                answer = printer.readline()
                 printer.close()
                 #print(answer.decode('ascii'))
                 if ("Sprinter" in answer):
@@ -184,16 +180,16 @@ class RepRap(object):
             print("Direction definition Error. Please enter \"+\", \"-\".")
         #
         if moveAxis is not None and moveDirection is not None:
-            word = "G1 " + moveAxis + moveDirection
-            + str(value) + " F" + str(speed) + "\r\n"
+            word = "G1 " + moveAxis + moveDirection + str(value) + " F" + str(speed) + "\r\n"
         #
-        return word
+        self.printer.write(word)
 
 
 def main():
     # simple test of RepRap class
     reprap = RepRap(115200)
-    reprap.disconnect
+    reprap.move("X", "+", 50, 1000)
+    reprap.disconnect()
 
 
 if __name__ == "__main__":

@@ -14,6 +14,9 @@ The basic idea behind this project is:
 
 ==============================================
 
+Connection using VISA and GPIB (PyVISA)
+http://pyvisa.sourceforge.net/pyvisa.html#linux
+
 Useful links:
 1. VTK format explained:
 http://www.vtk.org/VTK/img/file-formats.pdf
