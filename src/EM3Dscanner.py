@@ -43,10 +43,9 @@ A simple example:
 """
 import sys
 sys.path.append('/home/radoslav/git/EM3Dscanner/src')
-sys.path.append('/usr/lib/python2.7/dist-packages')
-from serial import Serial
 from paraview import vtk
 from EM3Dnalib import NetworkAnalyzer
+from EM3Dreprap import RepRap
 from time import sleep
 
 
@@ -175,107 +174,7 @@ class MyWavelet:
         Render()
 
 
-class RepRap(object):
-    """ Communication with reprap.
-    """
-    def __init__(self):
-        self.term = "\r\n"
-        self.port = None
-        self.baudrate = None
-        self.printer = None
-        self.xPoints = None
-        self.yPoints = None
-        self.zPoints = None
-        self.currentPoint = None
-
-    def connect(self, port, baudrate):
-        self.port = port
-        self.baudrate = baudrate
-        try:
-            self.printer = Serial(self.port, self.baudrate)
-            # add these to log file
-            self.printer.readline().strip()
-            self.printer.readline().strip()
-            self.printer.readline().strip()
-            self.printer.readline().strip()
-            self.printer.readline().strip()
-            self.printer.readline().strip()
-            self.printer.readline().strip()
-            self.printer.readline().strip()
-            # set to work with relative coordinates !
-            self.printer.write("G91" + self.term)
-        except:
-            print "Error while connecting to printer."
-
-    def setX(self, numXpoints):
-        self.x = numXpoints
-
-    def setY(self, numYpoints):
-        self.y = numYpoints
-
-    def setZ(self, numZpoints):
-        self.z = numZpoints
-
-    def disconnect(self):
-        if self.printer is not None:
-            try:
-                self.printer.close()
-            except:
-                print "Error while disconnecting."
-        else:
-            print "Already disconnected."
-
-    def move(self, ff=True, moveX=0, moveY=0, moveZ=0, speed=100, wait=True):
-        """ Move reprap with default speed 100 mm/min.
-        ff is parameter that defines the movement direction.
-            True - forward (+ direction)
-            False - backwards (- direction)
-        """
-        if ff:
-            sign = "+"
-        else:
-            sign = "-"
-        if self.printer is not None:
-            self.printer.write("G91" + self.term)
-            self.printer.readline().strip()
-            word = "G1 X" + sign + str(moveX) + " Y" + sign + str(moveY) + " Z" + sign + str(moveZ) + " F" + str(speed)
-            self.printer.write(word + self.term)
-            # should go in log file !
-            #print self.printer.readline().strip()
-            sleep(1)
-            if wait:
-                word = "M400" + self.term
-                self.printer.write(word)
-                # should go in log file !
-                self.printer.readline().strip()
-        else:
-            print "Check printer connection."
-
-    def moveOneSlice(self, wavelet, pna):
-        """ Move one slice X and Y.
-        """
-        for i in range(self.y):
-            # check
-            for j in range(self.x):
-                if i & 1:
-                    self.move(False, 1)
-                else:
-                    self.move(True, 1)
-                print "X is: ", j, "; Y is: ", i
-                # receive data
-                print("Data received from PNA.")
-                data = pna.askPna("calc:data? fdata")
-                splitData = data.split(",")
-                print splitData
-                # set first frequency point from pna to X-0, Y-0, Z-0
-                wavelet.SetCellData(splitData[0], j, i, 0)
-            # if not end point move
-            if i != (self.y - 1):       # stay at the end point
-                self.move(True, 0, 1)
-
-
 dim = GetDimensionsList()
-dimmensions = dim.GetDimensions()
 wave1 = MyWavelet(dim.GetDimensions())
 wave1.SetPointDataToCellData("Amplitude")
 wave2 = MyWavelet(dim.GetDimensions())
@@ -283,13 +182,10 @@ wave2.SetPointDataToCellData("Phase")
 pna = NetworkAnalyzer("10.1.15.106", "5024")
 reprap = RepRap()
 reprap.connect("/dev/ttyACM0", 115200)
-print dimmensions
-x = dimmensions[1] - dimmensions[0]
-y = dimmensions[3] - dimmensions[2]
-z = dimmensions[5] - dimmensions[4]
-reprap.setX(x)
-reprap.setY(y)
-reprap.setZ(z)
+print "Wavelet dimensions: ", dim.GetDimensions()
+reprap.setMeasureDimensions(dim.GetDimensions())
+print "Number of points to measure: ", reprap.getNumberOfMeasurePoints()
+
 
 if pna.connect() is True:
     pna.send("*IDN?")
@@ -329,7 +225,7 @@ if pna.connect() is True:
     #reprap.send_now("G1 X10")
     #wave2.SetCellData(splitData[1], 8, 0, 0)
     #reprap.send_now("G1 X10")
-    reprap.moveOneSlice(wave1, pna)
+    reprap.moveOneCube(wave1, pna)
 
 
 if pna.disconnect() is True:

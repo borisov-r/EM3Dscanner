@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #==============================================================================
-# 3DEMreprap.py is part of 3DEMscanner suit software.
+# 3DEMscanner.py is part of 3DEMscanner suit software.
 #
 # 3DEMscanner is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,173 +24,167 @@ waves with RepRap, Probe, PNA and ParaView
 The scanner consists of:
 
     * Probe     - different probes are used for E and H vector of EM field
-    * RepRap    - control the movement of the 'Probe'
+    * RepRap    - control the movement of the 'probe'
     * PNA       - measurements using Agilent N5230C Network Analyzer
     * ParaView  - data visualization software
 
 Official web site: https://github.com/borisov-r/3DEMscanner/wiki
 
-    reprap  is basic library used to communicate and control the movement
-            of probe during the measurement.
-            Firmware used for communication with RepRap is Sprinter:
-                https://github.com/kliment/Sprinter
-            Hardware is Arduino Mega with ATmega2560 and RAMPS v1.4
-            RepRap kit from Makergear:
-                http://www.makergear.com - Prusa 3D Printer
-
-Basic functions:
-    - __init__(baudrate)
-    - scanForSerialPorts()
-    - testPortsForRepRap()
-    - disconnect()
-    - checkForValidAxis(axis)
-    - checkForValidDirection(direction)
-    - move(axis, direction, value, speed)
-
-Simple example:
-    reprap = RepRap(115200)
-    reprap.move("X", "+", 15, 50)
+Usage:
+    reprap = RepRap()
+    reprap.connecti("/dev/ttyACM0", 115200)
+    measureTuple = (0, 4, 0, 4, 0, 2)
+    reprap.setMeasureDimensions(measureTuple)
+    reprap.moveOneCube(wavelet=None, pna=None)
     reprap.disconnect()
 """
-# define path to pyserial here
-import os
-import glob
 import sys
 sys.path.append('/usr/lib/python2.7/dist-packages')
 from serial import Serial
+from time import sleep
 
 
 class RepRap(object):
-    """ Main class for communication and control of RepRap.
+    """ Communication with reprap.
     """
-    def __init__(self, baudRate):
-        self.timeout = 5
-        self.baud = baudRate
-        self.port = self.testPortsForRepRap()
-        print("Found RepRap on port: ")
-        print(self.port)
-        # RepRap is connected to /dev/ttyACM0
-        if self.port is not None and "ACM" in self.port:
-            self.printer = Serial(self.port, self.baud, self.timeout)
-            # without these readout nothing moves ??? strange but true
-            #print(self.printer.readline())
-            #print(self.printer.readline())
-            #print(self.printer.readline())
-            #print(self.printer.readline())
-            #print(self.printer.readline())
-            #print(self.printer.readline())
-            #print(self.printer.readline())
-            #print(self.printer.readline())
-            #print("send: G91")
-            word = 'G91\r\n'
-            self.printer.write(word)
-            #print(self.printer.readline())
+    def __init__(self):
+        self.term = '\r\n'
+        self.port = None
+        self.baudrate = None
+        self.printer = None
+        self.xPoints = None
+        self.yPoints = None
+        self.zPoints = None
+        self.currentPoint = None
 
-    def scanForSerialPorts(self):
-        """ Scan for available ports.
-        Returns list of device names.
-        """
-        baselist = []
-        if os.name == "nt":
-            try:
-                import winreg   # @UnresolvedImport
-                key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
-                                     "HARDWARE\\DEVICEMAP\\SERIALCOMM")
-                i = 0
-                while(1):
-                    baselist += [winreg.EnumValue(key, i)[1]]
-                    i += 1
-            except:
-                pass
-        if os.name == "posix":
-            pass
-        # return list of found ports
-        return baselist + glob.glob("/dev/ttyUSB*") + glob.glob("/dev/ttyACM*") + glob.glob("/dev/tty.*") + glob.glob("/dev/cu.*") + glob.glob("/dev/rfcomm*")
-
-    def testPortsForRepRap(self):
-        """ Test found available port from scanForSerialPorts()
-        function and returns 'port name' or 'None'
-        """
-        # port that will be used for communication with RepRap
-        portOk = None
-        portName = self.scanForSerialPorts()
-        num = len(portName)
+    def connect(self, port, baudrate):
+        self.port = port
+        self.baudrate = baudrate
         try:
-            for portName[num - 1] in portName:
-                printer = Serial(portName[num - 1], self.baud, timeout=30)
-                answer = printer.readline()
-                printer.close()
-                #print(answer.decode('ascii'))
-                if ("Sprinter" in answer):
-                    portOk = portName[num - 1]
-                else:
-                    pass
+            self.printer = Serial(self.port, self.baudrate)
+            self.printer.readline().strip()
+            self.printer.readline().strip()
+            self.printer.readline().strip()
+            self.printer.readline().strip()
+            self.printer.readline().strip()
+            self.printer.readline().strip()
+            self.printer.readline().strip()
+            self.printer.readline().strip()
+            self.printer.write('G91' + self.term)
         except:
-            print("Something happend, don't know yet.")
-        # if port not found returns None, else return dev name "/dev/ttyACM0"
-        return portOk
+            print 'Error while connecting to printer.'
+
+    def setX(self, minusX, plusX):
+        self.x = abs(minusX) + abs(plusX)
+
+    def getX(self):
+        return self.x
+
+    def setY(self, minusY, plusY):
+        self.y = abs(minusY) + abs(plusY)
+
+    def getY(self):
+        return self.y
+
+    def setZ(self, minusZ, plusZ):
+        self.z = abs(minusZ) + abs(plusZ)
+
+    def getZ(self):
+        return self.z
+
+    def setMeasureDimensions(self, dimensionsTuple):
+        self.setX(dimensionsTuple[0], dimensionsTuple[1])
+        self.setY(dimensionsTuple[2], dimensionsTuple[3])
+        self.setZ(dimensionsTuple[4], dimensionsTuple[5])
+
+    def getNumberOfMeasurePoints(self):
+        points = self.x * self.y * self.z
+        return points
 
     def disconnect(self):
-        """ Disconnect from RepRap.
-        """
-        try:
-            self.printer.close()
-            print("RepRap printer is now disconnected.")
-        except:
-            print("RepRap is not connected")
-
-    def checkForValidAxis(self, axis):
-        """ Checks input parameters for the movement
-        Returns True or False.
-        """
-        allowed = ["X", "Y", "Z"]
-        if axis in allowed:
-            return True
+        if self.printer is not None:
+            try:
+                self.printer.close()
+            except:
+                print 'Error while disconnecting.'
         else:
-            return False
+            print 'Already disconnected.'
 
-    def checkForValidDirection(self, direction):
-        """ Checks input parameters for the direction
-        Returns True or False.
+    def move(self, ff=True, moveX=0, moveY=0, moveZ=0, speed=100, wait=True, waitAtPointTime=1):
+        """ Move reprap with default speed 100 mm/min.
+        ff is parameter that defines the movement direction.
+            True - forward (+ direction)
+            False - backwards (- direction)
         """
-        allowed = ["+", "-"]
-        if direction in allowed:
-            return True
+        if ff:
+            sign = '+'
         else:
-            return False
+            sign = '-'
+        if self.printer is not None:
+            self.printer.write('G91' + self.term)
+            self.printer.readline().strip()
+            word = 'G1 X' + sign + str(moveX) + ' Y' + sign + str(moveY) + ' Z' + sign + str(moveZ) + ' F' + str(speed)
+            self.printer.write(word + self.term)
+            sleep(waitAtPointTime)
+            if wait:
+                word = 'M400' + self.term
+                self.printer.write(word)
+                self.printer.readline().strip()
+        else:
+            print 'Check printer connection.'
 
-    def move(self, axis, direction, value, speed):
-        """ Moves given
-        'axis' in '+' or '-' 'direction' with 'value' and 'speed'
-
-        Example: printer.move("X", "+", 15, 50)
+    def moveOneSlice(self, wavelet=None, pna=None, yDirection=True, z=0, resolution=1):
+        """ Move one slice X and Y.
         """
-        word = None
-        moveAxis = None
-        moveDirection = None
-        #
-        if self.checkForValidAxis(axis):
-            moveAxis = axis
-        else:
-            print("Axis definition Error. Please enter \"X\", \"Y\", \"Z\", \"E\".")
-        #
-        if self.checkForValidDirection(direction):
-            moveDirection = direction
-        else:
-            print("Direction definition Error. Please enter \"+\", \"-\".")
-        #
-        if moveAxis is not None and moveDirection is not None:
-            word = "G1 " + moveAxis + moveDirection + str(value) + " F" + str(speed) + "\r\n"
-        #
-        self.printer.write(word)
+        for y in range(self.y):
+            for x in range(self.x):
+                if y & 1:
+                    self.move(False, resolution)
+                else:
+                    self.move(True, resolution)
+                print 'X is: ',
+                print x,
+                print '; Y is: ',
+                print y,
+                print '; Z is: ',
+                print z
+                if wavelet is not None and pna is not None:
+                    print 'Data received from PNA.'
+                    data = pna.askPna('calc:data? fdata')
+                    splitData = data.split(',')
+                    print splitData
+                    wavelet.SetCellData(splitData[0], x, y, z)
+
+            if y != self.y - 1:
+                self.move(yDirection, 0, resolution)
+
+    def moveOneCube(self, wavelet=None, pna=None, resolution=1):
+        """ Measure one cube.
+        """
+        for z in range(self.z):
+            if z & 1:
+                self.moveOneSlice(wavelet, pna, False, z)
+            else:
+                self.moveOneSlice(wavelet, pna, True, z)
+            if z != self.z - 1:
+                self.move(True, 0, 0, resolution)
 
 
 def main():
-    # simple test of RepRap class
-    reprap = RepRap(115200)
-    reprap.move("X", "+", 50, 1000)
-    reprap.disconnect()
+    reprap = RepRap()
+    reprap.connect('/dev/ttyACM0', 115200)
+    expTuple = (-3, 3, 0, -6, 2, -2)
+    print 'Test tuple of points for measurement: ',
+    print expTuple
+    reprap.setMeasureDimensions(expTuple)
+    print 'Points to measure X: ',
+    print reprap.getX()
+    print 'Points to measure Y: ',
+    print reprap.getY()
+    print 'Points to measure Z: ',
+    print reprap.getZ()
+    reprap.moveOneCube()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
