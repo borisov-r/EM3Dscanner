@@ -138,35 +138,40 @@ class RepRap(object):
         """
         for y in range(self.y):
             for x in range(self.x):
-                if y & 1:
+                # check if y is odd or even
+                if y & 1:   # y is odd
                     self.move(False, resolution)
-                else:
+                else:       # y is even
                     self.move(True, resolution)
-                print 'X is: ',
-                print x,
-                print '; Y is: ',
-                print y,
-                print '; Z is: ',
-                print z
+                print 'X is: ', x, "; Y is: ", y, "; Z is: ", z
                 if wavelet is not None and pna is not None:
+                    dim = wavelet.dimensions
                     print 'Data received from PNA.'
                     data = pna.askPna('calc:data? fdata')
                     splitData = data.split(',')
                     print splitData
-                    wavelet.SetCellData(splitData[0], x, y, z)
-
-            if y != self.y - 1:
+                    print "X point: ", dim[0] + x, "; Y point: ", dim[2] + y, "; Z point: ", dim[4] + z
+                    # set correct absolute coordinates of measured point in
+                    # wavelet object.
+                    wavelet.SetCellData(splitData[0],
+                                        dim[0] + x,     # set corrected x coordinate
+                                        dim[2] + y,     # set corrected y coordinate
+                                        dim[4] + z)     # set corrected z coordinate
+            # move y direction and stop at last point
+            if y != self.y - 1:         # this makes the y to stop at the end
                 self.move(yDirection, 0, resolution)
 
     def moveOneCube(self, wavelet=None, pna=None, resolution=1):
         """ Measure one cube.
         """
         for z in range(self.z):
-            if z & 1:
+            # check if z is odd or even
+            if z & 1:   # z is odd
                 self.moveOneSlice(wavelet, pna, False, z)
-            else:
+            else:       # z is even
                 self.moveOneSlice(wavelet, pna, True, z)
-            if z != self.z - 1:
+            # stop z at last point, else move
+            if z != self.z - 1:         # this makes the z to stop at last point
                 self.move(True, 0, 0, resolution)
 
 
