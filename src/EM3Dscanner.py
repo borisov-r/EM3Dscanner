@@ -19,6 +19,9 @@
 
 """ Filename: EM3Dscanner.py
 
+Authors: Radoslav Borisov
+Contacts: radoslav (dot) borisov (at) gmail (dot) com
+
 EM3Dscanner is a macro for ParaView for automation of measurement process of EM
 waves with RepRap, Probe, PNA and ParaView
 The scanner consists of:

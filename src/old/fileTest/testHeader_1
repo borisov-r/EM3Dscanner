@@ -1,0 +1,12 @@
+<VTKFile type="ImageData" version="0.1" byte_order="LittleEndian">
+  <ImageData WholeExtent="-100, 100, -100, 100, -50, 50" Origin="0 0 0" Spacing="1 1 1">
+  <Piece Extent="-100, 100, -100, 100, -50, 50"
+    <PointData>
+    </PointData>
+    <CellData Scalars="19.5 GHz">
+    <DataArray type="Float32" Name="Phase" format="ascii" RangeMin="-110.0" RangeMax="60">
+    </DataArray>
+    </CellData>
+  </Piece>
+  </ImageData>
+</VTKFile>

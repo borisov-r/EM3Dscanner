@@ -1,0 +1,6 @@
+<VTKFile type="Collection" version="0.1" byte_order="LittleEndian">
+  <Collection>
+    <DataSet part="0" file="firstMeasurement171012/firstMeasurement171012_0.vti"/>
+    <DataSet part="0" file="firstMeasurement171012/firstMeasurement171012_1.vti"/>
+  </Collection>
+</VTKFile>
