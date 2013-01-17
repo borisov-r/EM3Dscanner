@@ -57,7 +57,7 @@ class RepRap(object):
         self.zPoints = None
         self.currentPoint = None
 
-    def connect(self, port, baudrate):
+    def connect(self, port, baudrate, timeout=1):
         self.port = port
         self.baudrate = baudrate
         try:
@@ -71,6 +71,7 @@ class RepRap(object):
             self.printer.readline().strip()
             self.printer.readline().strip()
             self.printer.write('G91' + self.term)
+            return True
         except:
             print 'Error while connecting to printer.'
 
@@ -148,11 +149,13 @@ class RepRap(object):
                     dim = wavelet.dimensions
                     print 'Data received from PNA.'
                     print pna.IDN
+                    # set correct IDN before use
                     if pna.IDN is "NA5566":
                         data = pna.askPna('calc:data? fdata')
                     elif pna.IDN is "rfAtmega128":
                         pna.readRSSI()
                         data = pna.msg
+                        # data should be float or int, not string
                     else:
                         print "No device attached."
                     splitData = data.split(',')

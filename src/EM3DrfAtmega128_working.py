@@ -251,4 +251,3 @@ if pna.disconnect() is True:
 # data = GroupDatasets(Inputs=[Amplitude, Phase])
 Show()
 Render()
-

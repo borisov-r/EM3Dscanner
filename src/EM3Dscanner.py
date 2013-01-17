@@ -181,20 +181,28 @@ class MyWavelet:
 dim = GetDimensionsList()
 wave1 = MyWavelet(dim.GetDimensions())
 wave1.SetPointDataToCellData("Amplitude")
-wave2 = MyWavelet(dim.GetDimensions())
-wave2.SetPointDataToCellData("Phase")
-#pna = NetworkAnalyzer("10.1.15.106", "5024")
-pna = RfAtmega128()
+#wave2 = MyWavelet(dim.GetDimensions())
+#wave2.SetPointDataToCellData("Phase")
+pna = NetworkAnalyzer()
+rf = RfAtmega128()
 reprap = RepRap()
-reprap.connect("/dev/ttyACM0", 115200)
-print "Wavelet dimensions: ", dim.GetDimensions()
-reprap.setMeasureDimensions(dim.GetDimensions())
-print "Number of points to measure: ", reprap.getNumberOfMeasurePoints()
 
+# check if RepRap printer exists
+if reprap.connect("/dev/ttyACM0", 115200) is True:
+    print "Wavelet dimensions: ", dim.GetDimensions()
+    reprap.setMeasureDimensions(dim.GetDimensions())
+    print "Number of points to measure: ", reprap.getNumberOfMeasurePoints()
+else:
+    print "No RepRap printer found."
 
-device = 2 # rfAtmega128
+# select measure device
+# 1 = PNA Agilent N5230C
+# 2 = rfAtmega128 board (Arduino with Zigbee)
+#     programmed as Spectrum Analyzer
+measurementDevice = "2"
 
-if pna.connect() is True and device == 1: # PNA Network Analyzer
+if pna.connect("10.1.15.106", "5024") is True and measurementDevice is "1":
+    # PNA Network Analyzer
     pna.send("*IDN?")
     print pna.receive()
     #
@@ -234,15 +242,21 @@ if pna.connect() is True and device == 1: # PNA Network Analyzer
     #reprap.send_now("G1 X10")
     reprap.moveOneCube(wave1, pna)
 
-elif device == 2:
+elif rf.connect("/dev/ttyUSB0", 9600) is True and measurementDevice is "2":
     reprap.moveOneCube(wave1, pna)
 
 else:
     print "something is wrong."
 
 if pna.disconnect() is True:
-    print("Disconnected from PNA.")
+    print("Disconnecting from PNA.")
     reprap.disconnect()
+
+elif rf.disconnect() is True:
+    print("Disconnecting from rfAtmega128 board.")
+    rf.disconnect()
+else:
+    print("Can't disconnect measurement equipment.")
 
 # wave1.ShowAndRender()
 # print wave1.dimensions

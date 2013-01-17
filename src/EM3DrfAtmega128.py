@@ -43,7 +43,8 @@ Main class is called 'NetworkAnalyzer' and consists of following methods:
 import sys
 sys.path.append('/usr/lib/python2.7/dist-packages')
 from serial import Serial
-from time import sleep
+# from time import sleep
+
 
 class RfAtmega128(object):
     """ Communication with rfAtmega128 board
@@ -56,25 +57,29 @@ class RfAtmega128(object):
         self.baudrate = None
         self.rfAtmega = None
         self.msg = None
-        
-    def connect(self, port, baudrate):
+
+    def connect(self, port, baudrate, timeout=1):
         self.port = port
         self.baudrate = baudrate
         try:
             self.rfAtmega = Serial(self.port, self.baudrate, timeout=1)
             self.rfAtmega.write('wa' + self.term)
+            # flush the buffer of ATmega128rfa1
+            # otherwise can't start reading the data
             self.msg = self.rfAtmega.readline().strip()
             self.msg = self.rfAtmega.readline().strip()
             self.msg = self.rfAtmega.readline().strip()
             self.msg = self.rfAtmega.readline().strip()
             self.IDN = "rfAtmega128"
+            return True
         except:
             print 'Error while connecting to rfAtmega128 board.'
-                  
+
     def disconnect(self):
         if self.rfAtmega is not None:
             try:
                 self.rfAtmega.close()
+                return True
             except:
                 print 'Error while disconnecting.'
         else:
@@ -99,14 +104,6 @@ def main():
     print rfAtmega.msg
     rfAtmega.readRSSI()
     print rfAtmega.msg
-    rfAtmega.readRSSI()
-    rfAtmega.readRSSI()
-    rfAtmega.readRSSI()
-    rfAtmega.readRSSI()
-    rfAtmega.readRSSI()
-    rfAtmega.readRSSI()
-    rfAtmega.readRSSI()
-    rfAtmega.readRSSI()
     rfAtmega.disconnect()
 
 if __name__ == "__main__":
