@@ -147,13 +147,14 @@ class RepRap(object):
                 if wavelet is not None and pna is not None:
                     dim = wavelet.dimensions
                     print 'Data received from PNA.'
+                    print pna.IDN
                     if pna.IDN is "NA5566":
                         data = pna.askPna('calc:data? fdata')
-                    elif pna.IDN is "rfAtmega":
+                    elif pna.IDN is "rfAtmega128":
                         pna.readRSSI()
                         data = pna.msg
                     else:
-                        print "No device attached." 
+                        print "No device attached."
                     splitData = data.split(',')
                     print splitData
                     print "X point: ", dim[0] + x, "; Y point: ", dim[2] + y, "; Z point: ", dim[4] + z
