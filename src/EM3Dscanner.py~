@@ -49,7 +49,6 @@ sys.path.append('/home/radoslav/git/EM3Dscanner/src')
 from paraview import vtk
 from EM3Dnalib import NetworkAnalyzer
 from EM3Dreprap import RepRap
-from EM3DrfAtmega128 import RfAtmega128
 from time import sleep
 
 

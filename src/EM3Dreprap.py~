@@ -147,9 +147,9 @@ class RepRap(object):
                 if wavelet is not None and pna is not None:
                     dim = wavelet.dimensions
                     print 'Data received from PNA.'
-                    if pna.IDN is "NA5566":
+                    if pna is "NA":
                         data = pna.askPna('calc:data? fdata')
-                    elif pna.IDN is "rfAtmega":
+                    elif pna is "rfAtmega":
                         pna.readRSSI()
                         data = pna.msg
                     else:
