@@ -199,7 +199,7 @@ else:
 # 1 = PNA Agilent N5230C
 # 2 = rfAtmega128 board (Arduino with Zigbee)
 #     programmed as Spectrum Analyzer
-measurementDevice = "2"
+measurementDevice = "1"
 
 if pna.connect("10.1.15.106", "5024") is True and measurementDevice is "1":
     # PNA Network Analyzer

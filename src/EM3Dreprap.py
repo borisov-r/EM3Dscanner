@@ -111,7 +111,7 @@ class RepRap(object):
         else:
             print 'Already disconnected.'
 
-    def move(self, ff=True, moveX=0, moveY=0, moveZ=0, speed=100, wait=True, waitAtPointTime=1):
+    def move(self, ff=True, moveX=0, moveY=0, moveZ=0, speed=400, wait=True, waitAtPointTime=1):
         """ Move reprap with default speed 100 mm/min.
         ff is parameter that defines the movement direction.
             True - forward (+ direction)
@@ -134,7 +134,7 @@ class RepRap(object):
         else:
             print 'Check printer connection.'
 
-    def moveOneSlice(self, wavelet=None, pna=None, yDirection=True, z=0, resolution=1):
+    def moveOneSlice(self, wavelet=None, pna=None, yDirection=True, z=0, resolution=3):
         """ Move one slice X and Y.
         """
         for y in range(self.y):
@@ -142,30 +142,35 @@ class RepRap(object):
                 # check if y is odd or even
                 if y & 1:   # y is odd
                     self.move(False, resolution)
+                    yData = self.y - y
                 else:       # y is even
                     self.move(True, resolution)
-                print 'X is: ', x, "; Y is: ", y, "; Z is: ", z
+                    yData = y
+                print 'X is: ', x, "; Y is: ", yData, "; Z is: ", z
                 if wavelet is not None and pna is not None:
                     dim = wavelet.dimensions
+                    print 'Wavelet dimensions: ' + dim
                     print 'Data received from PNA.'
                     print pna.IDN
                     # set correct IDN before use
-                    if pna.IDN is "NA5566":
-                        data = pna.askPna('calc:data? fdata')
+                    #if pna.IDN is "Agilent Technologies,N5230C,MY49001380,A.09.42.18":
+                    #if "N5230C" is in pna.IDN:
+                    data = pna.askPna('calc:data? fdata')
+                    """    print 'take data here'
                     elif pna.IDN is "rfAtmega128":
                         pna.readRSSI()
                         data = pna.msg
                         # data should be float or int, not string
                     else:
-                        print "No device attached."
+                        print "No device attached." """
                     splitData = data.split(',')
                     print splitData
-                    print "X point: ", dim[0] + x, "; Y point: ", dim[2] + y, "; Z point: ", dim[4] + z
+                    print "X point: ", dim[0] + x, "; Y point: ", dim[2] + yData, "; Z point: ", dim[4] + z
                     # set correct absolute coordinates of measured point in
                     # wavelet object.
                     wavelet.SetCellData(splitData[0],
                                         dim[0] + x,     # set corrected x coordinate
-                                        dim[2] + y,     # set corrected y coordinate
+                                        dim[2] + yData,     # set corrected y coordinate
                                         dim[4] + z)     # set corrected z coordinate
             # move y direction and stop at last point
             if y != self.y - 1:         # this makes the y to stop at the end
