@@ -158,31 +158,34 @@ class RepRap(object):
                         xData = x
                     #yData = y
                 print 'X is: ', xData, "; Y is: ", yData, "; Z is: ", z
-                if wavelet is not None and pna is not None:
-                    dim = wavelet.dimensions
-                    #print 'Wavelet dimensions: ' + dim
-                    print 'Data received from PNA.'
-                    #print pna.IDN
-                    # set correct IDN before use
-                    #if pna.IDN is "Agilent Technologies,N5230C,MY49001380,A.09.42.18":
-                    #if "N5230C" is in pna.IDN:
-                    data = pna.askPna('calc:data? fdata')
-                    """    print 'take data here'
-                    elif pna.IDN is "rfAtmega128":
-                        pna.readRSSI()
-                        data = pna.msg
-                        # data should be float or int, not string
+                if wavelet is not None:
+                    if pna is not None:
+                        dim = wavelet.dimensions
+                        if "N5230C" in pna.IDN:
+                            #dim = wavelet.dimensions
+                            #print 'Wavelet dimensions: ' + dim
+                            print 'Data received from PNA.'
+                            print pna.IDN
+                            #if "N5230C" is in pna.IDN:
+                            data = pna.askPna('calc:data? fdata')
+                        elif "rfAtmega128" in pna.IDN:
+                            pna.readRSSI()
+                            data = pna.msg
                     else:
-                        print "No device attached." """
-                    splitData = data.split(',')
-                    print splitData
-                    print "X point: ", dim[0] + xData, "; Y point: ", dim[2] + yData, "; Z point: ", dim[4] + z
-                    # set correct absolute coordinates of measured point in
-                    # wavelet object.
-                    wavelet.SetCellData(splitData[0],
-                                        dim[0] + xData,     # set corrected x coordinate
-                                        dim[2] + yData,     # set corrected y coordinate
-                                        dim[4] + z)     # set corrected z coordinate
+                        print "Measurement equipment not found."
+                    #fill the data if measurement equipment found.
+                    if pna.IDN is not None:
+                        splitData = data.split(',')
+                        print splitData
+                        print "X point: ", dim[0] + xData, "; Y point: ", dim[2] + yData, "; Z point: ", dim[4] + z
+                        # set correct absolute coordinates of measured point in
+                        # wavelet object.
+                        wavelet.SetCellData(splitData[0],
+                                            dim[0] + xData,     # set corrected x coordinate
+                                            dim[2] + yData,     # set corrected y coordinate
+                                            dim[4] + z)     # set corrected z coordinate
+                    else:
+                        print "No available data from measurement equipment."
             # move y direction and stop at last point
             if y != self.y - 1:         # this makes the y to stop at the end
                 self.move(yDirection, 0, resolution)

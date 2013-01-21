@@ -87,7 +87,10 @@ class RfAtmega128(object):
 
     def readRSSI(self):
         if self.rfAtmega is not None:
-            self.rfAtmega.write("w\r\n")
+            #self.rfAtmega.write("w\r\n")
+            self.msg = self.rfAtmega.readline().strip()
+            self.msg = self.rfAtmega.readline().strip()
+            self.msg = self.rfAtmega.readline().strip()
             self.msg = self.rfAtmega.readline().strip()
         else:
             print 'Error receiving RSSI.'

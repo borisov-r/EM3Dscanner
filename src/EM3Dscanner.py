@@ -199,7 +199,7 @@ else:
 # 1 = PNA Agilent N5230C
 # 2 = rfAtmega128 board (Arduino with Zigbee)
 #     programmed as Spectrum Analyzer
-measurementDevice = "1"
+measurementDevice = "2"
 
 if pna.connect("10.1.15.106", "5024") is True and measurementDevice is "1":
     # PNA Network Analyzer
@@ -243,7 +243,8 @@ if pna.connect("10.1.15.106", "5024") is True and measurementDevice is "1":
     reprap.moveOneCube(wave1, pna)
 
 elif rf.connect("/dev/ttyUSB0", 9600) is True and measurementDevice is "2":
-    reprap.moveOneCube(wave1, pna)
+    reprap.moveOneCube(wave1, rf)
+    print "Connected to rfAtmega128."
 
 else:
     print "something is wrong."
@@ -256,7 +257,7 @@ elif rf.disconnect() is True:
     print("Disconnecting from rfAtmega128 board.")
     rf.disconnect()
 else:
-    print("Can't disconnect measurement equipment.")
+    print("Can't disconnect from rfAtmega128 board.")
 
 # wave1.ShowAndRender()
 # print wave1.dimensions
