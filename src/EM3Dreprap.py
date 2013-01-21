@@ -134,7 +134,7 @@ class RepRap(object):
         else:
             print 'Check printer connection.'
 
-    def moveOneSlice(self, wavelet=None, pna=None, yDirection=True, z=0, resolution=3):
+    def moveOneSlice(self, wavelet=None, pna=None, yDirection=True, z=0, resolution=1):
         """ Move one slice X and Y.
         """
         for y in range(self.y):
@@ -142,16 +142,27 @@ class RepRap(object):
                 # check if y is odd or even
                 if y & 1:   # y is odd
                     self.move(False, resolution)
-                    yData = self.y - y
+                    if z & 1:
+                        yData = (self.y - 1) - y
+                        xData = (self.x - 1) - x
+                    else:
+                        yData = y
+                        xData = (self.x - 1) - x
                 else:       # y is even
                     self.move(True, resolution)
-                    yData = y
-                print 'X is: ', x, "; Y is: ", yData, "; Z is: ", z
+                    if z & 1:
+                        yData = (self.y - 1) - y
+                        xData = x
+                    else:
+                        yData = y
+                        xData = x
+                    #yData = y
+                print 'X is: ', xData, "; Y is: ", yData, "; Z is: ", z
                 if wavelet is not None and pna is not None:
                     dim = wavelet.dimensions
-                    print 'Wavelet dimensions: ' + dim
+                    #print 'Wavelet dimensions: ' + dim
                     print 'Data received from PNA.'
-                    print pna.IDN
+                    #print pna.IDN
                     # set correct IDN before use
                     #if pna.IDN is "Agilent Technologies,N5230C,MY49001380,A.09.42.18":
                     #if "N5230C" is in pna.IDN:
@@ -165,11 +176,11 @@ class RepRap(object):
                         print "No device attached." """
                     splitData = data.split(',')
                     print splitData
-                    print "X point: ", dim[0] + x, "; Y point: ", dim[2] + yData, "; Z point: ", dim[4] + z
+                    print "X point: ", dim[0] + xData, "; Y point: ", dim[2] + yData, "; Z point: ", dim[4] + z
                     # set correct absolute coordinates of measured point in
                     # wavelet object.
                     wavelet.SetCellData(splitData[0],
-                                        dim[0] + x,     # set corrected x coordinate
+                                        dim[0] + xData,     # set corrected x coordinate
                                         dim[2] + yData,     # set corrected y coordinate
                                         dim[4] + z)     # set corrected z coordinate
             # move y direction and stop at last point

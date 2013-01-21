@@ -1,0 +1,5 @@
+<VTKFile type="Collection" version="0.1" byte_order="LittleEndian">
+  <Collection>
+    <DataSet part="0" file="hybrid_2p3GHz_res3mm_Hx_heigh4mm/hybrid_2p3GHz_res3mm_Hx_heigh4mm_0.vti"/>
+  </Collection>
+</VTKFile>
