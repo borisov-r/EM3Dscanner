@@ -111,7 +111,7 @@ class RepRap(object):
         else:
             print 'Already disconnected.'
 
-    def move(self, ff=True, moveX=0, moveY=0, moveZ=0, speed=400, wait=True, waitAtPointTime=1):
+    def move(self, ff=True, moveX=0, moveY=0, moveZ=0, speed=400, wait=False, waitAtPointTime=1):
         """ Move reprap with default speed 100 mm/min.
         ff is parameter that defines the movement direction.
             True - forward (+ direction)
@@ -126,7 +126,13 @@ class RepRap(object):
             self.printer.readline().strip()
             word = 'G1 X' + sign + str(moveX) + ' Y' + sign + str(moveY) + ' Z' + sign + str(moveZ) + ' F' + str(speed)
             self.printer.write(word + self.term)
-            sleep(waitAtPointTime)
+            # sleep(waitAtPointTime)
+            self.movement = None
+            # print self.movement
+            while True:
+                self.movement = self.printer.readline().strip()
+                if ("Movement finished." in self.movement):
+                    break
             if wait:
                 word = 'M400' + self.term
                 self.printer.write(word)
@@ -171,6 +177,7 @@ class RepRap(object):
                         elif "rfAtmega128" in pna.IDN:
                             pna.readRSSI()
                             data = pna.msg
+                            pna.clearRSSIbuffer()
                     else:
                         print "Measurement equipment not found."
                     #fill the data if measurement equipment found.

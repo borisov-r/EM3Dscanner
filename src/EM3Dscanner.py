@@ -185,6 +185,7 @@ wave1.SetPointDataToCellData("Amplitude")
 #wave2.SetPointDataToCellData("Phase")
 pna = NetworkAnalyzer()
 rf = RfAtmega128()
+transmistter = RfAtmega128()
 reprap = RepRap()
 
 # check if RepRap printer exists
@@ -243,7 +244,16 @@ if pna.connect("10.1.15.106", "5024") is True and measurementDevice is "1":
     reprap.moveOneCube(wave1, pna)
 
 elif rf.connect("/dev/ttyUSB0", 9600) is True and measurementDevice is "2":
+    try:
+        transmistter.connect("/dev/ttyUSB1", 9600)
+        transmistter.cwTransmissionInit()
+    except:
+        print "Error running the transmitter."
     reprap.moveOneCube(wave1, rf)
+    try:
+        transmistter.cwTransmissionStop()
+    except:
+        print "Error transmitter not connected."
     print "Connected to rfAtmega128."
 
 else:

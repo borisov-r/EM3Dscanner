@@ -57,6 +57,7 @@ class RfAtmega128(object):
         self.baudrate = None
         self.rfAtmega = None
         self.msg = None
+        self.txMsg = None
 
     def connect(self, port, baudrate, timeout=1):
         self.port = port
@@ -87,16 +88,58 @@ class RfAtmega128(object):
 
     def readRSSI(self):
         if self.rfAtmega is not None:
-            #self.rfAtmega.write("w\r\n")
-            self.msg = self.rfAtmega.readline().strip()
-            self.msg = self.rfAtmega.readline().strip()
-            self.msg = self.rfAtmega.readline().strip()
+            self.rfAtmega.write("w\r\n")
+            # RX firmware updated only when 'M' transmitted
+            self.rfAtmega.write("M\r\n")
+            # self.msg = self.rfAtmega.readline().strip()
+            # self.msg = self.rfAtmega.readline().strip()
             self.msg = self.rfAtmega.readline().strip()
         else:
             print 'Error receiving RSSI.'
 
+    def clearRSSIbuffer(self):
+        if self.rfAtmega is not None:
+            self.msg = None
+
+    def cwTransmissionStart(self):
+        if self.rfAtmega is not None:
+            # start CW transmission
+            self.rfAtmega.write('F' + self.term)
+            self.txMsg = self.rfAtmega.readline().strip()
+            self.txMsg = self.rfAtmega.readline().strip()
+            self.txMsg = self.rfAtmega.readline().strip()
+            self.txMsg = self.rfAtmega.readline().strip()
+            if 'CW started.' not in self.txMsg and self.txMsg is not '':
+                print 'Error self.txMsg is: ' + self.txMsg
+            self.txMsg = None
+        else:
+            print 'Error CWTX start.'
+
+    def cwTransmissionStop(self):
+        if self.rfAtmega is not None:
+            # stop CW transmission
+            self.rfAtmega.write('S' + self.term)
+            self.txMsg = self.rfAtmega.readline().strip()
+            if 'CW stoped.' not in self.txMsg and self.txMsg is not '':
+                print 'Error self.txMsg is: ' + self.txMsg
+            self.txMsg = None
+        else:
+            print 'Error CWTX stop.'
+
+    def cwTransmissionInit(self):
+        if self.rfAtmega is not None:
+            # stop CW transmission
+            self.cwTransmissionStart()
+            self.cwTransmissionStop()
+            self.cwTransmissionStart()
+        else:
+            print 'Error CWTX init.'
+
 
 def main():
+    cw = RfAtmega128()
+    cw.connect('/dev/ttyUSB1', 9600)
+    cw.cwTransmissionInit()
     rfAtmega = RfAtmega128()
     rfAtmega.connect('/dev/ttyUSB0', 9600)
     rfAtmega.readRSSI()
@@ -108,6 +151,8 @@ def main():
     rfAtmega.readRSSI()
     print rfAtmega.msg
     rfAtmega.disconnect()
+    cw.cwTransmissionStop()
+    cw.disconnect()
 
 if __name__ == "__main__":
     main()
