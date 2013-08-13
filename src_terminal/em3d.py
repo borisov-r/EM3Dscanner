@@ -1,44 +1,44 @@
+#!/usr/bin/python
+
+import sys, getopt
 import logging
+import os
+import xml.etree.ElementTree as ET
 import EM3Dnalib
 import EM3Dreprap
 
-
-def getValueFromConfig(name, configFile='em3d.conf'):
-    # returns value of the name variable
-    # in configuration file
-    f = open(configFile, 'r')
-    # read configuration file
-    configuration = f.read()
-    # print configuration
-    conf = configuration.split()
-    i = conf.index(name)
-    f.close()
-    # real value of name is 2 list items away
-    return conf[i + 2]
+DEFAULT_CONFIG_FILE = ('em3d.xml')
 
 
-def main():
-    name = getValueFromConfig(name='LOG_FILE_NAME')
-    logging.basicConfig(filename=name, level=logging.INFO,
-                        format='%(asctime)s %(levelname)s %(message)s')
-    logging.info('Started')
-    logging.info('LOG_FILE_NAME = %s', name)
-    ip = getValueFromConfig(name='PNA_IP_ADDRESS')
-    logging.info('PNA_IP_ADDRESS = %s', ip)
-    port = getValueFromConfig(name='PNA_PORT')
-    logging.info('PNA_PORT = %s', port)
-
-    pna = EM3Dnalib.NetworkAnalyzer()
-    logging.info('PNA object added.')
+def main(argv):
+    # comment
+    # sample implementation of arguments:
+    # http://www.cyberciti.biz/faq/python-command-line-arguments-argv-example/
     try:
-        pna.connect(IPaddress=ip, Port=port)
-        logging.info('PNA ipaddress: %s', pna.IPaddress)
-        logging.info('PNA ipaddress: %s', pna.Port)
-    except:
-        # ? how the exceptions are logged
-        logging.exception('Error while connecting to PNA.')
+        opts, args = getopt.getopt(argv, "h:c", ["config="])
+    except getopt.GetoptError:
+        print 'em3d.py -h for help'
+        print 'usage: em3d.py -c <filename>'
+        sys.exit(2)
 
-    logging.info('Finished')
+    for opt, arg in opts:
+        if opt == '-h':
+            print 'em3d.py -h for more help'
+            sys.exit()
+        elif opt == ("-c", "--config"):
+            config = arg
+            print config
+
+    tree = ET.parse('em3da.xml')
+    devices = tree.getroot()
+
+    print len(devices)
+    print tree.findtext('./log/log-file')
+    print tree.findtext('./pna/ip')
+    print tree.findtext('./pna/port')
+    print tree.findtext('./pna/calib')
+    print tree.findtext('./atmega/port')
+    print tree.findtext('./atmega/baud')
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1:])
