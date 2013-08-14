@@ -1,0 +1,19 @@
+2013-08-14 18:47:33,810 INFO Using device: pna
+2013-08-14 18:47:33,810 INFO PNA ip address:  10.1.15.106
+2013-08-14 18:47:33,810 INFO PNA port: 5024
+2013-08-14 18:47:33,810 INFO PNA calibration: calibrationRado1.csa
+2013-08-14 18:47:34,300 INFO Connected to PNA
+2013-08-14 18:47:34,300 INFO RepRap disabled
+2013-08-14 18:47:35,921 INFO points for axis X: 
+2013-08-14 18:47:35,921 INFO got value: 20
+2013-08-14 18:47:36,960 INFO points for axis Y: 
+2013-08-14 18:47:36,960 INFO got value: 10
+2013-08-14 18:47:37,748 INFO points for axis Z: 
+2013-08-14 18:47:37,748 INFO got value: 30
+2013-08-14 18:47:39,794 INFO scan resolution: 0.5
+2013-08-14 18:47:39,795 INFO Points from terminal: (20, 10, 30)
+2013-08-14 18:47:44,599 INFO PNA window selected: 1
+2013-08-14 18:47:44,599 INFO got value: 1
+2013-08-14 18:47:45,755 INFO Measured point number: 0
+2013-08-14 18:47:47,011 INFO Measured point number: 1
+2013-08-14 18:47:48,170 INFO Measured point number: 2
