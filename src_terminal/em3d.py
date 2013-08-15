@@ -21,6 +21,9 @@ OUTPUT_FILE_NAME = "RawData.data"
 # Default measurement device
 MEASURE_DEVICE = "None"
 
+# Default reprap setting
+REPRAP_DEVICE = "None"
+
 
 def parseInput():
     ''' Get input from command line and parse variables.
@@ -28,6 +31,7 @@ def parseInput():
     '''
     # terminal input parser
     global MEASURE_DEVICE
+    global REPRAP_DEVICE
     global OUTPUT_FILE_NAME
     global CONFIG_FILE_NAME
     global LOG_FILE_NAME
@@ -36,6 +40,9 @@ def parseInput():
     #
     parser = argparse.ArgumentParser(description='EM3D scanner suite')
     parser.add_argument('-m', '--measure', choices=['pna', 'atmega'],
+                        help=
+                        'Choose device for the measurement. Default: None')
+    parser.add_argument('-rr', '--reprap', choices=['disable', 'enable'],
                         help=
                         'Choose device for the measurement. Default: None')
     parser.add_argument('-c', '--config',
@@ -52,6 +59,10 @@ def parseInput():
     if args.measure:
         # chose measurement device
         MEASURE_DEVICE = (args.measure)
+    #
+    if args.reprap:
+        # enable reprap from terminal
+        REPRAP_DEVICE = (args.reprap)
     #
     if args.config:
         # check if file existst
@@ -152,11 +163,10 @@ def reprap(p='/dev/ttyACM0', b='115200', enable=False):
         rr = EM3Dreprap.RepRap()
         if rr.connect(port=p, baudrate=b):
             logging.info('Connected to RepRap')
+            return rr
         else:
             logging.info('RepRap connection error')
-        rr.move(False, 10)
-        rr.disconnect()
-        return True
+            return False
     else:
         logging.info('RepRap disabled')
         pass
@@ -192,8 +202,8 @@ def headerData(fileName, minFreq="0", maxFreq="1", points="1",
         f.writelines("# RepRap points:  X Points:   " + xpoints +
                      "   |   Y Points:   " + ypoints +
                      "   |   Z Points:   " + zpoints + TERM)
-        f.writelines("# Resolution      " + resolution + TERM)
-        f.writelines("# Volume          " +
+        f.writelines("# Resolution:     " + resolution + TERM)
+        f.writelines("# Volume:         " +
                      str(int(xpoints) * int(ypoints) * int(zpoints)) + TERM)
 
 
@@ -210,9 +220,12 @@ def askForPoints(axis):
     '''
     try:
         value = int(raw_input('Enter number of points for %s axis: ' % axis))
-        logging.info('points for axis %s: ' % axis)
-        logging.info('got value: %s' % value)
-        return value
+        if value > 0 and value < 5000:
+            logging.info('points for axis %s: %s' % (axis, value))
+            # logging.info('number of points for %s: %s' % axis % value)
+            return value
+        else:
+            return True
     except ValueError:
         logging.info('Error in askForPoints for %s axis' % axis)
         print "Error please enter positive integer value (1-100000)"
@@ -223,7 +236,7 @@ def askForResolution():
     ''' get raw data from terminal and return value
     '''
     try:
-        value = float(raw_input('Enter scan resolutin: '))
+        value = float(raw_input('Enter scan resolution (0.1 - 10 mm): '))
         logging.info('scan resolution: %s' % value)
         return value
     except ValueError:
@@ -239,7 +252,6 @@ def askForPNAwindow():
         value = int(raw_input('Select PNA window for the measurement (1-4): '))
         if value > 0 and value < 5:
             logging.info('PNA window selected: %s' % value)
-            logging.info('got value: %s' % value)
             return value
         else:
             return True
@@ -294,6 +306,97 @@ def getPNAwindow():
     return (window)
 
 
+def pnaHeader(fileName, networkAnalyzer, points):
+    ''' This function adds more info to the data file.
+    '''
+    #
+    # Get all frequencies from the PNA
+    idn = networkAnalyzer.getPnaIDN()
+    #
+    # Get all frequencies for the measurement
+    freq = networkAnalyzer.askPna("calc:data:snp?")
+    #
+    # single frequency is represented with 20 characters received from PNA
+    singleFreqChars = 20
+    #
+    # add header to file
+    appendData(fileName, "# PNA idn:        " + idn)
+    logging.info("PNA idn appended to file")
+    #
+    appendData(fileName, "# Format in file: " +
+               "|   Reprap points   |" + "   PNA data   |")
+    #
+    appendData(OUTPUT_FILE_NAME, "#                 " +
+               "|      x " + " y " + " z      |" + "    data      |")
+    # remove last "'" from the frequency list
+    appendData(fileName, "Frequencies:\n"
+               + str(freq[0:int(points) * singleFreqChars - 1]) + "\nData:")
+
+
+def moveRepRapX(reprap, na, window, dir, res, speed,
+                pointsX, pointsY, pointsZ):
+    ''' Mover RepRap in X direction and show progress
+            reprap  - connected reprap object
+            na      - network analyzer object
+            window  - network analyzer window chosen from terminal
+            points  - number point in X direction
+            dir     - True / False (forward, backward) direction +/-
+            res     - set stepping (resolution in mm)
+            speed   - set speed
+            pointsX - number of points in X direction
+            pointsY - number of points in Y direction
+            pointsZ - number of points in Z direction
+    '''
+    rr = reprap
+    device = na
+    # x movement of the reprap
+    for x in range(pointsX):
+        if x is not 0:
+            rr.move(ff=dir, moveX=res, speed=speed)
+        appendData(OUTPUT_FILE_NAME, "%s %s %s " % (x, pointsY, pointsZ)
+                   + device.measureSinglePointAmplitude(None, window))
+        logging.info("Measured X point: %s" % x)
+        logging.info("X direction set to: %s" % dir)
+        #
+        # print status in terminal
+        sys.stdout.write('\rMeasuring point number: x=%d, y=%d, z=%d'
+                         % (x, pointsY, pointsZ))
+        sys.stdout.flush()
+    sys.stdout.write('\n')
+    return True
+
+
+def moveRepRapY(reprap, na, window, dir, res, speed,
+                pointsX, pointsY, pointsZ):
+    ''' Mover RepRap in X direction and show progress
+            reprap  - connected reprap object
+            na      - network analyzer object
+            window  - network analyzer window chosen from terminal
+            points  - number point in X direction
+            dir     - True / False (forward, backward) direction +/-
+            res     - set stepping (resolution in mm)
+            speed   - set speed
+            pointsX - number of points in X direction
+            pointsY - number of points in Y direction
+            pointsZ - number of points in Z direction
+    '''
+    rr = reprap
+    device = na
+    for y in range(pointsY):
+        # move y
+        if y % 2 == 0:
+            # odd number
+            direction = True
+        else:
+            direction = False
+        if y is not 0:
+            rr.move(ff=dir, moveY=res, speed=speed)
+        logging.info("Measure Y point number: %s" % y)
+        logging.info("Y direction set to: %s" % dir)
+        moveRepRapX(rr, device, window, direction, res, speed,
+                    pointsX, y, pointsZ)
+
+
 def main(argv):
     # parse terminal variables
     if parseInput():
@@ -310,7 +413,9 @@ def main(argv):
         #
         device = connect(MEASURE_DEVICE, deviceParameters)
         #
-        reprap()
+        # start reprap if enable
+        if REPRAP_DEVICE == 'enable':
+            rr = reprap(enable=True)
         #
         # Data points for X, Y, Z from terminal
         # Returns: tuple(xpoints, ypoints, zpoints)
@@ -327,6 +432,10 @@ def main(argv):
             maxFreq = freq[(len(freq) / 2) + 1:len(freq)]
             # Data file header
             #
+            # choose which window to measure from PNA
+            window = getPNAwindow()
+            #
+            # write header in OUTPUT_FILE_NAME
             headerData(OUTPUT_FILE_NAME,
                        xpoints=str(rrPoints[0]),
                        ypoints=str(rrPoints[1]),
@@ -336,11 +445,32 @@ def main(argv):
                        minFreq=minFreq, maxFreq=maxFreq,
                        parameters=parameters)
             #
-            window = getPNAwindow()
-            for p in range(3):
-                appendData(OUTPUT_FILE_NAME,
-                           device.measureSinglePointAmplitude(None, window))
-                logging.info("Measured point number: %s" % p)
+            # append to OUTPUT_FILE_NAME header for
+            # frequencies, idn and file format
+            pnaHeader(OUTPUT_FILE_NAME, device, points)
+            #
+            # calculate number of points
+            allPoints = rrPoints[0] * rrPoints[1] * rrPoints[2]
+            print("Points to be measured (x * y * z): %s"
+                  % allPoints)
+            #
+            # actual move and measure procedure here
+            for z in range(rrPoints[2]):
+                if z % 2:
+                    direction = False
+                else:
+                    direction = True
+                if z is not 0:
+                    rr.move(ff=True, moveZ=resolution, speed=600)
+                logging.info("Measure Z point: %s" % z)
+                logging.info("Y direction set to: %s" % direction)
+                moveRepRapY(rr, device, window, direction, resolution, 600,
+                            rrPoints[0], rrPoints[1], z)
+            #
+            # finish measurement and disconnect from PNA
+            if REPRAP_DEVICE == 'enable':
+                rr.disconnect()
+                logging.info("RepRap disconnected")
     else:
         print "No configuration file"
         pass

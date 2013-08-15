@@ -1,19 +1,42 @@
-2013-08-14 18:47:33,810 INFO Using device: pna
-2013-08-14 18:47:33,810 INFO PNA ip address:  10.1.15.106
-2013-08-14 18:47:33,810 INFO PNA port: 5024
-2013-08-14 18:47:33,810 INFO PNA calibration: calibrationRado1.csa
-2013-08-14 18:47:34,300 INFO Connected to PNA
-2013-08-14 18:47:34,300 INFO RepRap disabled
-2013-08-14 18:47:35,921 INFO points for axis X: 
-2013-08-14 18:47:35,921 INFO got value: 20
-2013-08-14 18:47:36,960 INFO points for axis Y: 
-2013-08-14 18:47:36,960 INFO got value: 10
-2013-08-14 18:47:37,748 INFO points for axis Z: 
-2013-08-14 18:47:37,748 INFO got value: 30
-2013-08-14 18:47:39,794 INFO scan resolution: 0.5
-2013-08-14 18:47:39,795 INFO Points from terminal: (20, 10, 30)
-2013-08-14 18:47:44,599 INFO PNA window selected: 1
-2013-08-14 18:47:44,599 INFO got value: 1
-2013-08-14 18:47:45,755 INFO Measured point number: 0
-2013-08-14 18:47:47,011 INFO Measured point number: 1
-2013-08-14 18:47:48,170 INFO Measured point number: 2
+2013-08-15 18:00:05,448 INFO Using device: pna
+2013-08-15 18:00:05,448 INFO PNA ip address:  10.1.15.106
+2013-08-15 18:00:05,448 INFO PNA port: 5024
+2013-08-15 18:00:05,448 INFO PNA calibration: calibrationRado1.csa
+2013-08-15 18:00:05,740 INFO Connected to PNA
+2013-08-15 18:00:06,659 INFO Connected to RepRap
+2013-08-15 18:00:10,959 INFO points for axis X: 2
+2013-08-15 18:00:11,674 INFO points for axis Y: 2
+2013-08-15 18:00:12,852 INFO points for axis Z: 2
+2013-08-15 18:00:16,873 INFO scan resolution: 5.0
+2013-08-15 18:00:16,873 INFO Points from terminal: (2, 2, 2)
+2013-08-15 18:00:24,536 INFO PNA window selected: 1
+2013-08-15 18:00:25,030 INFO PNA idn appended to file
+2013-08-15 18:00:25,031 INFO Measure Z point: 0
+2013-08-15 18:00:25,031 INFO Y direction set to: True
+2013-08-15 18:00:25,031 INFO Measure Y point number: 0
+2013-08-15 18:00:25,031 INFO Y direction set to: True
+2013-08-15 18:00:26,184 INFO Measured X point: 0
+2013-08-15 18:00:26,184 INFO X direction set to: True
+2013-08-15 18:00:27,890 INFO Measured X point: 1
+2013-08-15 18:00:27,890 INFO X direction set to: True
+2013-08-15 18:00:28,403 INFO Measure Y point number: 1
+2013-08-15 18:00:28,403 INFO Y direction set to: True
+2013-08-15 18:00:29,596 INFO Measured X point: 0
+2013-08-15 18:00:29,596 INFO X direction set to: False
+2013-08-15 18:00:31,329 INFO Measured X point: 1
+2013-08-15 18:00:31,329 INFO X direction set to: False
+2013-08-15 18:00:33,880 INFO Measure Z point: 1
+2013-08-15 18:00:33,881 INFO Y direction set to: False
+2013-08-15 18:00:33,881 INFO Measure Y point number: 0
+2013-08-15 18:00:33,881 INFO Y direction set to: False
+2013-08-15 18:00:35,035 INFO Measured X point: 0
+2013-08-15 18:00:35,035 INFO X direction set to: True
+2013-08-15 18:00:36,719 INFO Measured X point: 1
+2013-08-15 18:00:36,719 INFO X direction set to: True
+2013-08-15 18:00:37,230 INFO Measure Y point number: 1
+2013-08-15 18:00:37,231 INFO Y direction set to: False
+2013-08-15 18:00:38,425 INFO Measured X point: 0
+2013-08-15 18:00:38,425 INFO X direction set to: False
+2013-08-15 18:00:40,131 INFO Measured X point: 1
+2013-08-15 18:00:40,131 INFO X direction set to: False
+2013-08-15 18:00:40,149 INFO RepRap disconnected
