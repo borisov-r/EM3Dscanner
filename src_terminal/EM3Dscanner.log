@@ -1,9 +1,5 @@
-2013-08-15 13:57:19,985 INFO RepRap disabled
-2013-08-15 13:57:22,187 INFO points for axis X: 
-2013-08-15 13:57:22,187 INFO got value: 10
-2013-08-15 13:57:22,733 INFO points for axis Y: 
-2013-08-15 13:57:22,733 INFO got value: 20
-2013-08-15 13:57:23,436 INFO points for axis Z: 
-2013-08-15 13:57:23,436 INFO got value: 30
-2013-08-15 13:57:24,610 INFO scan resolution: 40.0
-2013-08-15 13:57:24,610 INFO Points from terminal: (10, 20, 30)
+2013-08-16 14:18:22,007 INFO points for axis X: 10
+2013-08-16 14:18:22,774 INFO points for axis Y: 10
+2013-08-16 14:18:23,349 INFO points for axis Z: 10
+2013-08-16 14:18:24,503 INFO scan resolution: 1.0
+2013-08-16 14:18:24,503 INFO Points from terminal: (10, 10, 10)

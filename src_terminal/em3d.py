@@ -24,6 +24,12 @@ MEASURE_DEVICE = "None"
 # Default reprap setting
 REPRAP_DEVICE = "None"
 
+# Define maximum X and Y axis movement
+MAX_XY_AXIS = 2000
+
+# Define maximum Z axis movement
+MAX_Z_AXIS = 1200
+
 
 def parseInput():
     ''' Get input from command line and parse variables.
@@ -220,11 +226,24 @@ def askForPoints(axis):
     '''
     try:
         value = int(raw_input('Enter number of points for %s axis: ' % axis))
-        if value > 0 and value < 5000:
+        if axis == 'Z':
+            if value > 0 and value < MAX_Z_AXIS:
+                logging.info('points for axis %s: %s' % (axis, value))
+                #logging.debug('number of points for %s: %s' % (axis, value))
+                return value
+            else:
+                logging.info('Error in askForPoints for %s axis' % axis)
+                print("Error please enter positive integer value (1-%s)"
+                      % MAX_Z_AXIS)
+                return True
+        elif value > 0 and value < MAX_XY_AXIS:
             logging.info('points for axis %s: %s' % (axis, value))
-            # logging.info('number of points for %s: %s' % axis % value)
+            #logging.debug('number of points for %s: %s' % (axis, value))
             return value
         else:
+            logging.info('Error in askForPoints for %s axis' % axis)
+            print("Error please enter positive integer value (1-%s)"
+                  % MAX_XY_AXIS)
             return True
     except ValueError:
         logging.info('Error in askForPoints for %s axis' % axis)
@@ -236,12 +255,18 @@ def askForResolution():
     ''' get raw data from terminal and return value
     '''
     try:
-        value = float(raw_input('Enter scan resolution (0.1 - 10 mm): '))
-        logging.info('scan resolution: %s' % value)
-        return value
+        value = float(raw_input('Enter scan resolution (0.1 - 200 mm): '))
+        if (value > 0.09) and (value < 200.0):
+            # check if value is float from 0.1 to 200.0
+            logging.info('scan resolution: %s' % value)
+            return value
+        else:
+            logging.info('Error in resolution value')
+            print "Error please enter positive integer value (0.1-200 mm)"
+            return True
     except ValueError:
         logging.info('Error in resolution value')
-        print "Error please enter positive integer value (0.1-10 mm)"
+        print "Error please enter positive integer value (0.1-200 mm)"
         return True
 
 
@@ -272,12 +297,12 @@ def getMeasurementPoints():
     # Y axis points
     while True:
         ypoints = askForPoints("Y")
-        if xpoints is not True:
+        if ypoints is not True:
             break
     # Z axis points
     while True:
         zpoints = askForPoints("Z")
-        if xpoints is not True:
+        if zpoints is not True:
             break
     #
     return (xpoints, ypoints, zpoints)
@@ -423,7 +448,7 @@ def main(argv):
         resolution = getResolution()
         logging.info("Points from terminal: " + str(rrPoints))
         #
-        if MEASURE_DEVICE == 'pna':
+        if MEASURE_DEVICE == 'pna' and REPRAP_DEVICE == 'enable':
             print device.getPnaIDN()
             freq = device.getFrequencyRange()
             points = device.getNumberOfMeasurementPoints()
@@ -455,6 +480,16 @@ def main(argv):
                   % allPoints)
             #
             # actual move and measure procedure here
+            pp = moveRepRapX(rr, device, window, True, resolution, 600,
+                             rrPoints[0], rrPoints[1], rrPoints[2])
+            print pp
+            '''
+            moveRepRapY(rr, device, window, True, resolution, 600,
+                        rrPoints[0], rrPoints[1], rrPoints[2])
+            moveRepRapY(rr, device, window, False, resolution, 600,
+                        rrPoints[0], rrPoints[1], rrPoints[2])
+            '''
+            '''
             for z in range(rrPoints[2]):
                 if z % 2:
                     direction = False
@@ -466,6 +501,7 @@ def main(argv):
                 logging.info("Y direction set to: %s" % direction)
                 moveRepRapY(rr, device, window, direction, resolution, 600,
                             rrPoints[0], rrPoints[1], z)
+            '''
             #
             # finish measurement and disconnect from PNA
             if REPRAP_DEVICE == 'enable':
