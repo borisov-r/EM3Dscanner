@@ -5,6 +5,7 @@ import logging
 import sys
 import os
 import xml.etree.ElementTree as ET
+import csv
 import EM3Dnalib
 import EM3Dreprap
 import datetime
@@ -29,12 +30,9 @@ class ParseInput(object):
                             'Choose device for the measurement. Default: None')
         parser.add_argument('-c', '--config',
                             help=
-                            'Set configuration file name. Default: "em3da.xml"')
-        parser.add_argument('-l', '--log-file',
-                            help=
-                            'Set log file name. Default: "EM3Dscanner.log"')
+                            'Set configuration file. Default: "em3da.xml"')
         parser.add_argument('-o', '--output',
-                            help='Output file name. Default: "RawData.data"')
+                            help='Output file. Default: "RawData.data"')
         #
         args = parser.parse_args()
         #
@@ -47,14 +45,11 @@ class ParseInput(object):
         # config file --config
         c = self.parseConfigFile(args)
         #
-        # log file --log-file
-        l = self.parseLogFile(args)
-        #
         # output file --output
         o = self.parseOutputFile(args)
         #
-        # m - measure device, rr - reprap, c - cofiguration, l - log, o - output
-        return (m, rr, c, l, o)
+        # m - measure device, rr - reprap, c - cofiguration, o - output
+        return (m, rr, c, o)
 
     def parseConfigFile(self, args):
         ''' parse config file --config
@@ -69,21 +64,6 @@ class ParseInput(object):
         else:
             c = None
         return c
-
-    def parseLogFile(self, args):
-        ''' parse log-file
-        '''
-        if args.log_file:
-            if os.path.exists(args.log_file):
-                os.remove(args.log_file)
-                l = args.log_file
-                print("Old log file was found and was deleted")
-            else:
-                l = args.log_file
-                print("Old log file was not found")
-        else:
-            l = None
-        return l
 
     def parseOutputFile(self, args):
         ''' parse output file
@@ -102,25 +82,30 @@ class ParseInput(object):
 
 
 class LogData(object):
-    ''' Create logging object and log everything to file
+    ''' Create logging object and log everything to file 'em3dterminal.log'
+
+            example: LogData(logging.DEBUG)
+
+            options: logging.DEBUG, logging.INFO, logging.WARNING,
+                     logging.ERROR, logging.CRITICAL
+        After calling this object you can use:
+                     logging.debug('message')
+                     logging.info('message')
+                     logging.warning('message')
+                     logging.error('message')
+                     logging.critical('critical')
     '''
-    def __init__(self, fileName, level=logging.INFO):
-        if fileName is not None:
-            logging.basicConfig(filename=fileName, level=level,
-                                format='%(asctime)s %(levelname)s %(message)s')
-        elif fileName is None:
-            logging.basicConfig(filename='temp.log', level=level,
-                                format='%(asctime)s %(levelname)s %(message)s')
-        else:
-            pass
+    def __init__(self, levelMode):
+        logging.basicConfig(filename="em3dterminal.log",
+                            level=levelMode, filemode='w',
+                            format='%(asctime)s %(levelname)s %(message)s')
 
 
 class ConfigReader(object):
     ''' Read configuration file
     '''
-    def __init__(self, fileName):
-        if fileName is not None:
-            tree = ET.parse(fileName)
+    def __init__(self):
+        pass
 
 
 class Scanner(object):
@@ -137,8 +122,7 @@ class Scanner(object):
         OUTPUT_FILE_NAME = None
         configuration = ParseInput()
         print configuration.parsedInput
-        logFile = configuration.parsedInput[3]
-        LogData(logFile)
+        LogData(logging.INFO)
         logging.info("Another TEST")
         pass
 

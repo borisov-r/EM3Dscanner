@@ -13,7 +13,7 @@ import datetime
 CONFIG_FILE_NAME = "em3da.xml"
 
 # Log file name. Should be defined in config file.
-LOG_FILE_NAME = None
+LOG_FILE_NAME = "em3d.log"
 
 # Default output file name
 OUTPUT_FILE_NAME = "RawData.data"
@@ -40,7 +40,6 @@ def parseInput():
     global REPRAP_DEVICE
     global OUTPUT_FILE_NAME
     global CONFIG_FILE_NAME
-    global LOG_FILE_NAME
     #
     logFileExists = False
     #
@@ -54,9 +53,6 @@ def parseInput():
     parser.add_argument('-c', '--config',
                         help=
                         'Set configuration file name. Default: "em3da.xml"')
-    parser.add_argument('-l', '--log-file',
-                        help=
-                        'Set log file name. Default: "EM3Dscanner.log"')
     parser.add_argument('-o', '--output',
                         help='Output file name. Default: "RawData.data"')
     #
@@ -80,9 +76,6 @@ def parseInput():
     elif os.path.exists(CONFIG_FILE_NAME):
         logFileExists = True
     #
-    if args.log_file:
-        LOG_FILE_NAME = args.log_file
-    #
     if args.output:
         # set output file name
         OUTPUT_FILE_NAME = (args.output)
@@ -98,12 +91,8 @@ def parseConfigFile(name=CONFIG_FILE_NAME):
         measurement device parameters.
     '''
     #
-    global LOG_FILE_NAME
     tree = ET.parse(name)
     #
-    if LOG_FILE_NAME is None:
-        LOG_FILE_NAME = tree.findtext('./log/log-file')
-
     if MEASURE_DEVICE == 'pna':
         # return (IP, PORT, CALIB) of the PNA
         pnaIp = tree.findtext('./pna/ip')
@@ -420,6 +409,12 @@ def moveRepRapY(reprap, na, window, dir, res, speed,
         logging.info("Y direction set to: %s" % dir)
         moveRepRapX(rr, device, window, direction, res, speed,
                     pointsX, y, pointsZ)
+
+
+def moveRR_x_axis(reprap, direction):
+    ''' This function uses M114 - get current coordinate to start x movement
+    '''
+    pass
 
 
 def main(argv):
