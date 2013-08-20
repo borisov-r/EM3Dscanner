@@ -1,9 +1,2 @@
-2013-08-19 17:44:05,992 INFO Logging started
-2013-08-19 17:44:05,993 INFO Config from terminal len: 4
-2013-08-19 17:44:05,994 INFO Parameters read from file len: 3
-2013-08-19 17:44:08,992 INFO Connected to PNA
-2013-08-19 17:44:10,435 INFO points for axis X: 10
-2013-08-19 17:44:11,075 INFO points for axis Y: 10
-2013-08-19 17:44:12,787 INFO points for axis Z: 10
-2013-08-19 17:44:14,092 INFO scan resolution: 10.0
-2013-08-19 17:44:14,092 INFO Points from terminal: (10, 10, 10)
+2013-08-20 12:19:13,404 CRITICAL Header written to the file
+2013-08-20 12:19:13,415 CRITICAL info message

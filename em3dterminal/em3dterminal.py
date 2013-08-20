@@ -82,26 +82,6 @@ class ParseInput(object):
         return o
 
 
-class LogData(object):
-    ''' Create logging object and log everything to file 'em3dterminal.log'
-
-            example: LogData(logging.DEBUG)
-
-            options: logging.DEBUG, logging.INFO, logging.WARNING,
-                     logging.ERROR, logging.CRITICAL
-        After calling this object you can use:
-                     logging.debug('message')
-                     logging.info('message')
-                     logging.warning('message')
-                     logging.error('message')
-                     logging.critical('critical')
-    '''
-    def __init__(self, levelMode):
-        logging.basicConfig(filename="em3dterminal.log",
-                            level=levelMode, filemode='w',
-                            format='%(asctime)s %(levelname)s %(message)s')
-
-
 class ConfigReader(object):
     ''' Read configuration file
     '''
@@ -145,7 +125,7 @@ class Scanner(object):
         self.MAX_Z_AXIS = 1200
         #
         # start logging before anything else started
-        log = LogData(logging.INFO)
+        log = EM3Dfile.LogData(logging.INFO)
         logging.info("Logging started")
         #
         # Configuration contains:

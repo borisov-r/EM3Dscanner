@@ -28,6 +28,7 @@
 """
 import csv
 import datetime
+import logging
 
 
 class EM3Dfile(object):
@@ -38,6 +39,7 @@ class EM3Dfile(object):
     '''
     def __init__(self, filename, device, log,
                  logFileName='em3dterminal.log'):
+        self.log = log  # logging to file
         self.LOG_FILE_NAME = logFileName
         self.T = "\n"  # termination character
         # create new file each time when EM3Dfile is called
@@ -48,8 +50,10 @@ class EM3Dfile(object):
                 f.writelines(datetime.datetime.now().isoformat())
                 f.writelines(self.T)
                 f.writelines("# Device:         " + device + self.T)
+                self.log.append("Date and device written output file")
         else:
             print("Output file not defined")
+            self.log.append("Output file not defined")
 
     def createHeader(self, minFreq, maxFreq, points, parameters,
                      xPoints, yPoints, zPoints, resolution):
@@ -70,8 +74,10 @@ class EM3Dfile(object):
                 f.writelines("# Volume:         " +
                              str(int(xPoints) * int(yPoints) * int(zPoints)) +
                              self.T)
+                self.log.append("PNA header created in output file")
         except IOError, e:
             print e
+            self.log.append(e)
 
     def coordinatesToFile(self, coords):
         ''' Change format of the coordinates from RepRap to CSV.
@@ -79,10 +85,12 @@ class EM3Dfile(object):
                 return string with tabs
         '''
         c = coords.strip()
+        self.log.append("Input coordinates: %s" % c)
         x = c.translate(None, "XYZE")
         y = x[1:]   # remove first string ":"
         z = y[0:len(y) - 5]     # remove extruder coordinates
         sp = z.split(":")
+        self.log.append("Output coordinates: %s" % sp)
         return sp
 
     def appendToFile(self, coord, data):
@@ -96,6 +104,7 @@ class EM3Dfile(object):
         with open(self.OUTPUT_FILE, 'a') as f:
             writer = csv.writer(f, delimiter='\t')
             writer.writerow(message)
+            self.log.append("One of CSV 'coord' and 'data' row appended")
         pass
 
     def csvReader(self):
@@ -106,13 +115,68 @@ class EM3Dfile(object):
                     print row
         except IOError:
             print "Set output file !"
+            self.log.append("IOError in csvReader()")
+
+
+class LogData(object):
+    ''' Create logging object and log everything to file 'em3dterminal.log'
+
+            example: LogData(logging.DEBUG)
+
+            options: logging.DEBUG, logging.INFO, logging.WARNING,
+                     logging.ERROR, logging.CRITICAL
+
+            After calling this object you can use:
+                    log = LogData(logging.INFO
+                     debug('message')
+                     logging.info('message')
+                     logging.warning('message')
+                     logging.error('message')
+                     logging.critical('critical')
+    '''
+    def __init__(self, levelMode):
+        # start logging file
+        self.level = levelMode
+        print self.level
+        logging.basicConfig(filename="em3dterminal.log",
+                            level=levelMode, filemode='w',
+                            format='%(asctime)s %(levelname)s %(message)s')
+        logging.info("Logging started")
+
+    def append(self, message):
+        # append message to log file
+        #
+        # logging.DEBUG
+        if self.level == 10:
+            logging.debug(message)
+        #
+        # logging.INFO
+        elif self.level == 20:
+            logging.info(message)
+        #
+        # logging.WARNING
+        elif self.level == 30:
+            logging.warning(message)
+        #
+        # logging.ERROR
+        elif self.level == 40:
+            logging.error(message)
+        #
+        # logging.CRITICAL
+        elif self.level == 50:
+            logging.critical(message)
+        #
+        else:
+            pass
 
 
 def main():
-    cf = EM3Dfile('em3d.out', 'pna')
+    log = LogData(logging.CRITICAL)
+    cf = EM3Dfile('em3d.out', 'pna', log)
     cf.createHeader("2.9GHz", "3.0GHz", "+201", "S21", "31", "21", "41", "5")
     cf.csvReader()
     cf.appendToFile("X:0.10Y:5.00Z:0.00E:0.00", "+3.002,-31.431e10")
+    log.append("info message")
     pass
 
 
