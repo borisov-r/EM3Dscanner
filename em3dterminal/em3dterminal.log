@@ -1,8 +1,7 @@
-2013-08-21 15:56:45,661 INFO Logging started
-2013-08-21 15:56:45,661 INFO Logging started
-2013-08-21 15:56:45,663 INFO Output file is: None
-2013-08-21 15:56:45,663 INFO Parameters from terminal: m: pna rr: enable c: None o: None
-2013-08-21 15:56:45,663 INFO Config from terminal len: 4
-2013-08-21 15:56:45,664 INFO Parameters read from file len: 3
-2013-08-21 15:56:46,579 INFO Connected to RepRap
-2013-08-21 15:56:49,575 INFO Error while connecting to PNA
+2013-08-21 16:48:49,383 INFO Logging started
+2013-08-21 16:48:49,383 INFO Logging started
+2013-08-21 16:48:49,384 INFO Output file is: None
+2013-08-21 16:48:49,384 INFO Parameters from terminal: m: pna rr: enable c: None o: None
+2013-08-21 16:48:49,384 INFO Config from terminal len: 4
+2013-08-21 16:48:49,385 INFO Parameters read from file len: 3
+2013-08-21 16:48:49,386 INFO RepRap connection error

@@ -154,6 +154,11 @@ class Scanner(object):
             print rr
         #
         #
+        if rr is not False and config[1] == 'enable':
+            if con is not None:
+                reprapInit = EM3Dreprap()
+                reprapInit.connect(devParams[])
+        #
         device = self.connect(config[0], devParams)
         print device
         #

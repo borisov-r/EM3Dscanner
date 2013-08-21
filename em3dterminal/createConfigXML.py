@@ -18,7 +18,7 @@ def main():
     # create atmega configuration
     atmega = ET.SubElement(root, "atmega")
     baud = ET.SubElement(atmega, "port")
-    baud.text = "/dev/ttyACM0"
+    baud.text = "/dev/ttyUSB0"
     atmega.set("name", "atmega128rfa1")
     baud = ET.SubElement(atmega, "baud")
     baud.text = "9600"

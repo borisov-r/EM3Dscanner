@@ -100,7 +100,7 @@ class RepRap(object):
                 X:0.00Y:0.00Z:0.00E:0.00
         '''
         if self.printer is not None:
-            self.printer.write('G91' + self.term)
+            self.printer.write('M114' + self.term)
             self.readline().strip()
             return self.readline().strip()
 

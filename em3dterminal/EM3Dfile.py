@@ -98,8 +98,8 @@ class EM3Dfile(object):
                 receives two strings 'coords' and 'data'
                 data format: +2.80000000000E+010,+2.80100000000E+010
         '''
-        dd = data.split(",")
         cc = self.coordinatesToFile(coord)
+        dd = data.split(",")
         message = cc + dd
         with open(self.OUTPUT_FILE, 'a') as f:
             writer = csv.writer(f, delimiter='\t')
