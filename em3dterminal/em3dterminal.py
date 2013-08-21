@@ -11,12 +11,13 @@ import EM3Dfile
 #import datetime
 
 
-class ParseInput(object):
+class InputParser(object):
     ''' Parse input from console
     '''
-    def __init__(self):
+    def __init__(self, logFileName):
         ''' Initial state
         '''
+        self.log = logFileName
         self.parsedInput = self.parseArguments()
 
     def parseArguments(self):
@@ -49,6 +50,8 @@ class ParseInput(object):
         o = self.parseOutputFile(args)
         #
         # m - measure device, rr - reprap, c - cofiguration, o - output
+        self.log.append("Parameters from terminal: " +
+                        "m: %s rr: %s c: %s o: %s" % (m, rr, c, o))
         return (m, rr, c, o)
 
     def parseConfigFile(self, args):
@@ -67,18 +70,21 @@ class ParseInput(object):
         return c
 
     def parseOutputFile(self, args):
-        ''' parse output file
+        ''' parse output file --output
         '''
         if args.output:
             # set output file name
             if os.path.exists(args.output):
                 os.remove(args.output)
                 o = args.output
+                self.log.append("Old output file was found and was deleted")
                 print("Old output file was found and was deleted")
             else:
                 o = args.output
+                self.log.append("Output file is set to: %s" % args.output)
         else:
             o = None
+            self.log.append("Output file is: %s" % o)
         return o
 
 
@@ -132,48 +138,53 @@ class Scanner(object):
         #                   (MEASURE_DEVICE, REPRAP, CONFIG, OUTPUT)
         #                   ( {pna,atmega}, {enable/disable}, CONFIG, OUTPUT )
         #
-        configuration = ParseInput()
+        configuration = InputParser(log)
         config = configuration.parsedInput
         logging.info("Config from terminal len: %s" % len(config))
         #
         # Read configuration file
         con = ConfigReader()
         devParams = con.parseConfigFile(config[0])
-        logging.info("Parameters read from file len: %s" % len(devParams))
+        if devParams is not None:
+            logging.info("Parameters read from file len: %s" % len(devParams))
         #
         # Start RepRap if 'enable'
         if config[1] == 'enable':
             rr = self.reprap(enable=True)
+            print rr
         #
         #
         device = self.connect(config[0], devParams)
+        print device
         #
         # Data points for X, Y, Z from terminal
         # Returns: tuple(xpoints, ypoints, zpoints)
-        rrPoints = self.getMeasurementPoints()
-        resolution = self.getResolution()
-        logging.info("Points from terminal: " + str(rrPoints))
+        if device is not False and device == 'pna':
+            rrPoints = self.getMeasurementPoints()
+            resolution = self.getResolution()
+            logging.info("Points from terminal: " + str(rrPoints))
         #
         # Connect to pna
-        if config[0] == 'pna' and config[1] == 'enable':
-            window = self.askForPNAwindow()
-            print device.getPnaIDN()
-            print window
-            freq = device.getFrequencyRange()
-            points = device.getNumberOfMeasurementPoints()
-            parameters = device.askPna("calc:par:cat?")
-            minFreq = self.freq[0:(len(freq) / 2)]
-            maxFreq = self.freq[(len(freq) / 2) + 1:len(freq)]
-            #
-            # set output file from console
-            out = EM3Dfile.EM3Dfile(config[3], config[0], log)
-            # create header
-            out.createHeader(minFreq, maxFreq, points, parameters,
-                             rrPoints[0], rrPoints[1], rrPoints[2],
-                             resolution)
-            #
-            out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
-                             "+2.80000000000E+010,+2.80100000000E+010")
+        if device is not False and rr is not False and\
+           config[0] == 'pna' and config[1] == 'enable':
+                window = self.askForPNAwindow()
+                print device.getPnaIDN()
+                print window
+                freq = device.getFrequencyRange()
+                points = device.getNumberOfMeasurementPoints()
+                parameters = device.askPna("calc:par:cat?")
+                minFreq = self.freq[0:(len(freq) / 2)]
+                maxFreq = self.freq[(len(freq) / 2) + 1:len(freq)]
+                #
+                # set output file from console
+                out = EM3Dfile.EM3Dfile(config[3], config[0], log)
+                # create header
+                out.createHeader(minFreq, maxFreq, points, parameters,
+                                 rrPoints[0], rrPoints[1], rrPoints[2],
+                                 resolution)
+                #
+                out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
+                                 "+2.80000000000E+010,+2.80100000000E+010")
         #
         # finish measurement and disconnect from PNA
         if device == 'enable':
@@ -201,9 +212,12 @@ class Scanner(object):
         if device == 'pna':
             pna = EM3Dnalib.NetworkAnalyzer()
             try:
-                pna.connect(parameters[0], parameters[1])
-                logging.info('Connected to PNA')
-                return pna
+                if pna.connect(parameters[0], parameters[1]):
+                    logging.info('Connected to PNA')
+                    return pna
+                else:
+                    logging.info('Error while connecting to PNA')
+                    return False
             except:
                 logging.info('Error while connecting to PNA')
                 return False

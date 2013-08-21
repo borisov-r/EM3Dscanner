@@ -78,9 +78,10 @@ class NetworkAnalyzer:
                 self.tn.read_until(self.ScpiChar, self.Timeout)
                 return True
             else:
-                print("Already connected to PNA.")
+                print("Already connected to PNA")
+                return False
         except:
-            print("Error while connecting.")
+            print("Error while connecting to PNA")
 
     def disconnect(self):
         # disconnect telnet connection to pna

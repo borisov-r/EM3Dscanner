@@ -127,8 +127,8 @@ class LogData(object):
                      logging.ERROR, logging.CRITICAL
 
             After calling this object you can use:
-                    log = LogData(logging.INFO
-                     debug('message')
+                     log = LogData(logging.INFO)
+                     logging.debug('message')
                      logging.info('message')
                      logging.warning('message')
                      logging.error('message')
@@ -137,7 +137,7 @@ class LogData(object):
     def __init__(self, levelMode):
         # start logging file
         self.level = levelMode
-        print self.level
+        #print self.level
         logging.basicConfig(filename="em3dterminal.log",
                             level=levelMode, filemode='w',
                             format='%(asctime)s %(levelname)s %(message)s')
