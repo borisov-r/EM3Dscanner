@@ -5,7 +5,7 @@ from xml.dom import minidom
 def prettify(elem):
     """Return a pretty-printed XML string for the Element.
     """
-    rough_string = ET.tostring(elem, 'utf-8')
+    rough_string = ET.tostring(elem, "utf-8")
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
 
@@ -44,7 +44,7 @@ def main():
     document = prettify(root)
 
     # write file to disk
-    output_file = open('em3da.xml', 'w')
+    output_file = open("em3dterminal.xml", "w")
     output_file.write(document)
     output_file.close()
 
