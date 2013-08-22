@@ -21,6 +21,10 @@ def main():
     rr_port.text = "/dev/ttyACM0"
     rr_baud = ET.SubElement(reprap, "baud")
     rr_baud.text = "115200"
+    rr_maxXYaxis = ET.SubElement(reprap, "MAX_XY_AXIS")
+    rr_maxXYaxis.text = "2000"
+    rr_maxZaxis = ET.SubElement(reprap, "MAX_Z_AXIS")
+    rr_maxZaxis.text = "1200"
 
     # create pna configuration
     pna = ET.SubElement(root, "pna")
@@ -39,6 +43,11 @@ def main():
     atmega_baud.text = "/dev/ttyUSB0"
     atmega_baud = ET.SubElement(atmega, "baud")
     atmega_baud.text = "9600"
+
+    # create output file configuration
+    output = ET.SubElement(root, "output")
+    output_file = ET.SubElement(output, "file")
+    output_file.text = "em3dterminal.out"
 
     # create prettified document string
     document = prettify(root)

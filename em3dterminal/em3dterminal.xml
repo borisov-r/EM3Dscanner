@@ -3,6 +3,8 @@
   <reprap firmware="Sprinter">
     <port>/dev/ttyACM0</port>
     <baud>115200</baud>
+    <MAX_XY_AXIS>2000</MAX_XY_AXIS>
+    <MAX_Z_AXIS>1200</MAX_Z_AXIS>
   </reprap>
   <pna name="N5230C">
     <ip>10.1.15.106</ip>
@@ -13,4 +15,7 @@
     <port>/dev/ttyUSB0</port>
     <baud>9600</baud>
   </atmega>
+  <output>
+    <file>em3dterminal.out</file>
+  </output>
 </config>

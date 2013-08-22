@@ -1,7 +1,8 @@
-2013-08-21 16:48:49,383 INFO Logging started
-2013-08-21 16:48:49,383 INFO Logging started
-2013-08-21 16:48:49,384 INFO Output file is: None
-2013-08-21 16:48:49,384 INFO Parameters from terminal: m: pna rr: enable c: None o: None
-2013-08-21 16:48:49,384 INFO Config from terminal len: 4
-2013-08-21 16:48:49,385 INFO Parameters read from file len: 3
-2013-08-21 16:48:49,386 INFO RepRap connection error
+2013-08-22 16:47:48,107 INFO Logging started
+2013-08-22 16:47:48,108 INFO Configuration file is set to: None
+2013-08-22 16:47:48,108 INFO Output file is set to: None
+2013-08-22 16:47:48,108 INFO Parameters from terminal: m(None) rr(None) c(None) o(None)
+2013-08-22 16:47:48,108 INFO Default config file name exists'em3dterminal.xml'
+2013-08-22 16:47:48,110 INFO RepRap is set to: None
+2013-08-22 16:47:48,110 INFO Parsed data from config file: device(None), reprap(None)
+2013-08-22 16:47:48,110 INFO Logging stoped

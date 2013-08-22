@@ -4,7 +4,6 @@ import argparse         # get arguments from terminal
 import logging
 #import sys
 import os
-import xml.etree.ElementTree as ET
 import EM3Dnalib
 import EM3Dreprap
 import EM3Dfile
@@ -51,7 +50,7 @@ class InputParser(object):
         #
         # m - measure device, rr - reprap, c - cofiguration, o - output
         self.log.append("Parameters from terminal: " +
-                        "m: %s rr: %s c: %s o: %s" % (m, rr, c, o))
+                        "m(%s) rr(%s) c(%s) o(%s)" % (m, rr, c, o))
         return (m, rr, c, o)
 
     def parseConfigFile(self, args):
@@ -60,13 +59,14 @@ class InputParser(object):
         if args.config:
             if os.path.exists(args.config):
                 c = args.config
-                logging.info("Configuration file found")
+                self.log.append("Configuration file found")
             else:
                 c = args.config
-                logging.info("Configuration file not found")
+                self.log.append("Configuration file not found")
                 print("Configuration file not found")
         else:
             c = None
+            self.log.append("Configuration file is set to: %s" % c)
         return c
 
     def parseOutputFile(self, args):
@@ -81,38 +81,11 @@ class InputParser(object):
                 print("Old output file was found and was deleted")
             else:
                 o = args.output
-                self.log.append("Output file is set to: %s" % args.output)
+                self.log.append("Output file is: %s" % args.output)
         else:
             o = None
-            self.log.append("Output file is: %s" % o)
+            self.log.append("Output file is set to: %s" % o)
         return o
-
-
-class ConfigReader(object):
-    ''' Read configuration file
-    '''
-    def __init__(self):
-        pass
-
-    def parseConfigFile(self, device, name="em3dterminal.xml"):
-        ''' Parse configuration file and returns tuple of
-            measurement device parameters.
-        '''
-        #
-        tree = ET.parse(name)
-        #
-        if device == 'pna':
-            # return (IP, PORT, CALIB) of the PNA
-            pnaIp = tree.findtext('./pna/ip')
-            pnaPort = tree.findtext('./pna/port')
-            pnaCalib = tree.findtext('./pna/calib')
-            return (pnaIp, pnaPort, pnaCalib)
-        elif device == 'atmega':
-            atmegaPort = tree.findtext('./atmega/port')
-            atmegaBaud = tree.findtext('./atmega/baud')
-            return (atmegaPort, atmegaBaud)
-        else:
-            return None
 
 
 class Scanner(object):
@@ -124,40 +97,65 @@ class Scanner(object):
                 2. Parse inputs.
                 3. ...
         '''
-        # Define maximum X and Y axis movement
-        self.MAX_XY_AXIS = 2000
-        #
-        # Define maximum Z axis movement
-        self.MAX_Z_AXIS = 1200
         #
         # start logging before anything else started
         log = EM3Dfile.LogData(logging.INFO)
-        logging.info("Logging started")
         #
-        # Configuration contains:
-        #                   (MEASURE_DEVICE, REPRAP, CONFIG, OUTPUT)
-        #                   ( {pna,atmega}, {enable/disable}, CONFIG, OUTPUT )
+        # read input on start
+        #   ( MEASURE_DEVICE,    REPRAP       , CONFIG, OUTPUT )
+        #   (  {pna,atmega} , {enable/disable}, CONFIG, OUTPUT )
+        c = InputParser(log)
+        catchTerminal = c.parsedInput
         #
-        configuration = InputParser(log)
-        config = configuration.parsedInput
-        logging.info("Config from terminal len: %s" % len(config))
+        # set
+        # 'deviceEnable', 'reprapEnable', 'configEnable' and 'outputEnable'
+        # from terminal
+        self.deviceEnable = catchTerminal[0]
+        self.reprapEnable = catchTerminal[1]
+        self.configEnable = catchTerminal[2]
+        self.outputEnable = catchTerminal[3]
+        #
+        print catchTerminal
+        #
+        #
+        c = EM3Dfile.ConfigReader(log)
+        cfe = c.checkIfConfigFileExists(self.outputEnable)
+        # read configuration from file
+        if self.configEnable is not None and cfe is True:
+            device = c.parseDeviceFromConfigFile(self.deviceEnable,
+                                                 self.configEnable)
+            reprap = c.parseRepRapFromConfigFile(self.reprapEnable,
+                                                 self.configEnable)
+            log.append("Parsed data from config file: " +
+                       "device(%s), reprap(%s)" % (device, reprap))
+        elif cfe is True:
+            c = EM3Dfile.ConfigReader(log)
+            device = c.parseDeviceFromConfigFile(self.deviceEnable)
+            reprap = c.parseRepRapFromConfigFile(self.reprapEnable)
+            log.append("Parsed data from config file: " +
+                       "device(%s), reprap(%s)" % (device, reprap))
+        else:
+            print("Configuration file not found")
+        #
+        # current configuration is set now in device and reprap variables
+        #
+        #
+        #
+        #
+        #
         #
         # Read configuration file
-        con = ConfigReader()
-        devParams = con.parseConfigFile(config[0])
+        '''
+        con = ConfigReader(log)
+        devParams = con.parseDeviceFromConfigFile(config[0])
+        reprapParams = con.parseRepRapFromConfigFile(config[1])
         if devParams is not None:
             logging.info("Parameters read from file len: %s" % len(devParams))
         #
         # Start RepRap if 'enable'
         if config[1] == 'enable':
-            rr = self.reprap(enable=True)
-            print rr
+            self.reprap(enable=True)
         #
-        #
-        if rr is not False and config[1] == 'enable':
-            if con is not None:
-                reprapInit = EM3Dreprap()
-                reprapInit.connect(devParams[])
         #
         device = self.connect(config[0], devParams)
         print device
@@ -170,7 +168,7 @@ class Scanner(object):
             logging.info("Points from terminal: " + str(rrPoints))
         #
         # Connect to pna
-        if device is not False and rr is not False and\
+        if device is not False and\
            config[0] == 'pna' and config[1] == 'enable':
                 window = self.askForPNAwindow()
                 print device.getPnaIDN()
@@ -193,8 +191,18 @@ class Scanner(object):
         #
         # finish measurement and disconnect from PNA
         if device == 'enable':
-            rr.disconnect()
+            #rr.disconnect()
             logging.info("RepRap disconnected")
+        '''
+        log.append("Logging stoped")
+        pass
+
+    def start(self):
+        ''' Main function that should be started in __init__ method
+        '''
+        #
+
+        pass
 
     def reprap(self, p='/dev/ttyACM0', b='115200', enable=False):
         ''' Connect to reprap and test movements.
@@ -202,13 +210,13 @@ class Scanner(object):
         if enable:
             rr = EM3Dreprap.RepRap()
             if rr.connect(port=p, baudrate=b):
-                logging.info('Connected to RepRap')
+                self.log.append('Connected to RepRap')
                 return rr
             else:
-                logging.info('RepRap connection error')
+                self.log.append('RepRap connection error')
                 return False
         else:
-            logging.info('RepRap disabled')
+            self.log.append('RepRap disabled')
             pass
 
     def connect(self, device, parameters):

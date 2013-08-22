@@ -26,9 +26,11 @@
         csvReader(self)             - read output file and print line by line
 
 """
+import os
 import csv
 import datetime
 import logging
+import xml.etree.ElementTree as ET
 
 
 class EM3Dfile(object):
@@ -118,21 +120,111 @@ class EM3Dfile(object):
             self.log.append("IOError in csvReader()")
 
 
+class ConfigReader(object):
+    ''' Read configuration file
+    '''
+    def __init__(self, log):
+        self.log = log
+
+    def checkIfConfigFileExists(self, fileName):
+        ''' Check if file exists before running operation on files
+        '''
+        if fileName is not None:
+            if os.path.exists(fileName):
+                self.log.append("File '%s' exists" % fileName)
+                return True
+            elif os.path.exists("em3dterminal.xml"):
+                self.log.append("Default config file name exists")
+                return True
+            else:
+                self.log.append("File '%s' wasn't found" % fileName)
+                return False
+        else:
+            if os.path.exists("em3dterminal.xml"):
+                self.log.append("Default config file name exists" +
+                                "'em3dterminal.xml'")
+                return True
+            else:
+                self.log.append("File '%s' wasn't found" % fileName)
+                return False
+
+    def parseDeviceFromConfigFile(self, device, name="em3dterminal.xml"):
+        ''' Parse configuration file and returns tuple of
+            measurement device parameters.
+        '''
+        #
+        tree = ET.parse(name)
+        #
+        if device == 'pna':
+            # return (IP, PORT, CALIB) of the PNA
+            pnaIp = tree.findtext('./pna/ip')
+            pnaPort = tree.findtext('./pna/port')
+            pnaCalib = tree.findtext('./pna/calib')
+            self.log.append("PNA parsed from config file to: " +
+                            "ip(%s), port(%s), calib(%s)"
+                            % (pnaIp, pnaPort, pnaCalib))
+            return (pnaIp, pnaPort, pnaCalib)
+        elif device == 'atmega':
+            atmegaPort = tree.findtext('./atmega/port')
+            atmegaBaud = tree.findtext('./atmega/baud')
+            self.log.append("ATmega parsed from config file to: " +
+                            "port(%s), baud(%s)"
+                            % (atmegaPort, atmegaBaud))
+            return (atmegaPort, atmegaBaud)
+        else:
+            return None
+
+    def parseRepRapFromConfigFile(self, reprap, name="em3dterminal.xml"):
+        ''' Parse configuration file and returns tuple of
+            reprap device parameters.
+        '''
+        #
+        tree = ET.parse(name)
+        #
+        if reprap == 'enable':
+            # return (PORT, BAUD)
+            reprapPort = tree.findtext('./reprap/port')
+            reprapBaud = tree.findtext('./reprap/baud')
+            self.log.append("Parsed reprap parameters from file: "
+                            + "port(%s), baud(%s)"
+                            % (reprapPort, reprapBaud))
+            return (reprapPort, reprapBaud)
+        else:
+            self.log.append("RepRap is set to: %s" % reprap)
+            return None
+
+    def parseOutputFromConfigFile(self, out, name="em3dterminal.xml"):
+        ''' Parse configuration file and returns tuple of
+            reprap device parameters.
+        '''
+        #
+        tree = ET.parse(name)
+        #
+        if out is not None:
+            self.log.append("Parsed output from terminal: "
+                            + "o(%s)" % out)
+            return (out)
+        else:
+            output = tree.findtext('./output/file')
+            self.log.append("Output is set to: %s" % output)
+            return (output)
+
+
 class LogData(object):
     ''' Create logging object and log everything to file 'em3dterminal.log'
 
             example: LogData(logging.DEBUG)
 
             options: logging.DEBUG, logging.INFO, logging.WARNING,
-                     logging.ERROR, logging.CRITICAL
+                        logging.ERROR, logging.CRITICAL
 
             After calling this object you can use:
-                     log = LogData(logging.INFO)
-                     logging.debug('message')
-                     logging.info('message')
-                     logging.warning('message')
-                     logging.error('message')
-                     logging.critical('critical')
+                        log = LogData(logging.INFO)
+                        logging.debug('message')
+                        logging.info('message')
+                        logging.warning('message')
+                        logging.error('message')
+                        logging.critical('critical')
     '''
     def __init__(self, levelMode):
         # start logging file
