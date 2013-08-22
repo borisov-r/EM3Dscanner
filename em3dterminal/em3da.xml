@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+  <reprap firmware="Sprinter">
+    <port>/dev/ttyACM0</port>
+    <baud>115200</baud>
+  </reprap>
+  <pna name="N5230C">
+    <ip>10.1.15.106</ip>
+    <port>5024</port>
+    <calib>calibrationRado1.csa</calib>
+  </pna>
+  <atmega name="atmega128rfa1">
+    <port>/dev/ttyUSB0</port>
+    <baud>9600</baud>
+  </atmega>
+</config>
