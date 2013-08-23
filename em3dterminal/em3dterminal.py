@@ -141,13 +141,19 @@ class Scanner(object):
                     log.append("Network analyzer object created: " +
                                + "%s successfully" % na)
                 else:
+                    del na
                     log.append("Can not connect to Network Analyzer")
             #
             # create RepRap object and connect to it
             if reprap is not None:
                 rr = EM3Dreprap.RepRap()
-                rr.connect(reprap[0], reprap[1])
-                log.append("Reprap object created 'rr': %s" % rr)
+                if rr.connect(reprap[0], reprap[1]):
+                    log.append("Reprap object created 'rr': " +
+                               "%s with config file" % rr)
+                else:
+                    # if can't connect to reprap delete 'rr' variable
+                    del rr
+                    log.append("Can't connect to RepRap printer")
         #
         # read default config file if -c parameter not set
         elif cfe is True:

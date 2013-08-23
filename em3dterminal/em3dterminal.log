@@ -1,15 +1,15 @@
-2013-08-23 11:13:17,622 INFO Logging started
-2013-08-23 11:13:17,624 INFO Configuration file is set to: None
-2013-08-23 11:13:17,624 INFO Output file is set to: None
-2013-08-23 11:13:17,624 INFO Parameters from terminal: m(pna) rr(enable) c(None) o(None)
-2013-08-23 11:13:17,624 INFO Default config file name exists 'em3dterminal.xml'
-2013-08-23 11:13:17,625 INFO PNA parsed from config file to: ip(10.1.15.106), port(5024), calib(calibrationRado1.csa)
-2013-08-23 11:13:17,626 INFO Parsed reprap parameters from file: port(/dev/ttyACM0), baud(115200)
-2013-08-23 11:13:17,626 INFO Parsed data from config file: device(('10.1.15.106', '5024', 'calibrationRado1.csa')), reprap(('/dev/ttyACM0', '115200'))
-2013-08-23 11:13:17,626 INFO 'deviceEnable' is set to: pna
-2013-08-23 11:13:17,626 INFO Default config file and deviceEnable set to 'pna'
-2013-08-23 11:13:20,623 INFO Can't connect to Network Analyzer
-2013-08-23 11:13:21,540 INFO Reprap object created 'rr': <EM3Dreprap.RepRap object at 0xd8ce10>
-2013-08-23 11:13:21,557 INFO Reprap is now disconnected
-2013-08-23 11:13:21,557 INFO Network Analyzer object does not exists in locals() 'na'
-2013-08-23 11:13:21,558 INFO Logging stoped
+2013-08-23 11:21:53,761 INFO Logging started
+2013-08-23 11:21:53,763 INFO Configuration file is set to: None
+2013-08-23 11:21:53,763 INFO Output file is set to: None
+2013-08-23 11:21:53,763 INFO Parameters from terminal: m(pna) rr(enable) c(None) o(None)
+2013-08-23 11:21:53,763 INFO Default config file name exists 'em3dterminal.xml'
+2013-08-23 11:21:53,764 INFO PNA parsed from config file to: ip(10.1.15.106), port(5024), calib(calibrationRado1.csa)
+2013-08-23 11:21:53,765 INFO Parsed reprap parameters from file: port(/dev/ttyACM0), baud(115200)
+2013-08-23 11:21:53,765 INFO Parsed data from config file: device(('10.1.15.106', '5024', 'calibrationRado1.csa')), reprap(('/dev/ttyACM0', '115200'))
+2013-08-23 11:21:53,765 INFO 'deviceEnable' is set to: pna
+2013-08-23 11:21:53,765 INFO Default config file and deviceEnable set to 'pna'
+2013-08-23 11:21:56,763 INFO Can't connect to Network Analyzer
+2013-08-23 11:21:57,683 INFO Reprap object created 'rr': <EM3Dreprap.RepRap object at 0x1cb8e10>
+2013-08-23 11:21:57,701 INFO Reprap is now disconnected
+2013-08-23 11:21:57,701 INFO Network Analyzer object does not exists in locals() 'na'
+2013-08-23 11:21:57,701 INFO Logging stoped
