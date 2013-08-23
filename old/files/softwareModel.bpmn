@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:bpmn="http://stp.eclipse.org/bpmn" xmi:id="_QfxX0W6TEeG7Md0F6eh2tQ" iD="_QfxX0G6TEeG7Md0F6eh2tQ">
+  <pools xmi:type="bpmn:Pool" xmi:id="_Qf7I0W6TEeG7Md0F6eh2tQ" iD="_Qf7I0G6TEeG7Md0F6eh2tQ" name="Agilent PNA 5230C">
+    <artifacts xmi:type="bpmn:TextAnnotation" xmi:id="_gdfYwW6TEeG7Md0F6eh2tQ" iD="_gdfYwG6TEeG7Md0F6eh2tQ" name="Telnet on port 5024"/>
+    <artifacts xmi:type="bpmn:TextAnnotation" xmi:id="_3QQk8W6eEeGhk4m1-lP36A" iD="_3QQk8G6eEeGhk4m1-lP36A" name="Stops all sweeps"/>
+    <artifacts xmi:type="bpmn:Group" xmi:id="_P5KX4W6gEeGhk4m1-lP36A" iD="_P5KX4G6gEeGhk4m1-lP36A" activities="_q0qKcG6fEeGhk4m1-lP36A _zpsRc26fEeGhk4m1-lP36A _1r5ZwG6fEeGhk4m1-lP36A _rv8uAG6fEeGhk4m1-lP36A _qIGmcG6fEeGhk4m1-lP36A _ep2acW6fEeGhk4m1-lP36A _pQBu9m6fEeGhk4m1-lP36A _mdsxQG6fEeGhk4m1-lP36A _1r6A0G6fEeGhk4m1-lP36A _1r5Zwm6fEeGhk4m1-lP36A _1r5ZwW6fEeGhk4m1-lP36A _1r5Zw26fEeGhk4m1-lP36A _1r6A0W6fEeGhk4m1-lP36A _1r6A0m6fEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Qf7I026TEeG7Md0F6eh2tQ" iD="_Qf7I0m6TEeG7Md0F6eh2tQ" name="SCPI" activityType="Task"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_sXd2cW6eEeGhk4m1-lP36A" iD="_sXd2cG6eEeGhk4m1-lP36A" name="ABORt"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_ep2acW6fEeGhk4m1-lP36A" iD="_ep2acG6fEeGhk4m1-lP36A" name="*CLS" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_mdsxQG6fEeGhk4m1-lP36A" iD="_mdsKMG6fEeGhk4m1-lP36A" name="*ESE" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_pQBu9m6fEeGhk4m1-lP36A" iD="_pQBH4W6fEeGhk4m1-lP36A" name="*ESE?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_qIGmcG6fEeGhk4m1-lP36A" iD="_qIF_YW6fEeGhk4m1-lP36A" name="*ESR?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_q0qKcG6fEeGhk4m1-lP36A" iD="_q0pjYW6fEeGhk4m1-lP36A" name="*IDN?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_rv8uAG6fEeGhk4m1-lP36A" iD="_rv8G8W6fEeGhk4m1-lP36A" name="*OPC" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_zpsRc26fEeGhk4m1-lP36A" iD="_zprqYW6fEeGhk4m1-lP36A" name="*OPC?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_1r5ZwG6fEeGhk4m1-lP36A" iD="_1r2WcW6fEeGhk4m1-lP36A" name="*OPT?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_1r5ZwW6fEeGhk4m1-lP36A" iD="_1r29gG6fEeGhk4m1-lP36A" name="*RST" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_1r5Zwm6fEeGhk4m1-lP36A" iD="_1r29iG6fEeGhk4m1-lP36A" name="*SRE" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_1r5Zw26fEeGhk4m1-lP36A" iD="_1r3kkm6fEeGhk4m1-lP36A" name="*SRE?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_1r6A0G6fEeGhk4m1-lP36A" iD="_1r3kmm6fEeGhk4m1-lP36A" name="*STB?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_1r6A0W6fEeGhk4m1-lP36A" iD="_1r4Lp26fEeGhk4m1-lP36A" name="*TST?" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_1r6A0m6fEeGhk4m1-lP36A" iD="_1r4ysG6fEeGhk4m1-lP36A" name="*WAI" groups="_P5KX4W6gEeGhk4m1-lP36A"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_g7WREG6hEeGhk4m1-lP36A" iD="_g7VqAW6hEeGhk4m1-lP36A" name="CALCulate"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_oFF6926hEeGhk4m1-lP36A" iD="_oFFT4m6hEeGhk4m1-lP36A" name=":CORRection"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_vU2tQG6hEeGhk4m1-lP36A" iD="_vU2GMW6hEeGhk4m1-lP36A" name=":CUSTom"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_39og8G6hEeGhk4m1-lP36A" iD="_39n54W6hEeGhk4m1-lP36A" name=":DATA"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_-__wcW6hEeGhk4m1-lP36A" iD="_-__JYW6hEeGhk4m1-lP36A" name=":EQUation"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_SqKN8m6iEeGhk4m1-lP36A" iD="_SqJm4W6iEeGhk4m1-lP36A" name=":FILTer"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_eqiPkG6iEeGhk4m1-lP36A" iD="_eqhogW6iEeGhk4m1-lP36A" name=":FORMat"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lYDQcW6iEeGhk4m1-lP36A" iD="_lYCpYW6iEeGhk4m1-lP36A" name=":FSIMulator"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_25j_YG6iEeGhk4m1-lP36A" iD="_25jYUW6iEeGhk4m1-lP36A" name=":FUNCtion"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_8jhRgG6iEeGhk4m1-lP36A" iD="_8jgDYm6iEeGhk4m1-lP36A" name=":GCData"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_M7MDgG6jEeGhk4m1-lP36A" iD="_M7LccG6jEeGhk4m1-lP36A" name=":GCMeas"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_UxClcm6jEeGhk4m1-lP36A" iD="_UxB-YW6jEeGhk4m1-lP36A" name=":GDELay"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_YvL2AG6jEeGhk4m1-lP36A" iD="_YvLO8G6jEeGhk4m1-lP36A" name=":LIMit"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_fqrBc26jEeGhk4m1-lP36A" iD="_fqqaYW6jEeGhk4m1-lP36A" name=":MARKer"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCfjmG6jEeGhk4m1-lP36A" iD="_nCb5MW6jEeGhk4m1-lP36A" name=":MATH"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgKoG6jEeGhk4m1-lP36A" iD="_nCcgQG6jEeGhk4m1-lP36A" name=":MIXer"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgKoW6jEeGhk4m1-lP36A" iD="_nCdHUG6jEeGhk4m1-lP36A" name=":NORMalize"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgKom6jEeGhk4m1-lP36A" iD="_nCdHWG6jEeGhk4m1-lP36A" name=":OFFSet"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgKo26jEeGhk4m1-lP36A" iD="_nCduYG6jEeGhk4m1-lP36A" name=":PARameter"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgxsG6jEeGhk4m1-lP36A" iD="_nCduaG6jEeGhk4m1-lP36A" name=":RDATa?"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgxsW6jEeGhk4m1-lP36A" iD="_nCeVcm6jEeGhk4m1-lP36A" name=":SMOothing"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgxsm6jEeGhk4m1-lP36A" iD="_nCeVem6jEeGhk4m1-lP36A" name=":TRANsform"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nCgxs26jEeGhk4m1-lP36A" iD="_nCe8h26jEeGhk4m1-lP36A" name=":X:VALues"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_MMKk4G6kEeGhk4m1-lP36A" iD="_MMJ90W6kEeGhk4m1-lP36A" name="CONTrol"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_QoPHkG6kEeGhk4m1-lP36A" iD="_QoOggW6kEeGhk4m1-lP36A" name="CSET"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_bVHhB26kEeGhk4m1-lP36A" iD="_bVG58m6kEeGhk4m1-lP36A" name="DISPlay"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_f_bUAG6kEeGhk4m1-lP36A" iD="_f_as8G6kEeGhk4m1-lP36A" name="FORMat"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_59uCAG6kEeGhk4m1-lP36A" iD="_59ta8W6kEeGhk4m1-lP36A" name="HCOPy"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_AYIgsG6lEeGhk4m1-lP36A" iD="_AYH5oW6lEeGhk4m1-lP36A" name="INITiate"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_MUV0AG6lEeGhk4m1-lP36A" iD="_MUVM8W6lEeGhk4m1-lP36A" name="MMEMory"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_SfegkG6lEeGhk4m1-lP36A" iD="_SfdScm6lEeGhk4m1-lP36A" name="OUTPut"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_aF6tgW6lEeGhk4m1-lP36A" iD="_aF6GcW6lEeGhk4m1-lP36A" name="ROUTe"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lHgLoG6lEeGhk4m1-lP36A" iD="_lHdvYG6lEeGhk4m1-lP36A" name="SENSe"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lHgLoW6lEeGhk4m1-lP36A" iD="_lHdvaG6lEeGhk4m1-lP36A" name="SOURce"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lHgLom6lEeGhk4m1-lP36A" iD="_lHeWcm6lEeGhk4m1-lP36A" name="SOURce:POWer:CORRection"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lHgysG6lEeGhk4m1-lP36A" iD="_lHeWem6lEeGhk4m1-lP36A" name="STATus"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lHgysW6lEeGhk4m1-lP36A" iD="_lHe9h26lEeGhk4m1-lP36A" name="SYSTem"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lHgysm6lEeGhk4m1-lP36A" iD="_lHe9j26lEeGhk4m1-lP36A" name="SYST:CONF:EDEVice:"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lHhZwG6lEeGhk4m1-lP36A" iD="_lHfkl26lEeGhk4m1-lP36A" name="TRIGger:"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0A9126oEeGhk4m1-lP36A" iD="_Zz4a8G6oEeGhk4m1-lP36A" name=":AVERage"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0A92G6oEeGhk4m1-lP36A" iD="_Zz5CB26oEeGhk4m1-lP36A" name=":BANDwidth"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0Bk4G6oEeGhk4m1-lP36A" iD="_Zz5pEG6oEeGhk4m1-lP36A" name=":CLASs"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0Bk4W6oEeGhk4m1-lP36A" iD="_Zz5pGG6oEeGhk4m1-lP36A" outgoingEdges="_FV_TEW6rEeGhk4m1-lP36A" name=":CORRection"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0Bk4m6oEeGhk4m1-lP36A" iD="_Zz6QJ26oEeGhk4m1-lP36A" name=":COUPle"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0CL8G6oEeGhk4m1-lP36A" iD="_Zz6QL26oEeGhk4m1-lP36A" name=":FOM"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0CL8W6oEeGhk4m1-lP36A" iD="_Zz63N26oEeGhk4m1-lP36A" name=":FOM:Range:Segment"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0CL8m6oEeGhk4m1-lP36A" iD="_Zz7eQG6oEeGhk4m1-lP36A" name=":FREQuency"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0CL826oEeGhk4m1-lP36A" iD="_Zz7eSG6oEeGhk4m1-lP36A" name=":GCSetup"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0CzAG6oEeGhk4m1-lP36A" iD="_Zz8FV26oEeGhk4m1-lP36A" name=":IF"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0CzAW6oEeGhk4m1-lP36A" iD="_Zz8FX26oEeGhk4m1-lP36A" name=":IF:FILTer"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0CzAm6oEeGhk4m1-lP36A" iD="_Zz8sZ26oEeGhk4m1-lP36A" name=":IMD"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0DaEG6oEeGhk4m1-lP36A" iD="_Zz9TcG6oEeGhk4m1-lP36A" name=":IMS"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0DaEW6oEeGhk4m1-lP36A" iD="_Zz9TeG6oEeGhk4m1-lP36A" name=":MIXer"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0EBIG6oEeGhk4m1-lP36A" iD="_Zz96h26oEeGhk4m1-lP36A" name=":MIXer:ELO:"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0EBIW6oEeGhk4m1-lP36A" iD="_Zz-hkG6oEeGhk4m1-lP36A" name=":MULTiplexer&lt;id>"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0EBIm6oEeGhk4m1-lP36A" iD="_Zz-hmG6oEeGhk4m1-lP36A" name=":NOISe"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0EoMG6oEeGhk4m1-lP36A" iD="_Zz_Io26oEeGhk4m1-lP36A" name=":OFFSet"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0EoMW6oEeGhk4m1-lP36A" iD="_Zz_Iq26oEeGhk4m1-lP36A" name=":PATH"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0EoMm6oEeGhk4m1-lP36A" iD="_Zz_vt26oEeGhk4m1-lP36A" name=":POWer"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0FPQG6oEeGhk4m1-lP36A" iD="_Z0AWwG6oEeGhk4m1-lP36A" name=":PULSe"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Z0FPQW6oEeGhk4m1-lP36A" iD="_Z0AWyG6oEeGhk4m1-lP36A" name=":ROSCillator"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_i7025m6oEeGhk4m1-lP36A" iD="_i7yaoG6oEeGhk4m1-lP36A" name=":SEGMent"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_i702526oEeGhk4m1-lP36A" iD="_i7yaqG6oEeGhk4m1-lP36A" name=":SWEep"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_i71d8G6oEeGhk4m1-lP36A" iD="_i7zBtm6oEeGhk4m1-lP36A" name=":X"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_mk_rEG6qEeGhk4m1-lP36A" iD="_mk_EAW6qEeGhk4m1-lP36A" incomingEdges="_FV_TEW6rEeGhk4m1-lP36A" name=":CKIT"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_teujBW6qEeGhk4m1-lP36A" iD="_tet78m6qEeGhk4m1-lP36A" name=":COLLect:CKIT:"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_t-0YUG6qEeGhk4m1-lP36A" iD="_t-zxQW6qEeGhk4m1-lP36A" name=":CSET"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_u5bmcG6qEeGhk4m1-lP36A" iD="_u5a_YW6qEeGhk4m1-lP36A" name=":EXTension"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_w50w6G6qEeGhk4m1-lP36A" iD="_w50w4G6qEeGhk4m1-lP36A" name=":COLLect:GUIDed"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_xpy1QG6qEeGhk4m1-lP36A" iD="_xpyOMm6qEeGhk4m1-lP36A" name=":IMD"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_zDmg2G6qEeGhk4m1-lP36A" iD="_zDmg0G6qEeGhk4m1-lP36A" name=":SESSion"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_zxoEcG6qEeGhk4m1-lP36A" iD="_zxndYW6qEeGhk4m1-lP36A" name=":SESSion:SMC"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_2GhfR26qEeGhk4m1-lP36A" iD="_2Gg4Mm6qEeGhk4m1-lP36A" name="Collect:Session:VMC"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_FV_TEW6rEeGhk4m1-lP36A" iD="_FV_TEG6rEeGhk4m1-lP36A"/>
+  </pools>
+</bpmn:BpmnDiagram>
