@@ -1,5 +1,0 @@
-<VTKFile type="Collection" version="0.1" byte_order="LittleEndian">
-  <Collection>
-    <DataSet part="0" file="saveTest/saveTest_0.vti"/>
-  </Collection>
-</VTKFile>
