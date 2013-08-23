@@ -1,23 +1,27 @@
-2013-08-23 17:34:33,121 INFO Logging started
-2013-08-23 17:34:33,121 INFO Scanner object created
-2013-08-23 17:34:33,123 INFO Terminal arguments(Namespace(config=None, measure=None, output='test.out', reprap=None))
-2013-08-23 17:34:33,123 INFO Parameters from terminal: m(None) rr(None) c(None) o(test.out)
-2013-08-23 17:34:33,123 INFO Parsed arguments (None) (None) (None) (test.out)
-2013-08-23 17:34:33,123 INFO ### Checking if 'None' exists
-2013-08-23 17:34:33,123 INFO File 'em3d.xml' exists
-2013-08-23 17:34:33,123 INFO ### Getting config file name 'None'
-2013-08-23 17:34:33,123 INFO Config file name is 'em3d.xml'
-2013-08-23 17:34:33,123 INFO ### Configuration file is set to 'em3d.xml'
-2013-08-23 17:34:33,124 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
-2013-08-23 17:34:33,125 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
-2013-08-23 17:34:33,125 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
-2013-08-23 17:34:33,126 INFO Output from file ( em3d.out )
-2013-08-23 17:34:33,126 INFO Configuration loaded from file 'em3d.xml'
-2013-08-23 17:34:33,126 INFO ### Configuration finished 
-2013-08-23 17:34:33,126 INFO ### Output file name set from terminal to ( test.out )
-2013-08-23 17:34:33,126 INFO ### Output file creation started
-2013-08-23 17:34:33,126 INFO Date and device written to 'test.out' file
-2013-08-23 17:34:33,126 INFO PNA header created in output file
-2013-08-23 17:34:33,126 INFO Input coordinates: X:0.00Y:0.00Z:0.00E:0.00
-2013-08-23 17:34:33,126 INFO Output coordinates: ['0.00', '0.00', '0.00']
-2013-08-23 17:34:33,126 INFO One of CSV 'coord' and 'data' row appended
+2013-08-23 18:17:38,347 INFO Logging started
+2013-08-23 18:17:38,347 INFO Scanner object created
+2013-08-23 18:17:38,348 INFO Terminal arguments(Namespace(config=None, measure='pna', output='test.out', reprap=None))
+2013-08-23 18:17:38,348 INFO Parameters from terminal: m(pna) rr(None) c(None) o(test.out)
+2013-08-23 18:17:38,348 INFO Parsed arguments (pna) (None) (None) (test.out)
+2013-08-23 18:17:38,348 INFO ### Checking if 'None' exists
+2013-08-23 18:17:38,348 INFO File 'em3d.xml' exists
+2013-08-23 18:17:38,349 INFO ### Getting config file name 'None'
+2013-08-23 18:17:38,349 INFO Config file name is 'em3d.xml'
+2013-08-23 18:17:38,349 INFO ### Configuration file is set to 'em3d.xml'
+2013-08-23 18:17:38,350 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
+2013-08-23 18:17:38,350 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
+2013-08-23 18:17:38,351 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
+2013-08-23 18:17:38,351 INFO Output from file ( em3d.out )
+2013-08-23 18:17:38,351 INFO Configuration loaded from file 'em3d.xml'
+2013-08-23 18:17:38,352 INFO ### Configuration finished 
+2013-08-23 18:17:38,352 INFO Network Analyzer object created ( <EM3Dnalib.NetworkAnalyzer instance at 0x7fbe9b84cdd0> )
+2013-08-23 18:17:38,352 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
+2013-08-23 18:17:41,351 INFO Can't connect to PNA
+2013-08-23 18:17:41,352 INFO ### Output file name set from terminal to ( test.out )
+2013-08-23 18:17:41,352 INFO ### Output file creation started
+2013-08-23 18:17:41,352 INFO Date and device written to 'test.out' file
+2013-08-23 18:17:41,352 INFO PNA header created in output file
+2013-08-23 18:17:41,352 INFO Input coordinates: X:0.00Y:0.00Z:0.00E:0.00
+2013-08-23 18:17:41,352 INFO Output coordinates: ['0.00', '0.00', '0.00']
+2013-08-23 18:17:41,352 INFO One of CSV 'coord' and 'data' row appended
+2013-08-23 18:17:41,353 INFO Logging finished

@@ -62,6 +62,7 @@ class NetworkAnalyzer:
         # ask pna for system error messages
         self.AskForSystemErrorMsg = "SYSTEM:ERROR?"
         self.tn = None
+        self.connected = None
 
     def connect(self, IPaddress=None, Port=None):
         self.IPaddress = IPaddress
@@ -76,6 +77,7 @@ class NetworkAnalyzer:
                 self.IDN = self.tn.read_until(self.TermChar, self.Timeout)
                 # flush the pna buffer
                 self.tn.read_until(self.ScpiChar, self.Timeout)
+                self.connected = True
                 return True
             else:
                 print("Already connected to PNA")
@@ -89,6 +91,7 @@ class NetworkAnalyzer:
             if self.tn is not None:
                 self.tn.close()
                 self.IDN = None     # if pna is closed follows no IDN
+                self.connected = None
                 return True
             else:
                 print("No PNA connection.")

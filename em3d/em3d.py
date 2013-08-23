@@ -30,15 +30,29 @@ class Scanner(object):
         # better visualization in .log file
         log.append("### Configuration finished ")
 
+        self.reprap = RepRap()
         # create RepRap object if enabled
         if arguments[1] == 'enable':
-            self.reprap = RepRap()
             log.append("RepRap object created ( %s )" % self.reprap)
+            rr = config.getRepRapConfig()
+            if self.reprap.connect(rr[0], rr[1]):
+                log.append("RepRap is online")
+                print("RepRap is online")
+            else:
+                # if cannot connect to reprap
+                log.append("Can't connect to RepRap")
 
+        self.pna = NetworkAnalyzer()
         # create Network Analyzer object if selected
         if arguments[0] == 'pna':
-            self.pna = NetworkAnalyzer()
             log.append("Network Analyzer object created ( %s )" % self.pna)
+            na = config.getPnaConfig()
+            if self.pna.connect(na[0], na[1]):
+                log.append("PNA is online")
+                print("PNA is online")
+            else:
+                # if cannot connect to pna
+                log.append("Can't connect to PNA")
 
         # set output file name from terminal
         if arguments[3] is not None:
@@ -61,6 +75,23 @@ class Scanner(object):
                          "10", "0.1", log.name)
         out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
                          "+2.80000000000E+010,+2.80100000000E+010")
+
+        # disconnect reprap if connected
+        # how to disconnect reprap gracefully
+        if self.reprap.connected is True:
+            self.reprap.disconnect()
+            log.append("RepRap is offline")
+            print("RepRap is offline")
+
+        # disconnect pna if connected
+        # how to disconnect pna gracefully
+        if self.pna.connected is True:
+            self.pna.disconnect()
+            log.append("PNA is offline")
+            print("PNA is offline")
+
+        # logging finish
+        log.append("Logging finished")
 
     def test(self):
         pass

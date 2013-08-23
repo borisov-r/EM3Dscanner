@@ -56,6 +56,7 @@ class RepRap(object):
         self.yPoints = None
         self.zPoints = None
         self.currentPoint = None
+        self.connected = None
 
     def connect(self, port, baudrate, timeout=1):
         self.port = port
@@ -71,6 +72,7 @@ class RepRap(object):
             self.printer.readline().strip()
             self.printer.readline().strip()
             self.printer.write('G91' + self.term)
+            self.connected = True
             return True
         except:
             print 'Error while connecting to printer.'
@@ -117,6 +119,7 @@ class RepRap(object):
         if self.printer is not None:
             try:
                 self.printer.close()
+                self.connected = None
             except:
                 print 'Error while disconnecting.'
         else:
