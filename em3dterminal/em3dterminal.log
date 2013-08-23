@@ -1,15 +1,17 @@
-2013-08-23 11:21:53,761 INFO Logging started
-2013-08-23 11:21:53,763 INFO Configuration file is set to: None
-2013-08-23 11:21:53,763 INFO Output file is set to: None
-2013-08-23 11:21:53,763 INFO Parameters from terminal: m(pna) rr(enable) c(None) o(None)
-2013-08-23 11:21:53,763 INFO Default config file name exists 'em3dterminal.xml'
-2013-08-23 11:21:53,764 INFO PNA parsed from config file to: ip(10.1.15.106), port(5024), calib(calibrationRado1.csa)
-2013-08-23 11:21:53,765 INFO Parsed reprap parameters from file: port(/dev/ttyACM0), baud(115200)
-2013-08-23 11:21:53,765 INFO Parsed data from config file: device(('10.1.15.106', '5024', 'calibrationRado1.csa')), reprap(('/dev/ttyACM0', '115200'))
-2013-08-23 11:21:53,765 INFO 'deviceEnable' is set to: pna
-2013-08-23 11:21:53,765 INFO Default config file and deviceEnable set to 'pna'
-2013-08-23 11:21:56,763 INFO Can't connect to Network Analyzer
-2013-08-23 11:21:57,683 INFO Reprap object created 'rr': <EM3Dreprap.RepRap object at 0x1cb8e10>
-2013-08-23 11:21:57,701 INFO Reprap is now disconnected
-2013-08-23 11:21:57,701 INFO Network Analyzer object does not exists in locals() 'na'
-2013-08-23 11:21:57,701 INFO Logging stoped
+2013-08-23 12:53:43,431 INFO Logging started
+2013-08-23 12:53:43,433 INFO Configuration file is set to: None
+2013-08-23 12:53:43,433 INFO Output file is set to: None
+2013-08-23 12:53:43,433 INFO Parameters from terminal: m(None) rr(enable) c(None) o(None)
+2013-08-23 12:53:43,433 INFO Default config file name exists 'em3dterminal.xml'
+2013-08-23 12:53:43,434 INFO Parsed reprap parameters from file:                            port(/dev/ttyACM0), baud(115200), MAX_XY_AXIS(2000),                            + MAX_Z_AXIS(1200)
+2013-08-23 12:53:43,435 INFO Parsed data from config file: device(None), reprap(('/dev/ttyACM0', '115200', '2000', '1200'))
+2013-08-23 12:53:43,435 INFO 'deviceEnable' is set to: None
+2013-08-23 12:53:44,353 INFO Reprap object created 'rr': <EM3Dreprap.RepRap object at 0x25d7e10>
+2013-08-23 12:53:45,897 INFO points for axis X: 10
+2013-08-23 12:53:46,361 INFO points for axis Y: 20
+2013-08-23 12:53:46,852 INFO points for axis Z: 30
+2013-08-23 12:53:47,487 INFO scan resolution: 40.0
+2013-08-23 12:53:49,934 INFO PNA window selected: 1
+2013-08-23 12:53:49,952 INFO Reprap is now disconnected
+2013-08-23 12:53:49,952 INFO Network Analyzer object does not exists in locals() 'na'
+2013-08-23 12:53:49,952 INFO Logging stoped

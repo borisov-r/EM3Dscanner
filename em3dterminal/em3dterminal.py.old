@@ -148,8 +148,6 @@ class Scanner(object):
             if reprap is not None:
                 rr = EM3Dreprap.RepRap()
                 if rr.connect(reprap[0], reprap[1]):
-                    MAX_XY_AXIS = reprap[2]
-                    MAX_Z_AXIS = reprap[3]
                     log.append("Reprap object created 'rr': " +
                                "%s with config file" % rr)
                 else:
@@ -182,8 +180,6 @@ class Scanner(object):
             if reprap is not None:
                 rr = EM3Dreprap.RepRap()
                 if rr.connect(reprap[0], reprap[1]):
-                    MAX_XY_AXIS = reprap[2]
-                    MAX_Z_AXIS = reprap[3]
                     log.append("Reprap object created 'rr': %s" % rr)
                 else:
                     # if can't connect to reprap delete 'rr' variable
@@ -194,10 +190,7 @@ class Scanner(object):
         #
         # current configuration is set now in device and reprap variables
         #
-        # RepRap and Network Analyzer objects created
-        #if 'rr' in locals() and 'na' in locals():
-        if 'rr' in locals():
-            self.start(rr, 'NetworkAnalyzer', log, MAX_XY_AXIS, MAX_Z_AXIS)
+        #
         #
         #
         #
@@ -268,23 +261,11 @@ class Scanner(object):
         log.append("Logging stoped")
         pass
 
-    def start(self, reprap, device, logging,
-              MAX_XY_AXIS=2000, MAX_Z_AXIS=1200):
+    def start(self):
         ''' Main function that should be started in __init__ method
         '''
         #
-        log = logging
-        rr = reprap
-        dev = device
-        #
-        # get number of points for the measurement
-        points = self.getMeasurementPoints(log, MAX_XY_AXIS, MAX_Z_AXIS)
-        #
-        # get resolution
-        res = self.getResolution(log)
-        #
-        # get PNA window
-        win = self.getPNAwindow(log)
+
         pass
 
     def reprap(self, p='/dev/ttyACM0', b='115200', enable=False):
@@ -322,109 +303,106 @@ class Scanner(object):
             logging.info('This option is not available still.')
             return False
 
-    def askForPNAwindow(self, logging):
+    def askForPNAwindow(self):
         ''' get raw data from terminal and return value
         '''
-        log = logging
         try:
             value = int(raw_input('Select PNA window for the' +
                                   ' measurement (1-4): '))
             if value > 0 and value < 5:
-                log.append('PNA window selected: %s' % value)
+                logging.info('PNA window selected: %s' % value)
                 return value
             else:
                 return True
         except ValueError:
-            log.append('Error in askForPoints')
+            logging.info('Error in askForPoints')
             print "Error please enter positive integer value (1-4)"
             return True
 
-    def askForPoints(self, axis, logging, MAX_XY_AXIS=2000, MAX_Z_AXIS=1200):
+    def askForPoints(self, axis):
         ''' get raw data from terminal and return value
         '''
-        log = logging
         try:
             value = int(raw_input('Enter number of points for %s axis: '
                                   % axis))
             if axis == 'Z':
-                if value > 0 and value < MAX_Z_AXIS:
-                    log.append('points for axis %s: %s' % (axis, value))
+                if value > 0 and value < self.MAX_Z_AXIS:
+                    logging.info('points for axis %s: %s' % (axis, value))
                     return value
                 else:
-                    log.append('Error in askForPoints for %s axis' % axis)
+                    logging.info('Error in askForPoints for %s axis' % axis)
                     print("Error please enter positive integer value (1-%s)"
-                          % MAX_Z_AXIS)
+                          % self.MAX_Z_AXIS)
                     return True
-            elif value > 0 and value < MAX_XY_AXIS:
-                log.append('points for axis %s: %s' % (axis, value))
+            elif value > 0 and value < self.MAX_XY_AXIS:
+                logging.info('points for axis %s: %s' % (axis, value))
                 #logging.debug('number of points for %s: %s' % (axis, value))
                 return value
             else:
-                log.append('Error in askForPoints for %s axis' % axis)
+                logging.info('Error in askForPoints for %s axis' % axis)
                 print("Error please enter positive integer value (1-%s)"
-                      % MAX_XY_AXIS)
+                      % self.MAX_XY_AXIS)
                 return True
         except ValueError:
-            log.append('Error in askForPoints for %s axis' % axis)
+            logging.info('Error in askForPoints for %s axis' % axis)
             print "Error please enter positive integer value (1-100000)"
             return True
 
-    def askForResolution(self, logging):
+    def askForResolution(self):
         ''' get raw data from terminal and return value
         '''
-        log = logging
         try:
             value = float(raw_input('Enter scan resolution (0.1 - 200 mm): '))
             if (value > 0.09) and (value < 200.0):
                 # check if value is float from 0.1 to 200.0
-                log.append('scan resolution: %s' % value)
+                logging.info('scan resolution: %s' % value)
                 return value
             else:
-                log.append('Error in resolution value')
+                logging.info('Error in resolution value')
                 print "Error please enter positive integer value (0.1-200 mm)"
                 return True
         except ValueError:
-            log.append('Error in resolution value')
+            logging.info('Error in resolution value')
             print "Error please enter positive integer value (0.1-200 mm)"
             return True
 
-    def getPNAwindow(self, logging):
+    def getPNAwindow(self):
         ''' Get x, y, z points for the measurement.
         '''
         # X axis points
         while True:
-            window = self.askForPNAwindow(logging)
+            window = self.askForPNAwindow()
             if window is not True:
                 break
         #
         return (window)
 
-    def getResolution(self, logging):
+    def getResolution(self):
         ''' Ask for required resolution in terminal and set it. Returns value.
         '''
         while True:
-            resolution = self.askForResolution(logging)
+            resolution = self.askForResolution()
             if resolution is not True:
                 break
         #
         return (resolution)
 
-    def getMeasurementPoints(self, log, MAX_XY_AXIS=2000, MAX_Z_AXIS=1200):
+    def getMeasurementPoints(self):
         ''' Get x, y, z points for the measurement.
         '''
         # X axis points
         while True:
-            xpoints = self.askForPoints("X", log, MAX_XY_AXIS, MAX_Z_AXIS)
+            xpoints = self.askForPoints("X")
             if xpoints is not True:
                 break
         # Y axis points
         while True:
-            ypoints = self.askForPoints("Y", log, MAX_XY_AXIS, MAX_Z_AXIS)
+            ypoints = self.askForPoints("Y")
             if ypoints is not True:
                 break
         # Z axis points
         while True:
-            zpoints = self.askForPoints("Z", log, MAX_XY_AXIS, MAX_Z_AXIS)
+            zpoints = self.askForPoints("Z")
             if zpoints is not True:
                 break
         #

@@ -148,6 +148,29 @@ class ConfigReader(object):
                 self.log.append("File '%s' wasn't found" % fileName)
                 return False
 
+    def parseRepRapFromConfigFile(self, reprap, name="em3dterminal.xml"):
+        ''' Parse configuration file and returns tuple of
+            reprap device parameters.
+        '''
+        #
+        tree = ET.parse(name)
+        #
+        if reprap == 'enable':
+            # return (PORT, BAUD)
+            reprapPort = tree.findtext('./reprap/port')
+            reprapBaud = tree.findtext('./reprap/baud')
+            reprapMaxXY = tree.findtext('./reprap/MAX_XY_AXIS')
+            reprapMaxZ = tree.findtext('./reprap/MAX_Z_AXIS')
+            self.log.append("Parsed reprap parameters from file:\
+                            port(%s), baud(%s), MAX_XY_AXIS(%s),\
+                            + MAX_Z_AXIS(%s)"
+                            % (reprapPort, reprapBaud,
+                               reprapMaxXY, reprapMaxZ))
+            return (reprapPort, reprapBaud, reprapMaxXY, reprapMaxZ)
+        else:
+            self.log.append("RepRap is set to: %s" % reprap)
+            return None
+
     def parseDeviceFromConfigFile(self, device, name="em3dterminal.xml"):
         ''' Parse configuration file and returns tuple of
             measurement device parameters.
@@ -172,25 +195,6 @@ class ConfigReader(object):
                             % (atmegaPort, atmegaBaud))
             return (atmegaPort, atmegaBaud)
         else:
-            return None
-
-    def parseRepRapFromConfigFile(self, reprap, name="em3dterminal.xml"):
-        ''' Parse configuration file and returns tuple of
-            reprap device parameters.
-        '''
-        #
-        tree = ET.parse(name)
-        #
-        if reprap == 'enable':
-            # return (PORT, BAUD)
-            reprapPort = tree.findtext('./reprap/port')
-            reprapBaud = tree.findtext('./reprap/baud')
-            self.log.append("Parsed reprap parameters from file: "
-                            + "port(%s), baud(%s)"
-                            % (reprapPort, reprapBaud))
-            return (reprapPort, reprapBaud)
-        else:
-            self.log.append("RepRap is set to: %s" % reprap)
             return None
 
     def parseOutputFromConfigFile(self, out, name="em3dterminal.xml"):
