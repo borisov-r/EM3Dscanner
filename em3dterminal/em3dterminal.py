@@ -110,30 +110,75 @@ class Scanner(object):
         # set
         # 'deviceEnable', 'reprapEnable', 'configEnable' and 'outputEnable'
         # from terminal
-        self.deviceEnable = catchTerminal[0]
-        self.reprapEnable = catchTerminal[1]
-        self.configEnable = catchTerminal[2]
-        self.outputEnable = catchTerminal[3]
+        deviceEnable = catchTerminal[0]
+        reprapEnable = catchTerminal[1]
+        configEnable = catchTerminal[2]
+        outputEnable = catchTerminal[3]
         #
         print catchTerminal
         #
         #
         c = EM3Dfile.ConfigReader(log)
-        cfe = c.checkIfConfigFileExists(self.outputEnable)
+        cfe = c.checkIfConfigFileExists(outputEnable)
+        #
         # read configuration from file
-        if self.configEnable is not None and cfe is True:
-            device = c.parseDeviceFromConfigFile(self.deviceEnable,
-                                                 self.configEnable)
-            reprap = c.parseRepRapFromConfigFile(self.reprapEnable,
-                                                 self.configEnable)
+        # if configuration file set from terminal wit -c CONFIG.FILE
+        if configEnable is not None and cfe is True:
+            device = c.parseDeviceFromConfigFile(deviceEnable,
+                                                 configEnable)
+            reprap = c.parseRepRapFromConfigFile(reprapEnable,
+                                                 configEnable)
             log.append("Parsed data from config file: " +
                        "device(%s), reprap(%s)" % (device, reprap))
+            #
+            # create NetworkAnalyzer object
+            log.append("'deviceEnable' variable set to: %s" % deviceEnable)
+            if deviceEnable == 'pna' and device is not None:
+                na = EM3Dnalib.NetworkAnalyzer()
+                log.append("Config file set from terminal and " +
+                           "deviceEnable set to 'pna'")
+                if na.connect(device[0], device[1]):
+                    log.append("Network analyzer object created: " +
+                               + "%s successfully" % na)
+                else:
+                    log.append("Can not connect to Network Analyzer")
+            #
+            # create RepRap object and connect to it
+            if reprap is not None:
+                rr = EM3Dreprap.RepRap()
+                rr.connect(reprap[0], reprap[1])
+                log.append("Reprap object created 'rr': %s" % rr)
+        #
+        # read default config file if -c parameter not set
         elif cfe is True:
             c = EM3Dfile.ConfigReader(log)
-            device = c.parseDeviceFromConfigFile(self.deviceEnable)
-            reprap = c.parseRepRapFromConfigFile(self.reprapEnable)
+            device = c.parseDeviceFromConfigFile(deviceEnable)
+            reprap = c.parseRepRapFromConfigFile(reprapEnable)
             log.append("Parsed data from config file: " +
                        "device(%s), reprap(%s)" % (device, reprap))
+            #
+            # create NetworkAnalyzer object
+            log.append("'deviceEnable' is set to: %s" % deviceEnable)
+            if deviceEnable == 'pna' and device is not None:
+                na = EM3Dnalib.NetworkAnalyzer()
+                log.append("Default config file and " +
+                           "deviceEnable set to 'pna'")
+                if na.connect(device[0], device[1]):
+                    log.append("Network analyzer object created: " +
+                               + "%s successfully" % na)
+                else:
+                    del na
+                    log.append("Can't connect to Network Analyzer")
+            #
+            # create RepRap object and connect to it
+            if reprap is not None:
+                rr = EM3Dreprap.RepRap()
+                if rr.connect(reprap[0], reprap[1]):
+                    log.append("Reprap object created 'rr': %s" % rr)
+                else:
+                    # if can't connect to reprap delete 'rr' variable
+                    del rr
+                    log.append("Can't connect to RepRap printer")
         else:
             print("Configuration file not found")
         #
@@ -194,6 +239,19 @@ class Scanner(object):
             #rr.disconnect()
             logging.info("RepRap disconnected")
         '''
+        #
+        # check if rr variable defined and disconnect
+        if 'rr' in locals():
+            rr.disconnect()
+            log.append("Reprap is now disconnected")
+        else:
+            log.append("Reprap object does not exists locals() 'rr'")
+        if 'na' in locals():
+            na.disconnect()
+            log.append("Network Analyzer is now disconnected")
+        else:
+            log.append("Network Analyzer object " +
+                       "does not exists in locals() 'na'")
         log.append("Logging stoped")
         pass
 

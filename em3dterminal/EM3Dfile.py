@@ -141,7 +141,7 @@ class ConfigReader(object):
                 return False
         else:
             if os.path.exists("em3dterminal.xml"):
-                self.log.append("Default config file name exists" +
+                self.log.append("Default config file name exists " +
                                 "'em3dterminal.xml'")
                 return True
             else:

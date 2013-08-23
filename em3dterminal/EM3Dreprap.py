@@ -32,7 +32,7 @@ Official web site: https://github.com/borisov-r/3DEMscanner/wiki
 
 Usage:
     reprap = RepRap()
-    reprap.connecti("/dev/ttyACM0", 115200)
+    reprap.connect("/dev/ttyACM0", 115200)
     measureTuple = (0, 4, 0, 4, 0, 2)
     reprap.setMeasureDimensions(measureTuple)
     reprap.moveOneCube(wavelet=None, pna=None)
