@@ -103,8 +103,8 @@ class RepRap(object):
         '''
         if self.printer is not None:
             self.printer.write('M114' + self.term)
-            self.readline().strip()
-            return self.readline().strip()
+            self.printer.readline().strip()
+            return self.printer.readline().strip()
 
     def setMeasureDimensions(self, dimensionsTuple):
         self.setX(dimensionsTuple[0], dimensionsTuple[1])

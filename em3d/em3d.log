@@ -1,27 +1,86 @@
-2013-08-23 18:17:38,347 INFO Logging started
-2013-08-23 18:17:38,347 INFO Scanner object created
-2013-08-23 18:17:38,348 INFO Terminal arguments(Namespace(config=None, measure='pna', output='test.out', reprap=None))
-2013-08-23 18:17:38,348 INFO Parameters from terminal: m(pna) rr(None) c(None) o(test.out)
-2013-08-23 18:17:38,348 INFO Parsed arguments (pna) (None) (None) (test.out)
-2013-08-23 18:17:38,348 INFO ### Checking if 'None' exists
-2013-08-23 18:17:38,348 INFO File 'em3d.xml' exists
-2013-08-23 18:17:38,349 INFO ### Getting config file name 'None'
-2013-08-23 18:17:38,349 INFO Config file name is 'em3d.xml'
-2013-08-23 18:17:38,349 INFO ### Configuration file is set to 'em3d.xml'
-2013-08-23 18:17:38,350 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
-2013-08-23 18:17:38,350 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
-2013-08-23 18:17:38,351 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
-2013-08-23 18:17:38,351 INFO Output from file ( em3d.out )
-2013-08-23 18:17:38,351 INFO Configuration loaded from file 'em3d.xml'
-2013-08-23 18:17:38,352 INFO ### Configuration finished 
-2013-08-23 18:17:38,352 INFO Network Analyzer object created ( <EM3Dnalib.NetworkAnalyzer instance at 0x7fbe9b84cdd0> )
-2013-08-23 18:17:38,352 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
-2013-08-23 18:17:41,351 INFO Can't connect to PNA
-2013-08-23 18:17:41,352 INFO ### Output file name set from terminal to ( test.out )
-2013-08-23 18:17:41,352 INFO ### Output file creation started
-2013-08-23 18:17:41,352 INFO Date and device written to 'test.out' file
-2013-08-23 18:17:41,352 INFO PNA header created in output file
-2013-08-23 18:17:41,352 INFO Input coordinates: X:0.00Y:0.00Z:0.00E:0.00
-2013-08-23 18:17:41,352 INFO Output coordinates: ['0.00', '0.00', '0.00']
-2013-08-23 18:17:41,352 INFO One of CSV 'coord' and 'data' row appended
-2013-08-23 18:17:41,353 INFO Logging finished
+2013-08-26 16:47:34,407 INFO Logging started
+2013-08-26 16:47:35,334 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-26 16:47:35,335 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,335 INFO points: [0.0]
+2013-08-26 16:47:35,335 INFO current point x set to: 0.5
+2013-08-26 16:47:35,335 INFO current point x set to: 1.0
+2013-08-26 16:47:35,335 INFO current point x set to: 1.5
+2013-08-26 16:47:35,335 INFO current point x set to: 2.0
+2013-08-26 16:47:35,335 INFO current point x set to: 2.5
+2013-08-26 16:47:35,335 INFO current point x set to: 3.0
+2013-08-26 16:47:35,335 INFO current point x set to: 3.5
+2013-08-26 16:47:35,335 INFO current point x set to: 4.0
+2013-08-26 16:47:35,335 INFO current point x set to: 4.5
+2013-08-26 16:47:35,335 INFO current point x set to: 5.0
+2013-08-26 16:47:35,336 INFO current point x set to: 5.5
+2013-08-26 16:47:35,336 INFO current point x set to: 6.0
+2013-08-26 16:47:35,336 INFO current point x set to: 6.5
+2013-08-26 16:47:35,336 INFO last element x axis removed: 6.5
+2013-08-26 16:47:35,336 INFO points x axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
+2013-08-26 16:47:35,343 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-26 16:47:35,343 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,351 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-26 16:47:35,351 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,351 INFO points: [0.0]
+2013-08-26 16:47:35,351 INFO current point x set to: 0.5
+2013-08-26 16:47:35,352 INFO current point x set to: 1.0
+2013-08-26 16:47:35,352 INFO current point x set to: 1.5
+2013-08-26 16:47:35,352 INFO current point x set to: 2.0
+2013-08-26 16:47:35,352 INFO current point x set to: 2.5
+2013-08-26 16:47:35,352 INFO current point x set to: 3.0
+2013-08-26 16:47:35,352 INFO current point x set to: 3.5
+2013-08-26 16:47:35,352 INFO current point x set to: 4.0
+2013-08-26 16:47:35,352 INFO current point x set to: 4.5
+2013-08-26 16:47:35,352 INFO current point x set to: 5.0
+2013-08-26 16:47:35,352 INFO current point x set to: 5.5
+2013-08-26 16:47:35,352 INFO current point x set to: 6.0
+2013-08-26 16:47:35,352 INFO current point x set to: 6.5
+2013-08-26 16:47:35,352 INFO last element x axis removed: 6.5
+2013-08-26 16:47:35,353 INFO points x axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
+2013-08-26 16:47:35,360 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-26 16:47:35,360 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,360 INFO points: [0.0]
+2013-08-26 16:47:35,360 INFO current point y set to: 0.5
+2013-08-26 16:47:35,360 INFO current point y set to: 1.0
+2013-08-26 16:47:35,360 INFO current point y set to: 1.5
+2013-08-26 16:47:35,360 INFO current point y set to: 2.0
+2013-08-26 16:47:35,360 INFO current point y set to: 2.5
+2013-08-26 16:47:35,361 INFO current point y set to: 3.0
+2013-08-26 16:47:35,361 INFO current point y set to: 3.5
+2013-08-26 16:47:35,361 INFO current point y set to: 4.0
+2013-08-26 16:47:35,361 INFO current point y set to: 4.5
+2013-08-26 16:47:35,361 INFO current point y set to: 5.0
+2013-08-26 16:47:35,361 INFO last element y axis removed: 5.0
+2013-08-26 16:47:35,361 INFO points y axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5]
+2013-08-26 16:47:35,367 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-26 16:47:35,367 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,367 INFO points: [0.0]
+2013-08-26 16:47:35,368 INFO current point z set to: 0.1
+2013-08-26 16:47:35,368 INFO current point z set to: 0.2
+2013-08-26 16:47:35,368 INFO current point z set to: 0.3
+2013-08-26 16:47:35,368 INFO current point z set to: 0.4
+2013-08-26 16:47:35,368 INFO current point z set to: 0.5
+2013-08-26 16:47:35,368 INFO last element z axis removed: 0.5
+2013-08-26 16:47:35,368 INFO points z axis at the end: [0.0, 0.1, 0.2, 0.3, 0.4]
+2013-08-26 16:47:35,380 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-26 16:47:35,380 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,380 INFO points: [0.0]
+2013-08-26 16:47:35,380 INFO current point x set to: 0.5
+2013-08-26 16:47:35,381 INFO current point x set to: 1.0
+2013-08-26 16:47:35,381 INFO current point x set to: 1.5
+2013-08-26 16:47:35,381 INFO current point x set to: 2.0
+2013-08-26 16:47:35,381 INFO current point x set to: 2.5
+2013-08-26 16:47:35,381 INFO current point x set to: 3.0
+2013-08-26 16:47:35,381 INFO current point x set to: 3.5
+2013-08-26 16:47:35,381 INFO current point x set to: 4.0
+2013-08-26 16:47:35,381 INFO current point x set to: 4.5
+2013-08-26 16:47:35,381 INFO current point x set to: 5.0
+2013-08-26 16:47:35,381 INFO current point x set to: 5.5
+2013-08-26 16:47:35,381 INFO current point x set to: 6.0
+2013-08-26 16:47:35,381 INFO current point x set to: 6.5
+2013-08-26 16:47:35,381 INFO last element x axis removed: 6.5
+2013-08-26 16:47:35,381 INFO points x axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
+2013-08-26 16:47:35,388 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-26 16:47:35,388 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,388 INFO Current coordinates: x(0.0) y(0.0) z(0.0)
+2013-08-26 16:47:35,388 INFO Current element position in list: 3
