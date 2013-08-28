@@ -1,3 +1,4 @@
+import sys
 from LogFile import logging
 from LogFile import LogData
 from EM3Dreprap import RepRap
@@ -137,6 +138,7 @@ class Scanner(object):
             pl      - point list
             na      - network analyzer to get parameters
             of      - output file
+            currY   - current Y coordinate
         '''
         px = self.createStepPointsX()  # list of point on x axis
         #self.rr.printer.write("G90\n")
@@ -150,6 +152,7 @@ class Scanner(object):
                 self.log.append("(G1 X" + str(px[i]) + ") written to printer")
                 i1 = self.rr.printer.readline().strip()
                 i2 = None
+                sys.stdout.flush()
             elif i > 0:
                 # if more points wait for Movement finished and send next
                 self.rr.printer.write("G1 X" + str(px[i]) + "\n")
@@ -158,6 +161,8 @@ class Scanner(object):
                 while 1:
                     i2 = self.rr.printer.readline().strip()
                     if 'Movement' in i2:
+                        #self.log.warn(".")
+                        sys.stdout.flush()
                         self.log.append("i(%s) Movement finished." % i)
                         break
                     else:
@@ -168,19 +173,27 @@ class Scanner(object):
                 i2 = None
                 pass
             #
-            print i1, i2
+            #print i1, i2
             self.log.append("i1(%s) i2(%s)" % (i1, i2))
             currPosition = self.rr.getCurrentCoordinates()
-            print currPosition
+            #print currPosition
             data = "+2.80000000000E+010,+2.80100000000E+010"
             self.of.appendToFile(currPosition, data)
             #print px[i]
             percent = (i / float(len(px)) * 100.0)
             self.percent = self.trunc(percent, 1)
-            print("Percents done: " + self.percent + "%")
+            #print("Percents done: " + self.percent + "%")
+            #print("\rPercents done: " + self.percent + "%")
+            #print '\r[{0}] {1}%'.format('#' * (percent / 100), percent)
+            print ('\rX axis: %s' % self.percent),
+            print ('%'),
+            if i == len(px) - 1:
+                print ('\r. 100.0 %'),
+            #sys.stdout.write("\rPercents done: " + self.percent + "%")
+            #sys.stdout.flush
         #
         self.percent = "100.0"
-        print("Percents done: " + self.percent + "%")
+        print("\nPercents done: " + self.percent + "%")
         self.rr.printer.write("G1 X" + str(px[0]) + "F3000\n")
         self.rr.printer.write(self.rr.printer.readline().strip())
         self.rr.printer.write(self.rr.printer.readline().strip())

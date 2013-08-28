@@ -37,6 +37,10 @@ class LogData(object):
         else:
             pass
 
+    def warn(self, message):
+        # print something to console
+        logging.warning(message)
+
 
 def main():
     log = LogData(20)

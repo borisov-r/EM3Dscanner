@@ -78,10 +78,14 @@ class Scanner(object):
         #                 "+2.80000000000E+010,+2.80100000000E+010")
 
         # create one x row scan to file
-        s = Scan(logging=log, rr=self.reprap, na=None,
-                 mp=(13, 10, 5), of=out, step=(2.5, 1))
-        log.append("Scan object created")
-        s.mX()
+        if self.reprap.connect:
+            self.reprap.printer.write("G1 Y-10\n")
+            self.reprap.printer.readline()
+            self.reprap.printer.readline()
+            s = Scan(logging=log, rr=self.reprap, na=None,
+                     mp=(13, 10, 5), of=out, step=(2.5, 1))
+            log.append("Scan object created")
+            s.mX()
 
         # disconnect reprap if connected
         # how to disconnect reprap gracefully
