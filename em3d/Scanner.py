@@ -110,23 +110,29 @@ class Scanner(object):
         # if everything is correct return list with the coordinates
         return pnts
 
-    def moveOneStepX(self, coords):
-        if self.rr.connected:
-            currentCoordinates = self.getCoordTuple()
-            print currentCoordinates
-            print type(currentCoordinates)
-            self.log.append("Current coordinates: x(%s) y(%s) z(%s)"
-                            % currentCoordinates)
-            #
-            #if currentCoordinates[0] in coords:
-            #    place = coords.index(currentCoordinates[0])
-            #    print place
-            if 1.5 in coords:
-                # return position of the element with value
-                place = coords.index(1.5)
-                self.log.append("Current element position in list: %s"
-                                % place)
-                print place
+    def moveOneStepXforward(self, point, dir):
+        ''' coords_list - list with all points on X axis with given step
+            dir         - direction
+        '''
+        # move one step i X direction
+        if dir in '+':
+            message = ("G1 X" + dir + point + "\n")
+        elif dir in '-':
+            message = ("G1 X" + dir + point + "\n")
+        else:
+            self.log.append("No direction given for X axis")
+            pass
+        #self.rr.printer.write("G90\n")
+        self.rr.printer.write(message)
+        print self.rr.printer.readline().strip()
+        print self.rr.printer.readline().strip()
+        print self.rr.printer.readline().strip()
+        self.log.append("Printer moved to point X(%s)" % message)
+        self.rr.printer.write(message)
+        self.log.append("Printer moved to point X(%s)" % message)
+        self.rr.printer.write(message)
+        self.log.append("Printer moved to point X(%s)" % message)
+        return True
 
 
 def main():
@@ -143,7 +149,7 @@ def main():
     print y
     print z
     scan.oneRow()
-    scan.moveOneStepX(x)
+    scan.moveOneStepXforward("1.5", '-')
     pass
 
 if __name__ == '__main__':

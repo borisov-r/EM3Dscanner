@@ -137,7 +137,7 @@ class RepRap(object):
         else:
             sign = '-'
         if self.printer is not None:
-            self.printer.write('G91' + self.term)
+            #self.printer.write('G91' + self.term)
             self.printer.readline().strip()
             word = 'G1 X' + sign + str(moveX) + ' Y' + sign + str(moveY) + ' Z'
             + sign + str(moveZ) + ' F' + str(speed)
@@ -232,17 +232,19 @@ class RepRap(object):
 def main():
     reprap = RepRap()
     reprap.connect('/dev/ttyACM0', 115200)
-    expTuple = (-3, 3, 0, -6, 2, -2)
-    print 'Test tuple of points for measurement: ',
-    print expTuple
-    reprap.setMeasureDimensions(expTuple)
-    print 'Points to measure X: ',
-    print reprap.getX()
-    print 'Points to measure Y: ',
-    print reprap.getY()
-    print 'Points to measure Z: ',
-    print reprap.getZ()
-    reprap.moveOneCube()
+    #expTuple = (-3, 3, 0, -6, 2, -2)
+    #print 'Test tuple of points for measurement: ',
+    #print expTuple
+    #reprap.setMeasureDimensions(expTuple)
+    #print 'Points to measure X: ',
+    #print reprap.getX()
+    #print 'Points to measure Y: ',
+    #print reprap.getY()
+    #print 'Points to measure Z: ',
+    #print reprap.getZ()
+    #reprap.moveOneCube()
+    reprap.printer.write("G1 X")
+    reprap.disconnect()
 
 
 if __name__ == '__main__':
