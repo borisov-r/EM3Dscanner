@@ -1,88 +1,137 @@
-2013-08-27 17:16:14,087 INFO Logging started
-2013-08-27 17:16:15,014 INFO coords: ['0.00', '0.00', '0.00']
-2013-08-27 17:16:15,014 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-08-27 17:16:15,014 INFO points: [0.0]
-2013-08-27 17:16:15,015 INFO current point x set to: 0.5
-2013-08-27 17:16:15,015 INFO current point x set to: 1.0
-2013-08-27 17:16:15,015 INFO current point x set to: 1.5
-2013-08-27 17:16:15,015 INFO current point x set to: 2.0
-2013-08-27 17:16:15,015 INFO current point x set to: 2.5
-2013-08-27 17:16:15,015 INFO current point x set to: 3.0
-2013-08-27 17:16:15,015 INFO current point x set to: 3.5
-2013-08-27 17:16:15,015 INFO current point x set to: 4.0
-2013-08-27 17:16:15,015 INFO current point x set to: 4.5
-2013-08-27 17:16:15,015 INFO current point x set to: 5.0
-2013-08-27 17:16:15,015 INFO current point x set to: 5.5
-2013-08-27 17:16:15,015 INFO current point x set to: 6.0
-2013-08-27 17:16:15,016 INFO current point x set to: 6.5
-2013-08-27 17:16:15,016 INFO last element x axis removed: 6.5
-2013-08-27 17:16:15,016 INFO points x axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
-2013-08-27 17:16:15,022 INFO coords: ['0.00', '0.00', '0.00']
-2013-08-27 17:16:15,022 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-08-27 17:16:15,026 INFO coords: ['0.00', '0.00', '0.00']
-2013-08-27 17:16:15,026 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-08-27 17:16:15,026 INFO points: [0.0]
-2013-08-27 17:16:15,027 INFO current point x set to: 0.5
-2013-08-27 17:16:15,027 INFO current point x set to: 1.0
-2013-08-27 17:16:15,027 INFO current point x set to: 1.5
-2013-08-27 17:16:15,027 INFO current point x set to: 2.0
-2013-08-27 17:16:15,027 INFO current point x set to: 2.5
-2013-08-27 17:16:15,027 INFO current point x set to: 3.0
-2013-08-27 17:16:15,027 INFO current point x set to: 3.5
-2013-08-27 17:16:15,027 INFO current point x set to: 4.0
-2013-08-27 17:16:15,027 INFO current point x set to: 4.5
-2013-08-27 17:16:15,027 INFO current point x set to: 5.0
-2013-08-27 17:16:15,027 INFO current point x set to: 5.5
-2013-08-27 17:16:15,027 INFO current point x set to: 6.0
-2013-08-27 17:16:15,027 INFO current point x set to: 6.5
-2013-08-27 17:16:15,028 INFO last element x axis removed: 6.5
-2013-08-27 17:16:15,028 INFO points x axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
-2013-08-27 17:16:15,034 INFO coords: ['0.00', '0.00', '0.00']
-2013-08-27 17:16:15,034 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-08-27 17:16:15,034 INFO points: [0.0]
-2013-08-27 17:16:15,034 INFO current point y set to: 0.5
-2013-08-27 17:16:15,034 INFO current point y set to: 1.0
-2013-08-27 17:16:15,034 INFO current point y set to: 1.5
-2013-08-27 17:16:15,035 INFO current point y set to: 2.0
-2013-08-27 17:16:15,035 INFO current point y set to: 2.5
-2013-08-27 17:16:15,035 INFO current point y set to: 3.0
-2013-08-27 17:16:15,035 INFO current point y set to: 3.5
-2013-08-27 17:16:15,035 INFO current point y set to: 4.0
-2013-08-27 17:16:15,035 INFO current point y set to: 4.5
-2013-08-27 17:16:15,035 INFO current point y set to: 5.0
-2013-08-27 17:16:15,035 INFO last element y axis removed: 5.0
-2013-08-27 17:16:15,035 INFO points y axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5]
-2013-08-27 17:16:15,043 INFO coords: ['0.00', '0.00', '0.00']
-2013-08-27 17:16:15,043 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-08-27 17:16:15,043 INFO points: [0.0]
-2013-08-27 17:16:15,043 INFO current point z set to: 0.1
-2013-08-27 17:16:15,043 INFO current point z set to: 0.2
-2013-08-27 17:16:15,043 INFO current point z set to: 0.3
-2013-08-27 17:16:15,044 INFO current point z set to: 0.4
-2013-08-27 17:16:15,044 INFO current point z set to: 0.5
-2013-08-27 17:16:15,044 INFO last element z axis removed: 0.5
-2013-08-27 17:16:15,044 INFO points z axis at the end: [0.0, 0.1, 0.2, 0.3, 0.4]
-2013-08-27 17:16:15,055 INFO coords: ['0.00', '0.00', '0.00']
-2013-08-27 17:16:15,055 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-08-27 17:16:15,055 INFO points: [0.0]
-2013-08-27 17:16:15,056 INFO current point x set to: 0.5
-2013-08-27 17:16:15,056 INFO current point x set to: 1.0
-2013-08-27 17:16:15,056 INFO current point x set to: 1.5
-2013-08-27 17:16:15,056 INFO current point x set to: 2.0
-2013-08-27 17:16:15,056 INFO current point x set to: 2.5
-2013-08-27 17:16:15,056 INFO current point x set to: 3.0
-2013-08-27 17:16:15,056 INFO current point x set to: 3.5
-2013-08-27 17:16:15,056 INFO current point x set to: 4.0
-2013-08-27 17:16:15,056 INFO current point x set to: 4.5
-2013-08-27 17:16:15,056 INFO current point x set to: 5.0
-2013-08-27 17:16:15,056 INFO current point x set to: 5.5
-2013-08-27 17:16:15,056 INFO current point x set to: 6.0
-2013-08-27 17:16:15,056 INFO current point x set to: 6.5
-2013-08-27 17:16:15,057 INFO last element x axis removed: 6.5
-2013-08-27 17:16:15,057 INFO points x axis at the end: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
-2013-08-27 17:16:15,133 INFO Printer moved to point X(G1 X-1.5
-)
-2013-08-27 17:16:15,133 INFO Printer moved to point X(G1 X-1.5
-)
-2013-08-27 17:16:15,133 INFO Printer moved to point X(G1 X-1.5
-)
+2013-08-28 15:49:20,959 INFO Logging started
+2013-08-28 15:49:20,959 INFO Scanner object created
+2013-08-28 15:49:20,960 INFO Terminal arguments(Namespace(config='em3d.xml', measure=None, output=None, reprap='enable'))
+2013-08-28 15:49:20,960 INFO Parameters from terminal: m(None) rr(enable) c(em3d.xml) o(None)
+2013-08-28 15:49:20,960 INFO Parsed arguments (None) (enable) (em3d.xml) (None)
+2013-08-28 15:49:20,960 INFO ### Checking if 'em3d.xml' exists
+2013-08-28 15:49:20,960 INFO File 'em3d.xml' exists
+2013-08-28 15:49:20,960 INFO ### Getting config file name 'em3d.xml'
+2013-08-28 15:49:20,960 INFO Config file name is 'em3d.xml'
+2013-08-28 15:49:20,961 INFO ### Configuration file is set to 'em3d.xml'
+2013-08-28 15:49:20,962 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
+2013-08-28 15:49:20,962 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
+2013-08-28 15:49:20,963 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
+2013-08-28 15:49:20,964 INFO Output from file ( em3d.out )
+2013-08-28 15:49:20,964 INFO Configuration loaded from file 'em3d.xml'
+2013-08-28 15:49:20,964 INFO ### Configuration finished 
+2013-08-28 15:49:20,964 INFO RepRap object created ( <EM3Dreprap.RepRap object at 0x246cd10> )
+2013-08-28 15:49:20,964 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
+2013-08-28 15:49:21,881 INFO RepRap is online
+2013-08-28 15:49:21,882 INFO Output from file ( em3d.out )
+2013-08-28 15:49:21,882 INFO ### Output file name set from config file to ( em3d.out )
+2013-08-28 15:49:21,882 INFO ### Output file creation started
+2013-08-28 15:49:21,882 INFO Date and device written to 'em3d.out' file
+2013-08-28 15:49:21,882 INFO PNA header created in output file
+2013-08-28 15:49:21,882 INFO Scan object created
+2013-08-28 15:49:21,889 INFO currentCoords(X:0.00Y:0.00Z:0.00E:0.00)
+2013-08-28 15:49:21,889 INFO coords: ['0.00', '0.00', '0.00']
+2013-08-28 15:49:21,889 INFO coordsT: x(0.0) y(0.0) z(0.0)
+2013-08-28 15:49:21,889 INFO points: [0.0]
+2013-08-28 15:49:21,889 INFO current point x set to: 2.5
+2013-08-28 15:49:21,889 INFO current point x set to: 5.0
+2013-08-28 15:49:21,889 INFO current point x set to: 7.5
+2013-08-28 15:49:21,889 INFO current point x set to: 10.0
+2013-08-28 15:49:21,889 INFO current point x set to: 12.5
+2013-08-28 15:49:21,889 INFO current point x set to: 15.0
+2013-08-28 15:49:21,889 INFO current point x set to: 17.5
+2013-08-28 15:49:21,889 INFO current point x set to: 20.0
+2013-08-28 15:49:21,890 INFO current point x set to: 22.5
+2013-08-28 15:49:21,890 INFO current point x set to: 25.0
+2013-08-28 15:49:21,890 INFO current point x set to: 27.5
+2013-08-28 15:49:21,890 INFO current point x set to: 30.0
+2013-08-28 15:49:21,890 INFO current point x set to: 32.5
+2013-08-28 15:49:21,890 INFO last element x axis removed: 32.5
+2013-08-28 15:49:21,890 INFO points x axis at the end: [0.0, 2.5, 5.0, 7.5, 10.0, 12.5, 15.0, 17.5, 20.0, 22.5, 25.0, 27.5, 30.0]
+2013-08-28 15:49:21,890 INFO mX entered with G90 command
+2013-08-28 15:49:21,890 INFO x i(0) px(0.0)
+2013-08-28 15:49:21,890 INFO (G1 X0.0) written to printer
+2013-08-28 15:49:21,890 INFO i1(ok) i2(None)
+2013-08-28 15:49:21,898 INFO Input coordinates: X:0.00Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:21,898 INFO Output coordinates: ['0.00', '0.00', '0.00']
+2013-08-28 15:49:21,898 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:21,898 INFO x i(1) px(2.5)
+2013-08-28 15:49:21,898 INFO (G1 X2.5) written to printer
+2013-08-28 15:49:22,012 INFO i(1) Movement finished.
+2013-08-28 15:49:22,012 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,017 INFO Input coordinates: X:2.50Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,017 INFO Output coordinates: ['2.50', '0.00', '0.00']
+2013-08-28 15:49:22,017 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,017 INFO x i(2) px(5.0)
+2013-08-28 15:49:22,017 INFO (G1 X5.0) written to printer
+2013-08-28 15:49:22,135 INFO i(2) Movement finished.
+2013-08-28 15:49:22,135 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,139 INFO Input coordinates: X:5.00Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,139 INFO Output coordinates: ['5.00', '0.00', '0.00']
+2013-08-28 15:49:22,139 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,139 INFO x i(3) px(7.5)
+2013-08-28 15:49:22,139 INFO (G1 X7.5) written to printer
+2013-08-28 15:49:22,258 INFO i(3) Movement finished.
+2013-08-28 15:49:22,258 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,262 INFO Input coordinates: X:7.50Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,262 INFO Output coordinates: ['7.50', '0.00', '0.00']
+2013-08-28 15:49:22,262 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,262 INFO x i(4) px(10.0)
+2013-08-28 15:49:22,262 INFO (G1 X10.0) written to printer
+2013-08-28 15:49:22,377 INFO i(4) Movement finished.
+2013-08-28 15:49:22,377 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,385 INFO Input coordinates: X:10.00Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,385 INFO Output coordinates: ['10.00', '0.00', '0.00']
+2013-08-28 15:49:22,385 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,385 INFO x i(5) px(12.5)
+2013-08-28 15:49:22,385 INFO (G1 X12.5) written to printer
+2013-08-28 15:49:22,500 INFO i(5) Movement finished.
+2013-08-28 15:49:22,500 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,508 INFO Input coordinates: X:12.50Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,508 INFO Output coordinates: ['12.50', '0.00', '0.00']
+2013-08-28 15:49:22,508 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,508 INFO x i(6) px(15.0)
+2013-08-28 15:49:22,508 INFO (G1 X15.0) written to printer
+2013-08-28 15:49:22,623 INFO i(6) Movement finished.
+2013-08-28 15:49:22,623 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,631 INFO Input coordinates: X:15.00Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,631 INFO Output coordinates: ['15.00', '0.00', '0.00']
+2013-08-28 15:49:22,631 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,631 INFO x i(7) px(17.5)
+2013-08-28 15:49:22,631 INFO (G1 X17.5) written to printer
+2013-08-28 15:49:22,746 INFO i(7) Movement finished.
+2013-08-28 15:49:22,746 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,754 INFO Input coordinates: X:17.50Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,754 INFO Output coordinates: ['17.50', '0.00', '0.00']
+2013-08-28 15:49:22,754 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,754 INFO x i(8) px(20.0)
+2013-08-28 15:49:22,754 INFO (G1 X20.0) written to printer
+2013-08-28 15:49:22,872 INFO i(8) Movement finished.
+2013-08-28 15:49:22,872 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:22,877 INFO Input coordinates: X:20.00Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:22,877 INFO Output coordinates: ['20.00', '0.00', '0.00']
+2013-08-28 15:49:22,877 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:22,877 INFO x i(9) px(22.5)
+2013-08-28 15:49:22,877 INFO (G1 X22.5) written to printer
+2013-08-28 15:49:22,995 INFO i(9) Movement finished.
+2013-08-28 15:49:22,995 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:23,000 INFO Input coordinates: X:22.50Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:23,000 INFO Output coordinates: ['22.50', '0.00', '0.00']
+2013-08-28 15:49:23,000 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:23,000 INFO x i(10) px(25.0)
+2013-08-28 15:49:23,000 INFO (G1 X25.0) written to printer
+2013-08-28 15:49:23,114 INFO i(10) Movement finished.
+2013-08-28 15:49:23,114 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:23,118 INFO Input coordinates: X:25.00Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:23,118 INFO Output coordinates: ['25.00', '0.00', '0.00']
+2013-08-28 15:49:23,118 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:23,118 INFO x i(11) px(27.5)
+2013-08-28 15:49:23,118 INFO (G1 X27.5) written to printer
+2013-08-28 15:49:23,233 INFO i(11) Movement finished.
+2013-08-28 15:49:23,233 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:23,241 INFO Input coordinates: X:27.50Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:23,241 INFO Output coordinates: ['27.50', '0.00', '0.00']
+2013-08-28 15:49:23,241 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:23,241 INFO x i(12) px(30.0)
+2013-08-28 15:49:23,241 INFO (G1 X30.0) written to printer
+2013-08-28 15:49:23,356 INFO i(12) Movement finished.
+2013-08-28 15:49:23,356 INFO i1(ok) i2(Movement finished.)
+2013-08-28 15:49:23,364 INFO Input coordinates: X:30.00Y:0.00Z:0.00E:0.00
+2013-08-28 15:49:23,364 INFO Output coordinates: ['30.00', '0.00', '0.00']
+2013-08-28 15:49:23,364 INFO One of CSV 'coord' and 'data' row appended
+2013-08-28 15:49:23,386 INFO RepRap is offline
+2013-08-28 15:49:23,386 INFO Logging finished

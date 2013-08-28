@@ -5,6 +5,7 @@ from ConfigFile import Configuration
 from EM3Dreprap import RepRap
 from EM3Dnalib import NetworkAnalyzer
 from OutputFile import OutputFile
+from Scanner import Scanner as Scan
 
 
 class Scanner(object):
@@ -73,8 +74,14 @@ class Scanner(object):
         # test if everything works ok
         out.createHeader("+20.000e9", "+30.000e10", "+201", "S21", "10", "10",
                          "10", "0.1", log.name)
-        out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
-                         "+2.80000000000E+010,+2.80100000000E+010")
+        #out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
+        #                 "+2.80000000000E+010,+2.80100000000E+010")
+
+        # create one x row scan to file
+        s = Scan(logging=log, rr=self.reprap, na=None,
+                 mp=(13, 10, 5), of=out, step=(2.5, 1))
+        log.append("Scan object created")
+        s.mX()
 
         # disconnect reprap if connected
         # how to disconnect reprap gracefully

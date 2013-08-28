@@ -71,7 +71,8 @@ class RepRap(object):
             self.printer.readline().strip()
             self.printer.readline().strip()
             self.printer.readline().strip()
-            self.printer.write('G91' + self.term)
+            self.printer.write('G90' + self.term)
+            self.printer.readline().strip()
             self.connected = True
             return True
         except:
@@ -103,8 +104,15 @@ class RepRap(object):
         '''
         if self.printer is not None:
             self.printer.write('M114' + self.term)
-            self.printer.readline().strip()
-            return self.printer.readline().strip()
+            while 1:
+                out = self.printer.readline().strip()
+                if 'ok' in out:
+                    #print 'ok'
+                    pass
+                else:
+                    #print out
+                    break
+            return out
 
     def setMeasureDimensions(self, dimensionsTuple):
         self.setX(dimensionsTuple[0], dimensionsTuple[1])
