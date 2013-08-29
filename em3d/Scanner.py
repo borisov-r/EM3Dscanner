@@ -60,8 +60,8 @@ class Scanner(object):
             # current point is set to x-th element
             currPoint = pnts[x] + self.stepXY
             self.log.append("current point x set to: %s" % currPoint)
-        lastElement = pnts.pop()    # remove last element from the list
-        self.log.append("last element x axis removed: %s" % lastElement)
+        #lastElement = pnts.pop()    # remove last element from the list
+        #self.log.append("last element x axis removed: %s" % lastElement)
         self.log.append("points x axis at the end: %s" % pnts)
         #
         # if everything is correct return list with the coordinates
@@ -78,8 +78,8 @@ class Scanner(object):
             # current point is set to x-th element
             currPoint = pnts[y] + self.stepXY
             self.log.append("current point y set to: %s" % currPoint)
-        lastElement = pnts.pop()    # remove last element from the list
-        self.log.append("last element y axis removed: %s" % lastElement)
+        #lastElement = pnts.pop()    # remove last element from the list
+        #self.log.append("last element y axis removed: %s" % lastElement)
         self.log.append("points y axis at the end: %s" % pnts)
         #
         # if everything is correct return list with the coordinates
@@ -96,38 +96,12 @@ class Scanner(object):
             # current point is set to x-th element
             currPoint = pnts[z] + self.stepZ
             self.log.append("current point z set to: %s" % currPoint)
-        lastElement = pnts.pop()    # remove last element from the list
-        self.log.append("last element z axis removed: %s" % lastElement)
+        #lastElement = pnts.pop()    # remove last element from the list
+        #self.log.append("last element z axis removed: %s" % lastElement)
         self.log.append("points z axis at the end: %s" % pnts)
         #
         # if everything is correct return list with the coordinates
         return pnts
-
-    '''
-    def moveOneStepXforward(self, point, dir):
-         coords_list - list with all points on X axis with given step
-            dir         - direction
-
-        # move one step i X direction
-        if dir in '+':
-            message = ("G1 X" + dir + point + "\n")
-        elif dir in '-':
-            message = ("G1 X" + dir + point + "\n")
-        else:
-            self.log.append("No direction given for X axis")
-            pass
-        #self.rr.printer.write("G90\n")
-        self.rr.printer.write(message)
-        print self.rr.printer.readline().strip()
-        print self.rr.printer.readline().strip()
-        print self.rr.printer.readline().strip()
-        self.log.append("Printer moved to point X(%s)" % message)
-        self.rr.printer.write(message)
-        self.log.append("Printer moved to point X(%s)" % message)
-        self.rr.printer.write(message)
-        self.log.append("Printer moved to point X(%s)" % message)
-        return True
-    '''
 
     def trunc(self, f, n):
         '''Truncates/pads a float f to n decimal places without rounding'''
