@@ -16,6 +16,8 @@ class TerminalData(object):
         self.MAX_XY_AXIS = 2000
         self.MIN_Z_AXIS = 0
         self.MAX_Z_AXIS = 1200
+        self.MIN_RES = 0.1
+        self.MAX_RES = 10.0
         pass
 
     def printMessage(self, message):
@@ -113,6 +115,34 @@ class TerminalData(object):
                         % (xPoints, yPoints, zPoints))
         self.log.append("### Collect XYZ measurement points finished")
         return (xPoints, yPoints, zPoints)
+
+    def getXYZresolution(self):
+        ''' Get resolution for xy and z axis.
+            Return Tuple (resolutionXY, resolutionZ)
+        '''
+        #
+        self.log.append("### Collect XYZ resolution")
+        #
+        # get XY resolution
+        message = ("Set XY resolution (%s - %s): "
+                   % (self.MIN_RES, self.MAX_RES))
+        self.getFloatInput(message,
+                           self.MIN_RES,
+                           self.MAX_RES)
+        resolutionXY = (self.rawInputValue)
+        #
+        # get Z resolution
+        message = ("Set Z resolution (%s - %s): "
+                   % (self.MIN_RES, self.MAX_RES))
+        self.getFloatInput(message,
+                           self.MIN_RES,
+                           self.MAX_RES)
+        resolutionZ = (self.rawInputValue)
+        #
+        self.log.append("resolutionXY(%s), resolutionZ(%s)"
+                        % (resolutionXY, resolutionZ))
+        self.log.append("### Collect XYZ resolution finished")
+        return (resolutionXY, resolutionZ)
 
 
 def main():

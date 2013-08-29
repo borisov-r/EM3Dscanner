@@ -71,28 +71,28 @@ class Scanner(object):
         # get measurement parameters !
         if self.pna.connected or self.reprap.connected:
             terminal = TerminalData(log)
+            xyzRes = terminal.getXYZresolution()
             xyzCoords = terminal.getXYZpoints()
 
         # create output file set 'name' and 'device' in header
         out = OutputFile(log, self.OUTPUT_FILE_NAME, arguments[0])
         # test if everything works ok
         out.createHeader("+20.000e9", "+30.000e10", "+201", "S21",
-                         xyzCoords[0],
-                         xyzCoords[1],
-                         xyzCoords[2],
-                         "0.1", log.name)
+                         xyzCoords, xyzRes, log.name)
         #out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
         #                 "+2.80000000000E+010,+2.80100000000E+010")
 
         # create one x row scan to file
         if self.reprap.connected:
-            self.reprap.printer.write("G1 Y-10\n")
-            self.reprap.printer.readline()
-            self.reprap.printer.readline()
-            s = Scan(logging=log, rr=self.reprap, na=None,
-                     mp=xyzCoords, of=out, step=(2.5, 1))
-            log.append("Scan object created")
-            s.mX()
+            #
+            for i in range(xyzCoords[1]):
+                self.reprap.printer.write("G1 Y-1\n")
+                self.reprap.printer.readline()
+                self.reprap.printer.readline()
+                s = Scan(logging=log, rr=self.reprap, na=None,
+                         mp=xyzCoords, of=out, step=xyzRes)
+                log.append("Scan object created")
+                s.mX()
 
         # disconnect reprap if connected
         # how to disconnect reprap gracefully

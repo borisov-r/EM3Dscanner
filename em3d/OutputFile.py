@@ -30,8 +30,7 @@ class OutputFile(object):
             print("Error output file not set")
 
     def createHeader(self, minFreq, maxFreq, freqPoints, parameters,
-                     xPoints, yPoints, zPoints, resolution,
-                     logFileName):
+                     xyzCoords, resolution, logFileName):
         ''' Update header in output file
         '''
         try:
@@ -42,13 +41,15 @@ class OutputFile(object):
                              maxFreq + self.T)
                 f.writelines("# Freq points:    " + freqPoints + self.T)
                 f.writelines("# Parameters:     " + parameters + self.T)
-                f.writelines("# RepRap points   X Points:   " + str(xPoints) +
-                             "   |   Y Points:   " + str(yPoints) +
-                             "   |   Z Points:   " + str(zPoints) + self.T)
-                f.writelines("# Resolution:     " + resolution + self.T)
+                msg = ("# RepRap points   X(%s) Y(%s) Z(%s) number"
+                       % xyzCoords)
+                f.writelines(msg + self.T)
+                msg = ("# Resolution:     XY(%s) Z(%s) mm" % resolution)
+                f.writelines(msg + self.T)
                 f.writelines("# Volume:         " +
-                             str(int(xPoints) * int(yPoints) * int(zPoints)) +
-                             self.T)
+                             str(int(xyzCoords[0]) *
+                                 int(xyzCoords[1]) *
+                                 int(xyzCoords[2])) + self.T)
                 self.log.append("PNA header created in output file")
         except IOError, e:
             print e
