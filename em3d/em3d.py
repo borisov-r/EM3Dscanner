@@ -6,6 +6,7 @@ from EM3Dreprap import RepRap
 from EM3Dnalib import NetworkAnalyzer
 from OutputFile import OutputFile
 from Scanner import Scanner as Scan
+from TerminalData import TerminalData
 
 
 class Scanner(object):
@@ -68,22 +69,28 @@ class Scanner(object):
         # check if connections are OK !
 
         # get measurement parameters !
+        if self.pna.connected or self.reprap.connected:
+            terminal = TerminalData(log)
+            xyzCoords = terminal.getXYZpoints()
 
         # create output file set 'name' and 'device' in header
         out = OutputFile(log, self.OUTPUT_FILE_NAME, arguments[0])
         # test if everything works ok
-        out.createHeader("+20.000e9", "+30.000e10", "+201", "S21", "10", "10",
-                         "10", "0.1", log.name)
+        out.createHeader("+20.000e9", "+30.000e10", "+201", "S21",
+                         xyzCoords[0],
+                         xyzCoords[1],
+                         xyzCoords[2],
+                         "0.1", log.name)
         #out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
         #                 "+2.80000000000E+010,+2.80100000000E+010")
 
         # create one x row scan to file
-        if self.reprap.connect:
+        if self.reprap.connected:
             self.reprap.printer.write("G1 Y-10\n")
             self.reprap.printer.readline()
             self.reprap.printer.readline()
             s = Scan(logging=log, rr=self.reprap, na=None,
-                     mp=(13, 10, 5), of=out, step=(2.5, 1))
+                     mp=xyzCoords, of=out, step=(2.5, 1))
             log.append("Scan object created")
             s.mX()
 
@@ -104,13 +111,10 @@ class Scanner(object):
         # logging finish
         log.append("Logging finished")
 
-    def test(self):
-        pass
-
 
 def main():
     scan = Scanner()
-    print scan
+    #print scan
 
 if __name__ == '__main__':
     main()

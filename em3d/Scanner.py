@@ -53,8 +53,8 @@ class Scanner(object):
         pnts = [float(pp[0])]  # create empty list
         self.log.append("points: %s" % pnts)
         currPoint = pnts[0]
-        print self.points[0]
-        print type(self.points)
+        #print self.points[0]
+        #print type(self.points)
         for x in range(self.points[0]):
             pnts.append(round((currPoint + self.stepXY), 3))
             # current point is set to x-th element
@@ -143,7 +143,7 @@ class Scanner(object):
         px = self.createStepPointsX()  # list of point on x axis
         #self.rr.printer.write("G90\n")
         #print self.rr.printer.readline().strip()
-        self.log.append("mX entered with G90 command")
+        self.log.append("mX entered with G90 command - absolute coordinates")
         for i in range(len(px)):
             self.log.append("x i(%s) px(%s)" % (i, px[i]))
             if i == 0:
@@ -181,16 +181,14 @@ class Scanner(object):
             self.of.appendToFile(currPosition, data)
             #print px[i]
             percent = (i / float(len(px)) * 100.0)
+            #self.log.append("Current percent: %s" % percent)
             self.percent = self.trunc(percent, 1)
-            #print("Percents done: " + self.percent + "%")
-            #print("\rPercents done: " + self.percent + "%")
-            #print '\r[{0}] {1}%'.format('#' * (percent / 100), percent)
-            print ('\rX axis: %s' % self.percent),
-            print ('%'),
+            #self.log.append("Current percent self: %s" % self.percent)
             if i == len(px) - 1:
-                print ('\r. 100.0 %'),
-            #sys.stdout.write("\rPercents done: " + self.percent + "%")
-            #sys.stdout.flush
+                print ('\rX axis: 100.0 %'),
+            else:
+                print ('\rX axis: %s' % self.percent),
+                print ('%'),
         #
         self.percent = "100.0"
         print("\nPercents done: " + self.percent + "%")

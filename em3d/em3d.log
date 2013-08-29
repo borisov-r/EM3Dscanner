@@ -1,137 +1,443 @@
-2013-08-28 17:34:27,558 INFO Logging started
-2013-08-28 17:34:27,558 INFO Scanner object created
-2013-08-28 17:34:27,560 INFO Terminal arguments(Namespace(config=None, measure=None, output=None, reprap='enable'))
-2013-08-28 17:34:27,560 INFO Parameters from terminal: m(None) rr(enable) c(None) o(None)
-2013-08-28 17:34:27,560 INFO Parsed arguments (None) (enable) (None) (None)
-2013-08-28 17:34:27,560 INFO ### Checking if 'None' exists
-2013-08-28 17:34:27,560 INFO File 'em3d.xml' exists
-2013-08-28 17:34:27,560 INFO ### Getting config file name 'None'
-2013-08-28 17:34:27,560 INFO Config file name is 'em3d.xml'
-2013-08-28 17:34:27,560 INFO ### Configuration file is set to 'em3d.xml'
-2013-08-28 17:34:27,561 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
-2013-08-28 17:34:27,562 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
-2013-08-28 17:34:27,562 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
-2013-08-28 17:34:27,563 INFO Output from file ( em3d.out )
-2013-08-28 17:34:27,563 INFO Configuration loaded from file 'em3d.xml'
-2013-08-28 17:34:27,563 INFO ### Configuration finished 
-2013-08-28 17:34:27,563 INFO RepRap object created ( <EM3Dreprap.RepRap object at 0x291ef50> )
-2013-08-28 17:34:27,564 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
-2013-08-28 17:34:28,486 INFO RepRap is online
-2013-08-28 17:34:28,486 INFO Output from file ( em3d.out )
-2013-08-28 17:34:28,486 INFO ### Output file name set from config file to ( em3d.out )
-2013-08-28 17:34:28,486 INFO ### Output file creation started
-2013-08-28 17:34:28,487 INFO Date and device written to 'em3d.out' file
-2013-08-28 17:34:28,487 INFO PNA header created in output file
-2013-08-28 17:34:28,900 INFO Scan object created
-2013-08-28 17:34:28,904 INFO currentCoords(X:0.00Y:-10.00Z:0.00E:0.00)
-2013-08-28 17:34:28,904 INFO coords: ['0.00', '-10.00', '0.00']
-2013-08-28 17:34:28,904 INFO coordsT: x(0.0) y(-10.0) z(0.0)
-2013-08-28 17:34:28,904 INFO points: [0.0]
-2013-08-28 17:34:28,904 INFO current point x set to: 2.5
-2013-08-28 17:34:28,904 INFO current point x set to: 5.0
-2013-08-28 17:34:28,904 INFO current point x set to: 7.5
-2013-08-28 17:34:28,904 INFO current point x set to: 10.0
-2013-08-28 17:34:28,904 INFO current point x set to: 12.5
-2013-08-28 17:34:28,904 INFO current point x set to: 15.0
-2013-08-28 17:34:28,905 INFO current point x set to: 17.5
-2013-08-28 17:34:28,905 INFO current point x set to: 20.0
-2013-08-28 17:34:28,905 INFO current point x set to: 22.5
-2013-08-28 17:34:28,905 INFO current point x set to: 25.0
-2013-08-28 17:34:28,905 INFO current point x set to: 27.5
-2013-08-28 17:34:28,905 INFO current point x set to: 30.0
-2013-08-28 17:34:28,905 INFO current point x set to: 32.5
-2013-08-28 17:34:28,905 INFO last element x axis removed: 32.5
-2013-08-28 17:34:28,905 INFO points x axis at the end: [0.0, 2.5, 5.0, 7.5, 10.0, 12.5, 15.0, 17.5, 20.0, 22.5, 25.0, 27.5, 30.0]
-2013-08-28 17:34:28,905 INFO mX entered with G90 command
-2013-08-28 17:34:28,905 INFO x i(0) px(0.0)
-2013-08-28 17:34:28,905 INFO (G1 X0.0) written to printer
-2013-08-28 17:34:28,908 INFO i1(ok) i2(None)
-2013-08-28 17:34:28,913 INFO Input coordinates: X:0.00Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:28,913 INFO Output coordinates: ['0.00', '-10.00', '0.00']
-2013-08-28 17:34:28,913 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:28,913 INFO x i(1) px(2.5)
-2013-08-28 17:34:28,913 INFO (G1 X2.5) written to printer
-2013-08-28 17:34:29,031 INFO i(1) Movement finished.
-2013-08-28 17:34:29,031 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,035 INFO Input coordinates: X:2.50Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,035 INFO Output coordinates: ['2.50', '-10.00', '0.00']
-2013-08-28 17:34:29,035 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,035 INFO x i(2) px(5.0)
-2013-08-28 17:34:29,035 INFO (G1 X5.0) written to printer
-2013-08-28 17:34:29,150 INFO i(2) Movement finished.
-2013-08-28 17:34:29,150 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,157 INFO Input coordinates: X:5.00Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,158 INFO Output coordinates: ['5.00', '-10.00', '0.00']
-2013-08-28 17:34:29,158 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,158 INFO x i(3) px(7.5)
-2013-08-28 17:34:29,158 INFO (G1 X7.5) written to printer
-2013-08-28 17:34:29,277 INFO i(3) Movement finished.
-2013-08-28 17:34:29,277 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,281 INFO Input coordinates: X:7.50Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,281 INFO Output coordinates: ['7.50', '-10.00', '0.00']
-2013-08-28 17:34:29,281 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,281 INFO x i(4) px(10.0)
-2013-08-28 17:34:29,281 INFO (G1 X10.0) written to printer
-2013-08-28 17:34:29,400 INFO i(4) Movement finished.
-2013-08-28 17:34:29,400 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,407 INFO Input coordinates: X:10.00Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,408 INFO Output coordinates: ['10.00', '-10.00', '0.00']
-2013-08-28 17:34:29,408 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,408 INFO x i(5) px(12.5)
-2013-08-28 17:34:29,408 INFO (G1 X12.5) written to printer
-2013-08-28 17:34:29,523 INFO i(5) Movement finished.
-2013-08-28 17:34:29,523 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,531 INFO Input coordinates: X:12.50Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,531 INFO Output coordinates: ['12.50', '-10.00', '0.00']
-2013-08-28 17:34:29,531 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,531 INFO x i(6) px(15.0)
-2013-08-28 17:34:29,531 INFO (G1 X15.0) written to printer
-2013-08-28 17:34:29,650 INFO i(6) Movement finished.
-2013-08-28 17:34:29,650 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,658 INFO Input coordinates: X:15.00Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,658 INFO Output coordinates: ['15.00', '-10.00', '0.00']
-2013-08-28 17:34:29,658 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,658 INFO x i(7) px(17.5)
-2013-08-28 17:34:29,658 INFO (G1 X17.5) written to printer
-2013-08-28 17:34:29,777 INFO i(7) Movement finished.
-2013-08-28 17:34:29,777 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,784 INFO Input coordinates: X:17.50Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,785 INFO Output coordinates: ['17.50', '-10.00', '0.00']
-2013-08-28 17:34:29,785 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,785 INFO x i(8) px(20.0)
-2013-08-28 17:34:29,785 INFO (G1 X20.0) written to printer
-2013-08-28 17:34:29,900 INFO i(8) Movement finished.
-2013-08-28 17:34:29,900 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:29,908 INFO Input coordinates: X:20.00Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:29,908 INFO Output coordinates: ['20.00', '-10.00', '0.00']
-2013-08-28 17:34:29,908 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:29,908 INFO x i(9) px(22.5)
-2013-08-28 17:34:29,908 INFO (G1 X22.5) written to printer
-2013-08-28 17:34:30,022 INFO i(9) Movement finished.
-2013-08-28 17:34:30,022 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:30,027 INFO Input coordinates: X:22.50Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:30,027 INFO Output coordinates: ['22.50', '-10.00', '0.00']
-2013-08-28 17:34:30,027 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:30,027 INFO x i(10) px(25.0)
-2013-08-28 17:34:30,027 INFO (G1 X25.0) written to printer
-2013-08-28 17:34:30,145 INFO i(10) Movement finished.
-2013-08-28 17:34:30,145 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:30,149 INFO Input coordinates: X:25.00Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:30,149 INFO Output coordinates: ['25.00', '-10.00', '0.00']
-2013-08-28 17:34:30,149 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:30,149 INFO x i(11) px(27.5)
-2013-08-28 17:34:30,149 INFO (G1 X27.5) written to printer
-2013-08-28 17:34:30,268 INFO i(11) Movement finished.
-2013-08-28 17:34:30,268 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:30,272 INFO Input coordinates: X:27.50Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:30,272 INFO Output coordinates: ['27.50', '-10.00', '0.00']
-2013-08-28 17:34:30,272 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:30,272 INFO x i(12) px(30.0)
-2013-08-28 17:34:30,272 INFO (G1 X30.0) written to printer
-2013-08-28 17:34:30,387 INFO i(12) Movement finished.
-2013-08-28 17:34:30,387 INFO i1(ok) i2(Movement finished.)
-2013-08-28 17:34:30,395 INFO Input coordinates: X:30.00Y:-10.00Z:0.00E:0.00
-2013-08-28 17:34:30,395 INFO Output coordinates: ['30.00', '-10.00', '0.00']
-2013-08-28 17:34:30,395 INFO One of CSV 'coord' and 'data' row appended
-2013-08-28 17:34:30,417 INFO RepRap is offline
-2013-08-28 17:34:30,418 INFO Logging finished
+2013-08-29 12:34:50,881 INFO Logging started
+2013-08-29 12:34:50,881 INFO Scanner object created
+2013-08-29 12:34:50,883 INFO Terminal arguments(Namespace(config=None, measure=None, output=None, reprap='enable'))
+2013-08-29 12:34:50,883 INFO Parameters from terminal: m(None) rr(enable) c(None) o(None)
+2013-08-29 12:34:50,883 INFO Parsed arguments (None) (enable) (None) (None)
+2013-08-29 12:34:50,883 INFO ### Checking if 'None' exists
+2013-08-29 12:34:50,883 INFO File 'em3d.xml' exists
+2013-08-29 12:34:50,883 INFO ### Getting config file name 'None'
+2013-08-29 12:34:50,883 INFO Config file name is 'em3d.xml'
+2013-08-29 12:34:50,883 INFO ### Configuration file is set to 'em3d.xml'
+2013-08-29 12:34:50,884 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
+2013-08-29 12:34:50,885 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
+2013-08-29 12:34:50,885 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
+2013-08-29 12:34:50,886 INFO Output from file ( em3d.out )
+2013-08-29 12:34:50,886 INFO Configuration loaded from file 'em3d.xml'
+2013-08-29 12:34:50,886 INFO ### Configuration finished 
+2013-08-29 12:34:50,886 INFO RepRap object created ( <EM3Dreprap.RepRap object at 0x7fd713c5af50> )
+2013-08-29 12:34:50,886 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
+2013-08-29 12:34:51,805 INFO RepRap is online
+2013-08-29 12:34:51,806 INFO Output from file ( em3d.out )
+2013-08-29 12:34:51,806 INFO ### Output file name set from config file to ( em3d.out )
+2013-08-29 12:34:51,806 INFO ### TerminalData log started
+2013-08-29 12:34:51,806 INFO ### Collect XYZ measurement points number
+2013-08-29 12:35:01,352 INFO Raw integer input (50)
+2013-08-29 12:35:01,352 INFO Input from console set to (50)
+2013-08-29 12:35:07,924 INFO Raw integer input (30)
+2013-08-29 12:35:07,924 INFO Input from console set to (30)
+2013-08-29 12:35:10,523 INFO Raw integer input (20)
+2013-08-29 12:35:10,523 INFO Input from console set to (20)
+2013-08-29 12:35:10,523 INFO xPoints(50), yPoints(30), zPoints(20)
+2013-08-29 12:35:10,523 INFO ### Collect XYZ measurement points finished
+2013-08-29 12:35:10,523 INFO ### Output file creation started
+2013-08-29 12:35:10,523 INFO Date and device written to 'em3d.out' file
+2013-08-29 12:35:10,524 INFO PNA header created in output file
+2013-08-29 12:35:10,941 INFO Scan object created
+2013-08-29 12:35:10,949 INFO currentCoords(X:0.00Y:-10.00Z:0.00E:0.00)
+2013-08-29 12:35:10,949 INFO coords: ['0.00', '-10.00', '0.00']
+2013-08-29 12:35:10,949 INFO coordsT: x(0.0) y(-10.0) z(0.0)
+2013-08-29 12:35:10,949 INFO points: [0.0]
+2013-08-29 12:35:10,950 INFO current point x set to: 2.5
+2013-08-29 12:35:10,950 INFO current point x set to: 5.0
+2013-08-29 12:35:10,950 INFO current point x set to: 7.5
+2013-08-29 12:35:10,950 INFO current point x set to: 10.0
+2013-08-29 12:35:10,950 INFO current point x set to: 12.5
+2013-08-29 12:35:10,950 INFO current point x set to: 15.0
+2013-08-29 12:35:10,950 INFO current point x set to: 17.5
+2013-08-29 12:35:10,950 INFO current point x set to: 20.0
+2013-08-29 12:35:10,950 INFO current point x set to: 22.5
+2013-08-29 12:35:10,950 INFO current point x set to: 25.0
+2013-08-29 12:35:10,950 INFO current point x set to: 27.5
+2013-08-29 12:35:10,950 INFO current point x set to: 30.0
+2013-08-29 12:35:10,951 INFO current point x set to: 32.5
+2013-08-29 12:35:10,951 INFO current point x set to: 35.0
+2013-08-29 12:35:10,951 INFO current point x set to: 37.5
+2013-08-29 12:35:10,951 INFO current point x set to: 40.0
+2013-08-29 12:35:10,951 INFO current point x set to: 42.5
+2013-08-29 12:35:10,951 INFO current point x set to: 45.0
+2013-08-29 12:35:10,951 INFO current point x set to: 47.5
+2013-08-29 12:35:10,951 INFO current point x set to: 50.0
+2013-08-29 12:35:10,951 INFO current point x set to: 52.5
+2013-08-29 12:35:10,951 INFO current point x set to: 55.0
+2013-08-29 12:35:10,951 INFO current point x set to: 57.5
+2013-08-29 12:35:10,951 INFO current point x set to: 60.0
+2013-08-29 12:35:10,951 INFO current point x set to: 62.5
+2013-08-29 12:35:10,952 INFO current point x set to: 65.0
+2013-08-29 12:35:10,952 INFO current point x set to: 67.5
+2013-08-29 12:35:10,952 INFO current point x set to: 70.0
+2013-08-29 12:35:10,952 INFO current point x set to: 72.5
+2013-08-29 12:35:10,952 INFO current point x set to: 75.0
+2013-08-29 12:35:10,952 INFO current point x set to: 77.5
+2013-08-29 12:35:10,952 INFO current point x set to: 80.0
+2013-08-29 12:35:10,952 INFO current point x set to: 82.5
+2013-08-29 12:35:10,952 INFO current point x set to: 85.0
+2013-08-29 12:35:10,952 INFO current point x set to: 87.5
+2013-08-29 12:35:10,952 INFO current point x set to: 90.0
+2013-08-29 12:35:10,952 INFO current point x set to: 92.5
+2013-08-29 12:35:10,952 INFO current point x set to: 95.0
+2013-08-29 12:35:10,952 INFO current point x set to: 97.5
+2013-08-29 12:35:10,953 INFO current point x set to: 100.0
+2013-08-29 12:35:10,953 INFO current point x set to: 102.5
+2013-08-29 12:35:10,953 INFO current point x set to: 105.0
+2013-08-29 12:35:10,953 INFO current point x set to: 107.5
+2013-08-29 12:35:10,953 INFO current point x set to: 110.0
+2013-08-29 12:35:10,953 INFO current point x set to: 112.5
+2013-08-29 12:35:10,953 INFO current point x set to: 115.0
+2013-08-29 12:35:10,953 INFO current point x set to: 117.5
+2013-08-29 12:35:10,953 INFO current point x set to: 120.0
+2013-08-29 12:35:10,953 INFO current point x set to: 122.5
+2013-08-29 12:35:10,953 INFO current point x set to: 125.0
+2013-08-29 12:35:10,953 INFO last element x axis removed: 125.0
+2013-08-29 12:35:10,954 INFO points x axis at the end: [0.0, 2.5, 5.0, 7.5, 10.0, 12.5, 15.0, 17.5, 20.0, 22.5, 25.0, 27.5, 30.0, 32.5, 35.0, 37.5, 40.0, 42.5, 45.0, 47.5, 50.0, 52.5, 55.0, 57.5, 60.0, 62.5, 65.0, 67.5, 70.0, 72.5, 75.0, 77.5, 80.0, 82.5, 85.0, 87.5, 90.0, 92.5, 95.0, 97.5, 100.0, 102.5, 105.0, 107.5, 110.0, 112.5, 115.0, 117.5, 120.0, 122.5]
+2013-08-29 12:35:10,954 INFO mX entered with G90 command - absolute coordinates
+2013-08-29 12:35:10,954 INFO x i(0) px(0.0)
+2013-08-29 12:35:10,954 INFO (G1 X0.0) written to printer
+2013-08-29 12:35:10,954 INFO i1(ok) i2(None)
+2013-08-29 12:35:10,961 INFO Input coordinates: X:0.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:10,961 INFO Output coordinates: ['0.00', '-10.00', '0.00']
+2013-08-29 12:35:10,962 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:10,962 INFO x i(1) px(2.5)
+2013-08-29 12:35:10,962 INFO (G1 X2.5) written to printer
+2013-08-29 12:35:11,076 INFO i(1) Movement finished.
+2013-08-29 12:35:11,076 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,084 INFO Input coordinates: X:2.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,084 INFO Output coordinates: ['2.50', '-10.00', '0.00']
+2013-08-29 12:35:11,084 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,084 INFO x i(2) px(5.0)
+2013-08-29 12:35:11,085 INFO (G1 X5.0) written to printer
+2013-08-29 12:35:11,203 INFO i(2) Movement finished.
+2013-08-29 12:35:11,203 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,211 INFO Input coordinates: X:5.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,211 INFO Output coordinates: ['5.00', '-10.00', '0.00']
+2013-08-29 12:35:11,211 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,211 INFO x i(3) px(7.5)
+2013-08-29 12:35:11,212 INFO (G1 X7.5) written to printer
+2013-08-29 12:35:11,330 INFO i(3) Movement finished.
+2013-08-29 12:35:11,330 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,334 INFO Input coordinates: X:7.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,335 INFO Output coordinates: ['7.50', '-10.00', '0.00']
+2013-08-29 12:35:11,335 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,335 INFO x i(4) px(10.0)
+2013-08-29 12:35:11,335 INFO (G1 X10.0) written to printer
+2013-08-29 12:35:11,453 INFO i(4) Movement finished.
+2013-08-29 12:35:11,453 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,461 INFO Input coordinates: X:10.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,461 INFO Output coordinates: ['10.00', '-10.00', '0.00']
+2013-08-29 12:35:11,461 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,462 INFO x i(5) px(12.5)
+2013-08-29 12:35:11,462 INFO (G1 X12.5) written to printer
+2013-08-29 12:35:11,576 INFO i(5) Movement finished.
+2013-08-29 12:35:11,576 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,584 INFO Input coordinates: X:12.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,584 INFO Output coordinates: ['12.50', '-10.00', '0.00']
+2013-08-29 12:35:11,584 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,585 INFO x i(6) px(15.0)
+2013-08-29 12:35:11,585 INFO (G1 X15.0) written to printer
+2013-08-29 12:35:11,703 INFO i(6) Movement finished.
+2013-08-29 12:35:11,703 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,711 INFO Input coordinates: X:15.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,711 INFO Output coordinates: ['15.00', '-10.00', '0.00']
+2013-08-29 12:35:11,711 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,712 INFO x i(7) px(17.5)
+2013-08-29 12:35:11,712 INFO (G1 X17.5) written to printer
+2013-08-29 12:35:11,829 INFO i(7) Movement finished.
+2013-08-29 12:35:11,829 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,834 INFO Input coordinates: X:17.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,835 INFO Output coordinates: ['17.50', '-10.00', '0.00']
+2013-08-29 12:35:11,835 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,835 INFO x i(8) px(20.0)
+2013-08-29 12:35:11,835 INFO (G1 X20.0) written to printer
+2013-08-29 12:35:11,952 INFO i(8) Movement finished.
+2013-08-29 12:35:11,952 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:11,957 INFO Input coordinates: X:20.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:11,958 INFO Output coordinates: ['20.00', '-10.00', '0.00']
+2013-08-29 12:35:11,958 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:11,958 INFO x i(9) px(22.5)
+2013-08-29 12:35:11,958 INFO (G1 X22.5) written to printer
+2013-08-29 12:35:12,075 INFO i(9) Movement finished.
+2013-08-29 12:35:12,075 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,079 INFO Input coordinates: X:22.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,080 INFO Output coordinates: ['22.50', '-10.00', '0.00']
+2013-08-29 12:35:12,080 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,080 INFO x i(10) px(25.0)
+2013-08-29 12:35:12,080 INFO (G1 X25.0) written to printer
+2013-08-29 12:35:12,194 INFO i(10) Movement finished.
+2013-08-29 12:35:12,194 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,202 INFO Input coordinates: X:25.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,202 INFO Output coordinates: ['25.00', '-10.00', '0.00']
+2013-08-29 12:35:12,202 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,202 INFO x i(11) px(27.5)
+2013-08-29 12:35:12,203 INFO (G1 X27.5) written to printer
+2013-08-29 12:35:12,321 INFO i(11) Movement finished.
+2013-08-29 12:35:12,321 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,325 INFO Input coordinates: X:27.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,326 INFO Output coordinates: ['27.50', '-10.00', '0.00']
+2013-08-29 12:35:12,326 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,326 INFO x i(12) px(30.0)
+2013-08-29 12:35:12,326 INFO (G1 X30.0) written to printer
+2013-08-29 12:35:12,444 INFO i(12) Movement finished.
+2013-08-29 12:35:12,444 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,452 INFO Input coordinates: X:30.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,452 INFO Output coordinates: ['30.00', '-10.00', '0.00']
+2013-08-29 12:35:12,452 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,452 INFO x i(13) px(32.5)
+2013-08-29 12:35:12,453 INFO (G1 X32.5) written to printer
+2013-08-29 12:35:12,567 INFO i(13) Movement finished.
+2013-08-29 12:35:12,567 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,575 INFO Input coordinates: X:32.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,575 INFO Output coordinates: ['32.50', '-10.00', '0.00']
+2013-08-29 12:35:12,575 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,576 INFO x i(14) px(35.0)
+2013-08-29 12:35:12,576 INFO (G1 X35.0) written to printer
+2013-08-29 12:35:12,694 INFO i(14) Movement finished.
+2013-08-29 12:35:12,694 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,702 INFO Input coordinates: X:35.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,702 INFO Output coordinates: ['35.00', '-10.00', '0.00']
+2013-08-29 12:35:12,702 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,703 INFO x i(15) px(37.5)
+2013-08-29 12:35:12,703 INFO (G1 X37.5) written to printer
+2013-08-29 12:35:12,821 INFO i(15) Movement finished.
+2013-08-29 12:35:12,821 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,829 INFO Input coordinates: X:37.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,829 INFO Output coordinates: ['37.50', '-10.00', '0.00']
+2013-08-29 12:35:12,829 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,830 INFO x i(16) px(40.0)
+2013-08-29 12:35:12,830 INFO (G1 X40.0) written to printer
+2013-08-29 12:35:12,944 INFO i(16) Movement finished.
+2013-08-29 12:35:12,944 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:12,952 INFO Input coordinates: X:40.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:12,952 INFO Output coordinates: ['40.00', '-10.00', '0.00']
+2013-08-29 12:35:12,952 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:12,953 INFO x i(17) px(42.5)
+2013-08-29 12:35:12,953 INFO (G1 X42.5) written to printer
+2013-08-29 12:35:13,071 INFO i(17) Movement finished.
+2013-08-29 12:35:13,071 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,079 INFO Input coordinates: X:42.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,079 INFO Output coordinates: ['42.50', '-10.00', '0.00']
+2013-08-29 12:35:13,079 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,080 INFO x i(18) px(45.0)
+2013-08-29 12:35:13,080 INFO (G1 X45.0) written to printer
+2013-08-29 12:35:13,193 INFO i(18) Movement finished.
+2013-08-29 12:35:13,193 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,198 INFO Input coordinates: X:45.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,199 INFO Output coordinates: ['45.00', '-10.00', '0.00']
+2013-08-29 12:35:13,199 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,199 INFO x i(19) px(47.5)
+2013-08-29 12:35:13,199 INFO (G1 X47.5) written to printer
+2013-08-29 12:35:13,312 INFO i(19) Movement finished.
+2013-08-29 12:35:13,312 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,316 INFO Input coordinates: X:47.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,317 INFO Output coordinates: ['47.50', '-10.00', '0.00']
+2013-08-29 12:35:13,317 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,317 INFO x i(20) px(50.0)
+2013-08-29 12:35:13,317 INFO (G1 X50.0) written to printer
+2013-08-29 12:35:13,431 INFO i(20) Movement finished.
+2013-08-29 12:35:13,431 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,439 INFO Input coordinates: X:50.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,439 INFO Output coordinates: ['50.00', '-10.00', '0.00']
+2013-08-29 12:35:13,439 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,439 INFO x i(21) px(52.5)
+2013-08-29 12:35:13,440 INFO (G1 X52.5) written to printer
+2013-08-29 12:35:13,554 INFO i(21) Movement finished.
+2013-08-29 12:35:13,554 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,562 INFO Input coordinates: X:52.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,562 INFO Output coordinates: ['52.50', '-10.00', '0.00']
+2013-08-29 12:35:13,562 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,563 INFO x i(22) px(55.0)
+2013-08-29 12:35:13,563 INFO (G1 X55.0) written to printer
+2013-08-29 12:35:13,677 INFO i(22) Movement finished.
+2013-08-29 12:35:13,677 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,685 INFO Input coordinates: X:55.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,685 INFO Output coordinates: ['55.00', '-10.00', '0.00']
+2013-08-29 12:35:13,685 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,686 INFO x i(23) px(57.5)
+2013-08-29 12:35:13,686 INFO (G1 X57.5) written to printer
+2013-08-29 12:35:13,800 INFO i(23) Movement finished.
+2013-08-29 12:35:13,800 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,808 INFO Input coordinates: X:57.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,808 INFO Output coordinates: ['57.50', '-10.00', '0.00']
+2013-08-29 12:35:13,808 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,809 INFO x i(24) px(60.0)
+2013-08-29 12:35:13,809 INFO (G1 X60.0) written to printer
+2013-08-29 12:35:13,922 INFO i(24) Movement finished.
+2013-08-29 12:35:13,922 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:13,927 INFO Input coordinates: X:60.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:13,928 INFO Output coordinates: ['60.00', '-10.00', '0.00']
+2013-08-29 12:35:13,928 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:13,928 INFO x i(25) px(62.5)
+2013-08-29 12:35:13,928 INFO (G1 X62.5) written to printer
+2013-08-29 12:35:14,041 INFO i(25) Movement finished.
+2013-08-29 12:35:14,041 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,045 INFO Input coordinates: X:62.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,046 INFO Output coordinates: ['62.50', '-10.00', '0.00']
+2013-08-29 12:35:14,046 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,046 INFO x i(26) px(65.0)
+2013-08-29 12:35:14,046 INFO (G1 X65.0) written to printer
+2013-08-29 12:35:14,164 INFO i(26) Movement finished.
+2013-08-29 12:35:14,164 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,168 INFO Input coordinates: X:65.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,169 INFO Output coordinates: ['65.00', '-10.00', '0.00']
+2013-08-29 12:35:14,169 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,169 INFO x i(27) px(67.5)
+2013-08-29 12:35:14,169 INFO (G1 X67.5) written to printer
+2013-08-29 12:35:14,283 INFO i(27) Movement finished.
+2013-08-29 12:35:14,283 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,291 INFO Input coordinates: X:67.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,291 INFO Output coordinates: ['67.50', '-10.00', '0.00']
+2013-08-29 12:35:14,291 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,291 INFO x i(28) px(70.0)
+2013-08-29 12:35:14,292 INFO (G1 X70.0) written to printer
+2013-08-29 12:35:14,406 INFO i(28) Movement finished.
+2013-08-29 12:35:14,406 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,414 INFO Input coordinates: X:70.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,414 INFO Output coordinates: ['70.00', '-10.00', '0.00']
+2013-08-29 12:35:14,414 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,415 INFO x i(29) px(72.5)
+2013-08-29 12:35:14,415 INFO (G1 X72.5) written to printer
+2013-08-29 12:35:14,529 INFO i(29) Movement finished.
+2013-08-29 12:35:14,529 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,537 INFO Input coordinates: X:72.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,537 INFO Output coordinates: ['72.50', '-10.00', '0.00']
+2013-08-29 12:35:14,537 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,538 INFO x i(30) px(75.0)
+2013-08-29 12:35:14,538 INFO (G1 X75.0) written to printer
+2013-08-29 12:35:14,652 INFO i(30) Movement finished.
+2013-08-29 12:35:14,652 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,660 INFO Input coordinates: X:75.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,660 INFO Output coordinates: ['75.00', '-10.00', '0.00']
+2013-08-29 12:35:14,660 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,661 INFO x i(31) px(77.5)
+2013-08-29 12:35:14,661 INFO (G1 X77.5) written to printer
+2013-08-29 12:35:14,774 INFO i(31) Movement finished.
+2013-08-29 12:35:14,774 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,779 INFO Input coordinates: X:77.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,780 INFO Output coordinates: ['77.50', '-10.00', '0.00']
+2013-08-29 12:35:14,780 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,780 INFO x i(32) px(80.0)
+2013-08-29 12:35:14,780 INFO (G1 X80.0) written to printer
+2013-08-29 12:35:14,897 INFO i(32) Movement finished.
+2013-08-29 12:35:14,897 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:14,901 INFO Input coordinates: X:80.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:14,902 INFO Output coordinates: ['80.00', '-10.00', '0.00']
+2013-08-29 12:35:14,902 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:14,902 INFO x i(33) px(82.5)
+2013-08-29 12:35:14,902 INFO (G1 X82.5) written to printer
+2013-08-29 12:35:15,016 INFO i(33) Movement finished.
+2013-08-29 12:35:15,016 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,024 INFO Input coordinates: X:82.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,024 INFO Output coordinates: ['82.50', '-10.00', '0.00']
+2013-08-29 12:35:15,024 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,024 INFO x i(34) px(85.0)
+2013-08-29 12:35:15,025 INFO (G1 X85.0) written to printer
+2013-08-29 12:35:15,139 INFO i(34) Movement finished.
+2013-08-29 12:35:15,139 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,147 INFO Input coordinates: X:85.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,147 INFO Output coordinates: ['85.00', '-10.00', '0.00']
+2013-08-29 12:35:15,147 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,148 INFO x i(35) px(87.5)
+2013-08-29 12:35:15,148 INFO (G1 X87.5) written to printer
+2013-08-29 12:35:15,266 INFO i(35) Movement finished.
+2013-08-29 12:35:15,266 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,274 INFO Input coordinates: X:87.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,274 INFO Output coordinates: ['87.50', '-10.00', '0.00']
+2013-08-29 12:35:15,274 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,274 INFO x i(36) px(90.0)
+2013-08-29 12:35:15,275 INFO (G1 X90.0) written to printer
+2013-08-29 12:35:15,389 INFO i(36) Movement finished.
+2013-08-29 12:35:15,389 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,397 INFO Input coordinates: X:90.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,397 INFO Output coordinates: ['90.00', '-10.00', '0.00']
+2013-08-29 12:35:15,397 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,398 INFO x i(37) px(92.5)
+2013-08-29 12:35:15,398 INFO (G1 X92.5) written to printer
+2013-08-29 12:35:15,512 INFO i(37) Movement finished.
+2013-08-29 12:35:15,512 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,520 INFO Input coordinates: X:92.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,520 INFO Output coordinates: ['92.50', '-10.00', '0.00']
+2013-08-29 12:35:15,520 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,521 INFO x i(38) px(95.0)
+2013-08-29 12:35:15,521 INFO (G1 X95.0) written to printer
+2013-08-29 12:35:15,634 INFO i(38) Movement finished.
+2013-08-29 12:35:15,634 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,639 INFO Input coordinates: X:95.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,640 INFO Output coordinates: ['95.00', '-10.00', '0.00']
+2013-08-29 12:35:15,640 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,640 INFO x i(39) px(97.5)
+2013-08-29 12:35:15,640 INFO (G1 X97.5) written to printer
+2013-08-29 12:35:15,757 INFO i(39) Movement finished.
+2013-08-29 12:35:15,757 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,762 INFO Input coordinates: X:97.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,763 INFO Output coordinates: ['97.50', '-10.00', '0.00']
+2013-08-29 12:35:15,763 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,763 INFO x i(40) px(100.0)
+2013-08-29 12:35:15,763 INFO (G1 X100.0) written to printer
+2013-08-29 12:35:15,876 INFO i(40) Movement finished.
+2013-08-29 12:35:15,876 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:15,884 INFO Input coordinates: X:100.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:15,884 INFO Output coordinates: ['100.00', '-10.00', '0.00']
+2013-08-29 12:35:15,884 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:15,884 INFO x i(41) px(102.5)
+2013-08-29 12:35:15,885 INFO (G1 X102.5) written to printer
+2013-08-29 12:35:15,999 INFO i(41) Movement finished.
+2013-08-29 12:35:15,999 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,007 INFO Input coordinates: X:102.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,007 INFO Output coordinates: ['102.50', '-10.00', '0.00']
+2013-08-29 12:35:16,007 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,008 INFO x i(42) px(105.0)
+2013-08-29 12:35:16,008 INFO (G1 X105.0) written to printer
+2013-08-29 12:35:16,122 INFO i(42) Movement finished.
+2013-08-29 12:35:16,122 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,130 INFO Input coordinates: X:105.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,130 INFO Output coordinates: ['105.00', '-10.00', '0.00']
+2013-08-29 12:35:16,130 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,131 INFO x i(43) px(107.5)
+2013-08-29 12:35:16,131 INFO (G1 X107.5) written to printer
+2013-08-29 12:35:16,245 INFO i(43) Movement finished.
+2013-08-29 12:35:16,245 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,253 INFO Input coordinates: X:107.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,253 INFO Output coordinates: ['107.50', '-10.00', '0.00']
+2013-08-29 12:35:16,253 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,254 INFO x i(44) px(110.0)
+2013-08-29 12:35:16,254 INFO (G1 X110.0) written to printer
+2013-08-29 12:35:16,368 INFO i(44) Movement finished.
+2013-08-29 12:35:16,368 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,376 INFO Input coordinates: X:110.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,376 INFO Output coordinates: ['110.00', '-10.00', '0.00']
+2013-08-29 12:35:16,376 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,377 INFO x i(45) px(112.5)
+2013-08-29 12:35:16,377 INFO (G1 X112.5) written to printer
+2013-08-29 12:35:16,491 INFO i(45) Movement finished.
+2013-08-29 12:35:16,491 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,499 INFO Input coordinates: X:112.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,499 INFO Output coordinates: ['112.50', '-10.00', '0.00']
+2013-08-29 12:35:16,499 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,500 INFO x i(46) px(115.0)
+2013-08-29 12:35:16,500 INFO (G1 X115.0) written to printer
+2013-08-29 12:35:16,613 INFO i(46) Movement finished.
+2013-08-29 12:35:16,613 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,618 INFO Input coordinates: X:115.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,619 INFO Output coordinates: ['115.00', '-10.00', '0.00']
+2013-08-29 12:35:16,619 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,619 INFO x i(47) px(117.5)
+2013-08-29 12:35:16,619 INFO (G1 X117.5) written to printer
+2013-08-29 12:35:16,732 INFO i(47) Movement finished.
+2013-08-29 12:35:16,732 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,740 INFO Input coordinates: X:117.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,740 INFO Output coordinates: ['117.50', '-10.00', '0.00']
+2013-08-29 12:35:16,740 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,740 INFO x i(48) px(120.0)
+2013-08-29 12:35:16,741 INFO (G1 X120.0) written to printer
+2013-08-29 12:35:16,855 INFO i(48) Movement finished.
+2013-08-29 12:35:16,855 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,863 INFO Input coordinates: X:120.00Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,863 INFO Output coordinates: ['120.00', '-10.00', '0.00']
+2013-08-29 12:35:16,863 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:16,864 INFO x i(49) px(122.5)
+2013-08-29 12:35:16,864 INFO (G1 X122.5) written to printer
+2013-08-29 12:35:16,978 INFO i(49) Movement finished.
+2013-08-29 12:35:16,978 INFO i1(ok) i2(Movement finished.)
+2013-08-29 12:35:16,986 INFO Input coordinates: X:122.50Y:-10.00Z:0.00E:0.00
+2013-08-29 12:35:16,986 INFO Output coordinates: ['122.50', '-10.00', '0.00']
+2013-08-29 12:35:16,986 INFO One of CSV 'coord' and 'data' row appended
+2013-08-29 12:35:17,008 INFO RepRap is offline
+2013-08-29 12:35:17,008 INFO Logging finished

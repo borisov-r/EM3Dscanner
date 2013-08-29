@@ -42,9 +42,9 @@ class OutputFile(object):
                              maxFreq + self.T)
                 f.writelines("# Freq points:    " + freqPoints + self.T)
                 f.writelines("# Parameters:     " + parameters + self.T)
-                f.writelines("# RepRap points:  X Points:   " + xPoints +
-                             "   |   Y Points:   " + yPoints +
-                             "   |   Z Points:   " + zPoints + self.T)
+                f.writelines("# RepRap points   X Points:   " + str(xPoints) +
+                             "   |   Y Points:   " + str(yPoints) +
+                             "   |   Z Points:   " + str(zPoints) + self.T)
                 f.writelines("# Resolution:     " + resolution + self.T)
                 f.writelines("# Volume:         " +
                              str(int(xPoints) * int(yPoints) * int(zPoints)) +
