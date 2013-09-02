@@ -172,6 +172,111 @@ class Scanner(object):
         #del px
         return True
 
+    def mY(self):
+        ''' Move Y axis
+            pl      - point list
+            na      - network analyzer to get parameters
+            of      - output file
+            currY   - current Y coordinate
+        '''
+        py = self.createStepPointsY()  # list of point on x axis
+        #
+        for i in range(len(py)):
+            if i == 0:
+                self.rr.printer.write("G1 Y" + str(py[i]) + "\n")
+                self.log.append("(G1 Y" + str(py[i]) + ") written to printer")
+                # wait till receive Movement finished
+                '''
+                while 1:
+                    i2 = self.rr.printer.readline().strip()
+                    if 'Movement' in i2:
+                        #self.log.warn(".")
+                        sys.stdout.flush()
+                        self.log.append("i(%s) Movement finished." % i)
+                        break
+                    else:
+                        pass
+                '''
+                # start X measurement
+                while 1:
+                    if self.mX():
+                        self.log.append("y i(%s) py(%s)" % (i, py[i]))
+                        break
+                    else:
+                        pass
+            elif i > 0:
+                self.rr.printer.write("G1 Y" + str(py[i]) + "\n")
+                self.log.append("(G1 Y" + str(py[i]) + ") written to printer")
+                # wait till receive Movement finished
+                while 1:
+                    i2 = self.rr.printer.readline().strip()
+                    if 'Movement' in i2:
+                        #self.log.warn(".")
+                        sys.stdout.flush()
+                        self.log.append("i(%s) Movement finished." % i)
+                        self.log.append("i2(%s) Movement finished." % i2)
+                        break
+                    else:
+                        pass
+                # start X measurement
+                while 1:
+                    if self.mX():
+                        self.log.append("y i(%s) py(%s)" % (i, py[i]))
+                        break
+                    else:
+                        pass
+        return True
+
+    def mm(self):
+        ''' Create coordinates and move all cube.
+        '''
+        x = self.createStepPointsX()
+        y = self.createStepPointsY()
+        z = self.createStepPointsZ()
+        #
+        messageX = "G1 X" + str(x[0])
+        messageY = " Y" + str(y[0])
+        messageZ = " Z" + str(z[0])
+        #
+        message = messageX + messageY + messageZ
+        #
+        self.log.append("Message (%s)" % message)
+        print message
+        #
+        i = 0  # x counter
+        j = 0  # y counter
+        k = 0  # z counter
+        #
+        while 1:
+            #
+            # start with the first point
+            #if x[i] == 0 and j == 0 and k == 0:
+            #    messageX = "G1 X" + str(x[i])
+            #    message = messageX + messageY + messageZ
+            #    i = i + 1
+                #print(message)
+            #
+            # move x while less than
+            if j > 0 and j < len(y):
+
+                if i > 0 and i < len(x):
+                    messageX = "G1 X" + str(x[i])
+                    message = messageX + messageY + messageZ
+                    print(message)
+                i = i + 1
+            j = j + 1
+            i = 0
+            #print j
+            '''
+            else:
+                print("X[i] = %s" % (x[i])),
+                print("Y[j] = %s" % (y[j])),
+                print("Z[k] = %s" % (z[k])),
+                print("i, %s" % i),
+                print("j, %s" % j),
+                print("k, %s" % j)
+            '''
+
 
 def main():
     log = LogData(logging.INFO)

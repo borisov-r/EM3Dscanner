@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import logging
 from LogFile import LogData
 from ParseInput import ParseInput
@@ -85,14 +87,20 @@ class Scanner(object):
         # create one x row scan to file
         if self.reprap.connected:
             #
+            s = Scan(logging=log, rr=self.reprap, na=None,
+                     mp=xyzCoords, of=out, step=xyzRes)
+            s.mm()
+            '''
             for i in range(xyzCoords[1]):
-                self.reprap.printer.write("G1 Y-1\n")
+                message = ("G1 Y" + str(xyzCoords[1] + xyzRes[0]) + "\n")
+                self.reprap.printer.write(message)
                 self.reprap.printer.readline()
                 self.reprap.printer.readline()
                 s = Scan(logging=log, rr=self.reprap, na=None,
                          mp=xyzCoords, of=out, step=xyzRes)
                 log.append("Scan object created")
                 s.mX()
+            '''
 
         # disconnect reprap if connected
         # how to disconnect reprap gracefully
