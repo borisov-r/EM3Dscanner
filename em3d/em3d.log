@@ -1,86 +1,43 @@
-2013-09-02 15:11:11,499 INFO Logging started
-2013-09-02 15:11:11,499 INFO Scanner object created
-2013-09-02 15:11:11,501 INFO Terminal arguments(Namespace(config=None, measure=None, output='test.out', reprap='enable'))
-2013-09-02 15:11:11,501 INFO Parameters from terminal: m(None) rr(enable) c(None) o(test.out)
-2013-09-02 15:11:11,501 INFO Parsed arguments (None) (enable) (None) (test.out)
-2013-09-02 15:11:11,501 INFO ### Checking if 'None' exists
-2013-09-02 15:11:11,501 INFO File 'em3d.xml' exists
-2013-09-02 15:11:11,501 INFO ### Getting config file name 'None'
-2013-09-02 15:11:11,501 INFO Config file name is 'em3d.xml'
-2013-09-02 15:11:11,501 INFO ### Configuration file is set to 'em3d.xml'
-2013-09-02 15:11:11,502 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
-2013-09-02 15:11:11,503 INFO PNA from file ( ip(10.1.15.106), port(5024), calib(calibrationRado1.csa) )
-2013-09-02 15:11:11,503 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
-2013-09-02 15:11:11,504 INFO Output from file ( em3d.out )
-2013-09-02 15:11:11,504 INFO Configuration loaded from file 'em3d.xml'
-2013-09-02 15:11:11,504 INFO ### Configuration finished 
-2013-09-02 15:11:11,504 INFO RepRap object created ( <EM3Dreprap.RepRap object at 0x7fc076c22e90> )
-2013-09-02 15:11:11,504 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
-2013-09-02 15:11:12,426 INFO RepRap is online
-2013-09-02 15:11:12,426 INFO ### Output file name set from terminal to ( test.out )
-2013-09-02 15:11:12,426 INFO ### TerminalData log started
-2013-09-02 15:11:12,426 INFO ### Collect XYZ resolution
-2013-09-02 15:11:13,076 INFO Raw float input (10.0)
-2013-09-02 15:11:13,076 INFO Input from console set to (10.0)
-2013-09-02 15:11:13,545 INFO Raw float input (10.0)
-2013-09-02 15:11:13,545 INFO Input from console set to (10.0)
-2013-09-02 15:11:13,545 INFO resolutionXY(10.0), resolutionZ(10.0)
-2013-09-02 15:11:13,545 INFO ### Collect XYZ resolution finished
-2013-09-02 15:11:13,545 INFO ### Collect XYZ measurement points number
-2013-09-02 15:11:13,988 INFO Raw integer input (10)
-2013-09-02 15:11:13,988 INFO Input from console set to (10)
-2013-09-02 15:11:14,523 INFO Raw integer input (10)
-2013-09-02 15:11:14,524 INFO Input from console set to (10)
-2013-09-02 15:11:15,031 INFO Raw integer input (10)
-2013-09-02 15:11:15,031 INFO Input from console set to (10)
-2013-09-02 15:11:15,031 INFO xPoints(10), yPoints(10), zPoints(10)
-2013-09-02 15:11:15,032 INFO ### Collect XYZ measurement points finished
-2013-09-02 15:11:15,032 INFO ### Output file creation started
-2013-09-02 15:11:15,032 INFO Date and device written to 'test.out' file
-2013-09-02 15:11:15,032 INFO PNA header created in output file
-2013-09-02 15:11:15,040 INFO currentCoords(X:0.00Y:0.00Z:0.00E:0.00)
-2013-09-02 15:11:15,040 INFO coords: ['0.00', '0.00', '0.00']
-2013-09-02 15:11:15,040 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-09-02 15:11:15,040 INFO points: [0.0]
-2013-09-02 15:11:15,040 INFO current point x set to: 10.0
-2013-09-02 15:11:15,040 INFO current point x set to: 20.0
-2013-09-02 15:11:15,040 INFO current point x set to: 30.0
-2013-09-02 15:11:15,040 INFO current point x set to: 40.0
-2013-09-02 15:11:15,041 INFO current point x set to: 50.0
-2013-09-02 15:11:15,041 INFO current point x set to: 60.0
-2013-09-02 15:11:15,041 INFO current point x set to: 70.0
-2013-09-02 15:11:15,041 INFO current point x set to: 80.0
-2013-09-02 15:11:15,041 INFO current point x set to: 90.0
-2013-09-02 15:11:15,041 INFO current point x set to: 100.0
-2013-09-02 15:11:15,041 INFO points x axis at the end: [0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
-2013-09-02 15:11:15,048 INFO currentCoords(X:0.00Y:0.00Z:0.00E:0.00)
-2013-09-02 15:11:15,048 INFO coords: ['0.00', '0.00', '0.00']
-2013-09-02 15:11:15,048 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-09-02 15:11:15,048 INFO points: [0.0]
-2013-09-02 15:11:15,048 INFO current point y set to: 10.0
-2013-09-02 15:11:15,048 INFO current point y set to: 20.0
-2013-09-02 15:11:15,048 INFO current point y set to: 30.0
-2013-09-02 15:11:15,048 INFO current point y set to: 40.0
-2013-09-02 15:11:15,049 INFO current point y set to: 50.0
-2013-09-02 15:11:15,049 INFO current point y set to: 60.0
-2013-09-02 15:11:15,049 INFO current point y set to: 70.0
-2013-09-02 15:11:15,049 INFO current point y set to: 80.0
-2013-09-02 15:11:15,049 INFO current point y set to: 90.0
-2013-09-02 15:11:15,049 INFO current point y set to: 100.0
-2013-09-02 15:11:15,049 INFO points y axis at the end: [0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
-2013-09-02 15:11:15,056 INFO currentCoords(X:0.00Y:0.00Z:0.00E:0.00)
-2013-09-02 15:11:15,056 INFO coords: ['0.00', '0.00', '0.00']
-2013-09-02 15:11:15,056 INFO coordsT: x(0.0) y(0.0) z(0.0)
-2013-09-02 15:11:15,056 INFO points: [0.0]
-2013-09-02 15:11:15,056 INFO current point z set to: 10.0
-2013-09-02 15:11:15,056 INFO current point z set to: 20.0
-2013-09-02 15:11:15,056 INFO current point z set to: 30.0
-2013-09-02 15:11:15,056 INFO current point z set to: 40.0
-2013-09-02 15:11:15,056 INFO current point z set to: 50.0
-2013-09-02 15:11:15,057 INFO current point z set to: 60.0
-2013-09-02 15:11:15,057 INFO current point z set to: 70.0
-2013-09-02 15:11:15,057 INFO current point z set to: 80.0
-2013-09-02 15:11:15,057 INFO current point z set to: 90.0
-2013-09-02 15:11:15,057 INFO current point z set to: 100.0
-2013-09-02 15:11:15,057 INFO points z axis at the end: [0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
-2013-09-02 15:11:15,057 INFO Message (G1 X0.0 Y0.0 Z0.0)
+2013-10-01 12:15:56,471 INFO Logging started
+2013-10-01 12:15:56,471 INFO Scanner object created
+2013-10-01 12:15:56,474 INFO Terminal arguments(Namespace(config=None, measure='pna', output=None, reprap=None))
+2013-10-01 12:15:56,474 INFO Parameters from terminal: m(pna) rr(None) c(None) o(None)
+2013-10-01 12:15:56,474 INFO Parsed arguments (pna) (None) (None) (None)
+2013-10-01 12:15:56,474 INFO ### Checking if 'None' exists
+2013-10-01 12:15:56,474 INFO File 'em3d.xml' exists
+2013-10-01 12:15:56,474 INFO ### Getting config file name 'None'
+2013-10-01 12:15:56,474 INFO Config file name is 'em3d.xml'
+2013-10-01 12:15:56,474 INFO ### Configuration file is set to 'em3d.xml'
+2013-10-01 12:15:56,475 INFO RepRap from file( port(/dev/ttyACM0), baud(115200), MAX_XY(2000), MAX_Z(1200) )
+2013-10-01 12:15:56,476 INFO PNA from file ( ip(10.1.15.112), port(5024), calib(calibrationRado1.csa) )
+2013-10-01 12:15:56,476 INFO ATmega from file ( port(/dev/ttyUSB0), baud(9600) )
+2013-10-01 12:15:56,477 INFO Output from file ( em3d.out )
+2013-10-01 12:15:56,477 INFO Configuration loaded from file 'em3d.xml'
+2013-10-01 12:15:56,477 INFO ### Configuration finished 
+2013-10-01 12:15:56,477 INFO Network Analyzer object created ( <src.EM3Dnalib.NetworkAnalyzer instance at 0xc9c998> )
+2013-10-01 12:15:56,478 INFO PNA from file ( ip(10.1.15.112), port(5024), calib(calibrationRado1.csa) )
+2013-10-01 12:15:56,763 INFO PNA is online
+2013-10-01 12:15:56,763 INFO Output from file ( em3d.out )
+2013-10-01 12:15:56,763 INFO ### Output file name set from config file to ( em3d.out )
+2013-10-01 12:15:56,763 INFO ### TerminalData log started
+2013-10-01 12:15:56,763 INFO ### Collect XYZ resolution
+2013-10-01 12:15:58,241 INFO Raw float input (10.0)
+2013-10-01 12:15:58,241 INFO Input from console set to (10.0)
+2013-10-01 12:15:59,731 INFO Raw float input (10.0)
+2013-10-01 12:15:59,731 INFO Input from console set to (10.0)
+2013-10-01 12:15:59,731 INFO resolutionXY(10.0), resolutionZ(10.0)
+2013-10-01 12:15:59,732 INFO ### Collect XYZ resolution finished
+2013-10-01 12:15:59,732 INFO ### Collect XYZ measurement points number
+2013-10-01 12:16:02,812 INFO Raw integer input (10)
+2013-10-01 12:16:02,812 INFO Input from console set to (10)
+2013-10-01 12:16:03,690 INFO Raw integer input (10)
+2013-10-01 12:16:03,690 INFO Input from console set to (10)
+2013-10-01 12:16:04,208 INFO Raw integer input (10)
+2013-10-01 12:16:04,208 INFO Input from console set to (10)
+2013-10-01 12:16:04,208 INFO xPoints(10), yPoints(10), zPoints(10)
+2013-10-01 12:16:04,208 INFO ### Collect XYZ measurement points finished
+2013-10-01 12:16:04,208 INFO ### Output file creation started
+2013-10-01 12:16:04,209 INFO Date and device written to 'em3d.out' file
+2013-10-01 12:16:04,209 INFO PNA header created in output file
+2013-10-01 12:16:04,209 INFO PNA is offline
+2013-10-01 12:16:04,209 INFO Logging finished

@@ -1,14 +1,15 @@
 #!/usr/bin/python
 
 import logging
-from LogFile import LogData
-from ParseInput import ParseInput
-from ConfigFile import Configuration
-from EM3Dreprap import RepRap
-from EM3Dnalib import NetworkAnalyzer
-from OutputFile import OutputFile
-from Scanner import Scanner as Scan
-from TerminalData import TerminalData
+#from LogFile import LogData
+#from ParseInput import ParseInput
+#from ConfigFile import Configuration
+#from EM3Dreprap import RepRap
+#from EM3Dnalib import NetworkAnalyzer
+#from OutputFile import OutputFile
+#from Scanner import Scanner as Scan
+#from TerminalData import TerminalData
+from src import *
 
 
 class Scanner(object):
@@ -75,14 +76,22 @@ class Scanner(object):
             terminal = TerminalData(log)
             xyzRes = terminal.getXYZresolution()
             xyzCoords = terminal.getXYZpoints()
+        else:
+            xyzRes = None
+            xyzCoords = None
 
         # create output file set 'name' and 'device' in header
-        out = OutputFile(log, self.OUTPUT_FILE_NAME, arguments[0])
-        # test if everything works ok
-        out.createHeader("+20.000e9", "+30.000e10", "+201", "S21",
-                         xyzCoords, xyzRes, log.name)
-        #out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
-        #                 "+2.80000000000E+010,+2.80100000000E+010")
+        if arguments[0] is not None:
+            out = OutputFile(log, self.OUTPUT_FILE_NAME, arguments[0])
+            # test if everything works ok
+            out.createHeader("+20.000e9", "+30.000e10", "+201", "S21",
+                            xyzCoords, xyzRes, log.name)
+            #out.appendToFile("X:0.00Y:0.00Z:0.00E:0.00",
+            #                 "+2.80000000000E+010,+2.80100000000E+010")
+        else:
+            print "Output file was not created"
+
+        #print arguments[0]
 
         # create one x row scan to file
         if self.reprap.connected:
